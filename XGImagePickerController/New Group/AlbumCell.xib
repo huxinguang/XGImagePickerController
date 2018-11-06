@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="65" id="KGk-i7-Jjw" customClass="AlbumCell">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-2X-kas">
+                        <rect key="frame" x="20" y="8.5" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="YnO-Cg-iha"/>
+                            <constraint firstAttribute="width" constant="48" id="uOi-km-AHR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niG-aL-ETk">
+                        <rect key="frame" x="83" y="25" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pBf-2X-kas" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9DY-fh-mA4"/>
+                    <constraint firstItem="niG-aL-ETk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PgE-ME-xPb"/>
+                    <constraint firstItem="niG-aL-ETk" firstAttribute="leading" secondItem="pBf-2X-kas" secondAttribute="trailing" constant="15" id="VDX-EA-MVW"/>
+                    <constraint firstItem="pBf-2X-kas" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="xm3-j8-GdH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="albumNameLabel" destination="niG-aL-ETk" id="stS-wo-QF3"/>
+                <outlet property="imgView" destination="pBf-2X-kas" id="8PK-lv-f5j"/>
+            </connections>
+            <point key="canvasLocation" x="-284" y="-14"/>
+        </tableViewCell>
+    </objects>
+</document>
