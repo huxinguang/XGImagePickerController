@@ -114,6 +114,8 @@
 		C9D769CA2192902700C8A561 /* picker_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_camera@3x.png"; sourceTree = "<group>"; };
 		C9D769D42192947F00C8A561 /* picker_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_video@2x.png"; sourceTree = "<group>"; };
 		C9D769D52192948000C8A561 /* picker_video@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_video@3x.png"; sourceTree = "<group>"; };
+		C9D769D82192DCE900C8A561 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C9D769D92192DCEA00C8A561 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +448,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C9D769622191357800C8A561 /* Base */,
+				C9D769D82192DCE900C8A561 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C9D769672191357900C8A561 /* Base */,
+				C9D769D92192DCEA00C8A561 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -465,6 +469,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -523,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
