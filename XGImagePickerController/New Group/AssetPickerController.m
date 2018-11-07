@@ -315,7 +315,6 @@
         self.mask.userInteractionEnabled = NO;
     }
     [self.albumTableView reloadData];
-    [self.albumTableView scrollToRowAtIndexPath:self.currentAlbumIndexpath atScrollPosition:UITableViewScrollPositionTop animated:NO];
     [UIView animateWithDuration:0.35 animations:^{
         if (btn.selected) {
             CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI);
@@ -327,6 +326,7 @@
         }
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
+        [self.albumTableView scrollToRowAtIndexPath:self.currentAlbumIndexpath atScrollPosition:UITableViewScrollPositionNone animated:NO];
         if (!btn.selected) {
             [self.view insertSubview:self.mask belowSubview:self.collectionView];
         }
@@ -477,9 +477,6 @@
 - (void)showHudWithString:(NSString *)string{
     
 }
-
-
-
 
 - (void)openCamera{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
