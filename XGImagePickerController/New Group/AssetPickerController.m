@@ -15,18 +15,19 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface AssetPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,PHPhotoLibraryChangeObserver>
-@property (nonatomic, strong)UICollectionView *collectionView;
-@property (nonatomic, strong)NSMutableArray<AssetModel *> *assetArr;
-@property (nonatomic, strong)UIButton *bottomConfirmBtn;
-@property (nonatomic, strong)UITableView *albumTableView;
-@property (nonatomic, strong)UIView *containerView;
-@property (nonatomic, strong)NSMutableArray<AlbumModel *> *albumArr;
-@property (nonatomic, strong)UIControl *mask;
-@property (nonatomic, strong)NavTitleView *ntView;
-@property (nonatomic, assign)CGFloat containerViewHeight;
-@property (nonatomic, strong)NSIndexPath *currentAlbumIndexpath;
-@property (nonatomic, strong)AssetModel *placeholderModel; //相机占位model
-@property (nonatomic, strong)NSMutableArray<NSIndexPath *> *albumSelectedIndexpaths;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray<AssetModel *> *assetArr;
+@property (nonatomic, strong) UIButton *bottomConfirmBtn;
+@property (nonatomic, strong) UITableView *albumTableView;
+@property (nonatomic, strong) UIView *containerView;
+@property (nonatomic, strong) NSMutableArray<AlbumModel *> *albumArr;
+@property (nonatomic, strong) UIControl *mask;
+@property (nonatomic, strong) NavTitleView *ntView;
+@property (nonatomic, assign) CGFloat containerViewHeight;
+@property (nonatomic, strong) NSIndexPath *currentAlbumIndexpath;
+@property (nonatomic, strong) AssetModel *placeholderModel; //相机占位model
+@property (nonatomic, strong) NSMutableArray<NSIndexPath *> *albumSelectedIndexpaths;
+@property (nonatomic, strong) NSLayoutConstraint *containerView_bottom;
 
 @end
 
@@ -121,9 +122,10 @@
         [self refreshAlbumAssetsStatus];
         [self configCollectionView];
         [self configBottomConfirmBtn];
+        [self configAlbumTableView];
+        [self addConstraints];
         [self.collectionView reloadData];
         [self refreshNavRightBtn];
-        [self configAlbumTableView];
         [self.albumTableView reloadData];
     }];
 }
@@ -216,7 +218,7 @@
         layout.itemSize = CGSizeMake(itemWH, itemWH);
         layout.minimumInteritemSpacing = kItemMargin;
         layout.minimumLineSpacing = kItemMargin;
-        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kAppScreenWidth, kAppScreenHeight-kAppStatusBarAndNavigationBarHeight-kBottomConfirmBtnHeight-kAppTabbarSafeBottomMargin) collectionViewLayout:layout];
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         self.collectionView.backgroundColor = [UIColor whiteColor];
         self.collectionView.dataSource = self;
         self.collectionView.delegate = self;
@@ -230,14 +232,11 @@
     if (!self.albumTableView) {
         CGFloat height = kAlbumTableViewMarginTopBottom*2 + kAlbumTableViewRowHeight*self.albumArr.count;
         self.containerViewHeight = height > kContainerViewMaxHeight ? kContainerViewMaxHeight : height;
-        
         self.containerView = [UIView new];
         self.containerView.backgroundColor = [UIColor whiteColor];
-        self.containerView.frame = CGRectMake(0, -self.containerViewHeight, kAppScreenWidth, self.containerViewHeight);
         [self.view addSubview:self.containerView];
         
-        CGFloat albumTableViewHeight = self.containerViewHeight - 2*kAlbumTableViewMarginTopBottom;
-        self.albumTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kAlbumTableViewMarginTopBottom, kAppScreenWidth, albumTableViewHeight) style:UITableViewStylePlain];
+        self.albumTableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         self.albumTableView.delegate = self;
         self.albumTableView.dataSource = self;
         self.albumTableView.rowHeight = kAlbumTableViewRowHeight;
@@ -249,7 +248,6 @@
 - (void)configBottomConfirmBtn {
     if (!self.bottomConfirmBtn) {
         self.bottomConfirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.bottomConfirmBtn.frame = CGRectMake(0, kAppScreenHeight - kBottomConfirmBtnHeight - kAppStatusBarAndNavigationBarHeight - kAppTabbarSafeBottomMargin, kAppScreenWidth, kBottomConfirmBtnHeight);
         self.bottomConfirmBtn.backgroundColor = [UIColor whiteColor];
         self.bottomConfirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:kBottomConfirmBtnTitleFontSize];
         [self.bottomConfirmBtn addTarget:self action:@selector(onConfirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -266,6 +264,38 @@
     
 }
 
+- (void)addConstraints{
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.bottomConfirmBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.albumTableView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.containerView_bottom = [NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    [NSLayoutConstraint activateConstraints:@[
+                                              // collectionView约束
+                                              [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomConfirmBtn attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                              // bottomConfirmBtn约束
+                                              [NSLayoutConstraint constraintWithItem:self.bottomConfirmBtn attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.bottomConfirmBtn attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.bottomConfirmBtn attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-kAppTabbarSafeBottomMargin],
+                                              [NSLayoutConstraint constraintWithItem:self.bottomConfirmBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kBottomConfirmBtnHeight],
+                                              // containerView约束
+                                              [NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                              self.containerView_bottom,
+                                              [NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.containerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.containerViewHeight],
+                                              // albumTableView约束
+                                              [NSLayoutConstraint constraintWithItem:self.albumTableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1.0 constant:kAlbumTableViewMarginTopBottom],
+                                              [NSLayoutConstraint constraintWithItem:self.albumTableView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.albumTableView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-kAlbumTableViewMarginTopBottom],
+                                              [NSLayoutConstraint constraintWithItem:self.albumTableView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0]
+                                              ]];
+    
+}
+
+
 - (void)onConfirmBtnClick {
     [self dismissViewControllerAnimated:YES completion:^{
         if (self.delegate && [self.delegate respondsToSelector:@selector(assetPickerController:didFinishPickingAssets:)]) {
@@ -277,9 +307,11 @@
 - (void)onTitleBtnClick:(UIButton *)btn{
     btn.selected = !btn.selected;
     if (btn.selected) {
+        self.containerView_bottom.constant = self.containerViewHeight + kAppStatusBarAndNavigationBarHeight;
         [self.view insertSubview:self.mask belowSubview:self.containerView];
         self.mask.userInteractionEnabled = YES;
     }else{
+        self.containerView_bottom.constant = -self.containerViewHeight;
         self.mask.userInteractionEnabled = NO;
     }
     [self.albumTableView reloadData];
@@ -288,17 +320,12 @@
         if (btn.selected) {
             CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI);
             self.ntView.arrowView.transform = transform;
-            CGRect frame = self.containerView.frame;
-            frame.origin.y += self.containerViewHeight;
-            self.containerView.frame = frame;
             self.mask.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.2];
         }else{
             self.ntView.arrowView.transform = CGAffineTransformIdentity;
-            CGRect frame = self.containerView.frame;
-            frame.origin.y -= self.containerViewHeight;
-            self.containerView.frame = frame;
             self.mask.backgroundColor = [UIColor clearColor];
         }
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (!btn.selected) {
             [self.view insertSubview:self.mask belowSubview:self.collectionView];
@@ -590,12 +617,10 @@
         self.titleBtn = [[UIButton alloc]init];
         self.titleBtn.titleLabel.font = kTitleViewTitleFont;
         [self.titleBtn setTitleColor:kAppThemeColor forState:UIControlStateNormal];
-        self.titleBtn.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.titleBtn];
         
         self.arrowView = [UIImageView new];
         self.arrowView.image = [UIImage imageNamed:@"picker_arrow"];
-        self.arrowView.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:self.arrowView];
         [self addConstraints];
         
@@ -604,18 +629,21 @@
 }
 
 - (void)addConstraints{
-    NSLayoutConstraint *titleBtn_centerY = [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
-    NSLayoutConstraint *titleBtn_centerX = [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-(kTitleViewTextImageDistance + kTitleViewArrowSize.width)/2];
+    self.titleBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    self.arrowView.translatesAutoresizingMaskIntoConstraints = NO;
     self.titleBtn_width = [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.titleBtnWidth];
-    NSLayoutConstraint *titleBtn_height = [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kAppNavigationBarHeight];
-    [NSLayoutConstraint activateConstraints:@[titleBtn_centerY,titleBtn_centerX,self.titleBtn_width,titleBtn_height]];
-    
-    NSLayoutConstraint *arrowView_centerY = [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
-    NSLayoutConstraint *arrowView_left = [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.titleBtn attribute:NSLayoutAttributeRight multiplier:1.0 constant:kTitleViewTextImageDistance];
-    NSLayoutConstraint *arrowView_width = [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTitleViewArrowSize.width];
-    NSLayoutConstraint *arrowView_height = [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTitleViewArrowSize.height];
-    [NSLayoutConstraint activateConstraints:@[arrowView_centerY,arrowView_left,arrowView_width,arrowView_height]];
-    
+    [NSLayoutConstraint activateConstraints:@[
+                                              // titleBtn约束
+                                              [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-(kTitleViewTextImageDistance + kTitleViewArrowSize.width)/2],
+                                              self.titleBtn_width,
+                                              [NSLayoutConstraint constraintWithItem:self.titleBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kAppNavigationBarHeight],
+                                              // arrowView约束
+                                              [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0],
+                                              [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.titleBtn attribute:NSLayoutAttributeRight multiplier:1.0 constant:kTitleViewTextImageDistance],
+                                              [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTitleViewArrowSize.width],
+                                              [NSLayoutConstraint constraintWithItem:self.arrowView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:kTitleViewArrowSize.height]
+                                              ]];
 }
 
 - (void)setTitleBtnWidth:(CGFloat)titleBtnWidth{
