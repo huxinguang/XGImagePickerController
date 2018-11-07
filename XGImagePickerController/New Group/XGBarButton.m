@@ -57,7 +57,6 @@
                 [self setTitleColor:configuration.disabledColor forState:UIControlStateDisabled];
             }
             break;
-            
         default:
             break;
     }
