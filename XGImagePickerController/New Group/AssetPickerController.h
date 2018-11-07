@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
+#import "PickerMacro.h"
+#import "AssetPickerManager.h"
 
 #define kItemMargin 4                                                                                                 //item间距
 #define kItemsAtEachLine 3                                                                                            //每行显示多少个
