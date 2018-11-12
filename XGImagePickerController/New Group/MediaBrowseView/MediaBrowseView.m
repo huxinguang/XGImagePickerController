@@ -10,7 +10,7 @@
 #import "MediaCell.h"
 #import "UIView+XGAdd.h"
 
-@interface MediaBrowseView()<UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate,VideoPlayerDelegate>
+@interface MediaBrowseView()<UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIView *fromView;
 @property (nonatomic, weak) UIView *toContainerView;
 @property (nonatomic, strong) UIView *blackBackground;
@@ -179,12 +179,12 @@
             self.isPresented = YES;
             self.collectionView.userInteractionEnabled = YES;
             //如果打开的是视频，则创建播放器并播放
-            if (item.mediaType == MediaItemTypeVideo) {
-                cell.player.frame = cell.imageView.bounds;
-                cell.player.delegate = self;
-                [cell.mediaContainerView addSubview:cell.player];
-                [cell.player play];
-            }
+//            if (item.mediaType == MediaItemTypeVideo) {
+//                cell.player.frame = cell.imageView.bounds;
+//                cell.player.delegate = self;
+//                [cell.mediaContainerView addSubview:cell.player];
+//                [cell.player play];
+//            }
             if (completion) completion();
         }];
         
@@ -212,13 +212,13 @@
                 self.isPresented = YES;
                 self.collectionView.userInteractionEnabled = YES;
                 //如果打开的是视频，则创建播放器并播放
-                if (item.mediaType == MediaItemTypeVideo) {
-                    cell.player.frame = cell.imageView.bounds;
-                    cell.player.delegate = self;
-                    [cell.mediaContainerView addSubview:cell.player];
-                    [cell.player layoutIfNeeded];
-                    [cell.player play];
-                }
+//                if (item.mediaType == MediaItemTypeVideo) {
+//                    cell.player.frame = cell.imageView.bounds;
+//                    cell.player.delegate = self;
+//                    [cell.mediaContainerView addSubview:cell.player];
+//                    [cell.player layoutIfNeeded];
+//                    [cell.player play];
+//                }
                 if (completion) completion();
             }];
         }];
@@ -327,56 +327,7 @@
     return cell;
 }
 
-#pragma mark - VideoPlayerDelegate
 
-// 点击播放暂停按钮代理方法
--(void)videoPlayer:(VideoPlayer *)player clickedPlayOrPauseButton:(UIButton *)playOrPauseBtn{
-    
-}
-// 点击关闭按钮代理方法
--(void)videoPlayer:(VideoPlayer *)player clickedCloseButton:(UIButton *)backBtn{
-    MediaCell *cell = [self currentCell];
-    [cell.player pause];
-    [cell.player removeFromSuperview];
-    cell.player = nil;
-    [self dismissAnimated:YES completion:nil];
-}
-// 点击全屏按钮代理方法
--(void)videoPlayer:(VideoPlayer *)player clickedFullScreenButton:(UIButton *)fullScreenBtn{
-    
-}
-// 点击锁定按钮的方法
--(void)videoPlayer:(VideoPlayer *)player clickedLockButton:(UIButton *)lockBtn{
-    
-}
-// 单击VideoPlayer的代理方法
--(void)videoPlayer:(VideoPlayer *)player singleTaped:(UITapGestureRecognizer *)singleTap{
-    
-}
-// 双击VideoPlayer的代理方法
--(void)videoPlayer:(VideoPlayer *)player doubleTaped:(UITapGestureRecognizer *)doubleTap{
-    
-}
-// VideoPlayer的的操作栏隐藏和显示
--(void)videoPlayer:(VideoPlayer *)player isHiddenTopAndBottomView:(BOOL )isHidden{
-    
-}
-// 播放失败的代理方法
--(void)videoPlayerFailedPlay:(VideoPlayer *)player playerStatus:(VideoPlayerState)state{
-    
-}
-// 准备播放的代理方法
--(void)videoPlayerReadyToPlay:(VideoPlayer *)player playerStatus:(VideoPlayerState)state{
-    
-}
-// 播放器已经拿到视频的尺寸大小
--(void)videoPlayerGotVideoSize:(VideoPlayer *)player videoSize:(CGSize )presentationSize{
-    
-}
-// 播放完毕的代理方法
--(void)videoPlayerFinishedPlay:(VideoPlayer *)player{
-    
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

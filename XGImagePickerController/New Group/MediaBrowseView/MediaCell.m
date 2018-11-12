@@ -65,17 +65,6 @@
     return _imageView;
 }
 
--(VideoPlayer *)player{
-    if (!_player) {
-        PlayerModel *pm = [PlayerModel new];
-        pm.videoURL = self.item.largeMediaURL;
-        _player = [[VideoPlayer alloc]initWithPlayerModel:pm];
-        _player.tintColor = [UIColor colorWithRed:36/255.0 green:160/255.0 blue:252/255.0 alpha:1];
-    }
-    return _player;
-}
-
-
 #pragma mark - Setter
 
 - (void)setItem:(MediaItem *)item{
@@ -84,7 +73,7 @@
     
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
-
+    
 
 //    @weakify(self)
 //    [self.imageView setImageWithURL:item.largeMediaURL placeholder:item.thumbImage options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
@@ -107,7 +96,6 @@
 //
 //    }];
     [self resizeSubviewSize];
-    
     
 }
 
@@ -144,6 +132,11 @@
 }
 
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+//    self.playerLayer.frame = self.imageView.bounds;
+}
+
 
 #pragma mark - UIScrollViewDelegate
 
@@ -161,6 +154,7 @@
     self.mediaContainerView.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
                                  scrollView.contentSize.height * 0.5 + offsetY);
 }
+
 
 
 @end
