@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, PlayerStatus) {
 @property (nonatomic, assign, readonly) PlayerStatus playerStatus;
 
 + (instancetype)shareInstance;
-
 - (void)playWithItem:(AVPlayerItem *)item onLayer:(CALayer *)superlayer;
 
 

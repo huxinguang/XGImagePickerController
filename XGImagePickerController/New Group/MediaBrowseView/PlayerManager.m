@@ -273,7 +273,6 @@ static PlayerManager *manager = nil;
     
 }
 
-
 - (void)playerItemDidReachEnd{
     
     if ([self.delegate respondsToSelector:@selector(playerDidFinishPlay:)]) {
@@ -284,7 +283,6 @@ static PlayerManager *manager = nil;
      */
     [self->player seekToTime:kCMTimeZero];
 }
-
 
 -(void)dealloc{
     [self->player removeTimeObserver:self->timeObserverToken];
