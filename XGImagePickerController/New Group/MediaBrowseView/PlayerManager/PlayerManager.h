@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, PlayerStatus) {
 
 
 @protocol PlayerManagerDelegate<NSObject>
-
+@optional
 - (void)playerReadyToPlay:(PlayerManager *)manager;
 - (void)playerDidLoadToProgress:(float)progress;
 - (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime;

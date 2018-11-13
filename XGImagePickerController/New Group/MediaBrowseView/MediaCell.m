@@ -192,6 +192,7 @@
     }
     self.playBtn.hidden = NO;
     [self.playerManager pauseAndResetPlayer];
+    [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
     
 }
 

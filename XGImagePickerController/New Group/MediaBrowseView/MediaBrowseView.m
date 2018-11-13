@@ -291,6 +291,15 @@
     }
 }
 
+#pragma mark - UIScrollViewDelegate
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    MediaCell *cell = [self currentCell];
+    if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
+        [cell pauseAndResetPlayer];
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
