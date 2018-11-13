@@ -95,7 +95,7 @@ static PlayerManager *manager = nil;
         self->playerLayer.frame = superlayer.bounds;
         //To play the visual component of an asset, you need a view containing an AVPlayerLayer layer to which the output of an AVPlayer object can be directed.
         [superlayer insertSublayer:self->playerLayer atIndex:0];
-        self->playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//        self->playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
         [self createTimer];
         [self->player play];
         
@@ -297,6 +297,12 @@ static PlayerManager *manager = nil;
 -(void)dealloc{
     [self->player removeTimeObserver:self->timeObserverToken];
     self->timeObserverToken = nil;
+    [self->playerLayer removeFromSuperlayer];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.playerItem cancelPendingSeeks];
+    [self.playerItem.asset cancelLoading];
+    [self removeKVO];
+    
 }
 
 
