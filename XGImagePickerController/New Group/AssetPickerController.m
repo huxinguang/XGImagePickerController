@@ -403,7 +403,9 @@
             [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
         }
     }else{
-        MediaBrowseView *v = [[MediaBrowseView alloc] initWithItems:self.assetArr];
+        NSMutableArray *items = [self.assetArr mutableCopy];
+        [items removeObjectAtIndex:0];
+        MediaBrowseView *v = [[MediaBrowseView alloc] initWithItems:items];
         [v presentCellImageAtIndexPath:indexPath FromCollectionView:collectionView toContainer:self.navigationController.view animated:YES completion:nil];
     }
 }

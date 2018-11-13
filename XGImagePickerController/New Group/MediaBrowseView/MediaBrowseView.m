@@ -31,9 +31,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.frame = [UIScreen mainScreen].bounds;
     self.clipsToBounds = YES;
-    
-    _items = [items copy];
-    
+    _items = items;
     [self setupSubViews];
     [self addGesture];
     
@@ -133,22 +131,13 @@
     _fromView = assetCell.imageView;
     _fromView.alpha = 0;
     _toContainerView = toContainer;
-    
-//    NSInteger page = -1;
-//    for (NSUInteger i = 0; i < self.items.count; i++) {
-//        if (fromView == ((AssetModel *)self.items[i]).thumbView) {
-//            page = (int)i;
-//            break;
-//        }
-//    }
-//    if (page == -1) page = 0;
     _fromItemIndex = indexpath.item;
     
     self.size = _toContainerView.size;
     self.blackBackground.alpha = 0;
     [_toContainerView addSubview:self];
 
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_fromItemIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_fromItemIndex-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
     [self.collectionView layoutIfNeeded];//关键，否则下面获取的cell是nil
     
     [UIView setAnimationsEnabled:YES];
@@ -203,14 +192,12 @@
     [[UIApplication sharedApplication] setStatusBarHidden:self.fromNavigationBarHidden withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     NSInteger currentPage = self.currentPage;
     MediaCell *cell = [self currentCell];
-//    AssetModel *item = self.items[currentPage];
-    
+
     UIView *fromView = nil;
-    if (self.fromItemIndex == currentPage) {
+    if (self.fromItemIndex-1 == currentPage) {
         fromView = self.fromView;
     } else {
-//        fromView = item.thumbView;
-        AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage inSection:0]];
+        AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage+1 inSection:0]];
         fromView = assetCell.imageView;
         fromView.alpha = 0;
         self.fromView.alpha = 1.0;
