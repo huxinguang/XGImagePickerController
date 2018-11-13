@@ -156,7 +156,7 @@
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     float oneTime = animated ? 0.18 : 0;
-    [UIView animateWithDuration:oneTime*2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
         self.blackBackground.alpha = 1;
     }completion:NULL];
     

@@ -84,26 +84,6 @@
         }
     }];
    
-//    @weakify(self)
-//    [self.imageView setImageWithURL:item.largeMediaURL placeholder:item.thumbImage options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//        @strongify(self)
-//        if (!self) return;
-//        CGFloat progress = receivedSize / (float)expectedSize;
-//        progress = progress < 0.01 ? 0.01 : progress > 1 ? 1 : progress;
-//        if (isnan(progress)) progress = 0;
-//
-//    } transform:nil completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-//        @strongify(self);
-//        if (!self) return;
-//        if (stage == YYWebImageStageFinished) {
-//            self.scrollView.maximumZoomScale = 3;
-//            if (image) {
-//                [self resizeSubviewSize];
-//                [self.imageView.layer addFadeAnimationWithDuration:0.1 curve:UIViewAnimationCurveLinear];
-//            }
-//        }
-//
-//    }];
     [self resizeSubviewSize];
     
 }
@@ -143,7 +123,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-//    self.playerLayer.frame = self.imageView.bounds;
+
 }
 
 
