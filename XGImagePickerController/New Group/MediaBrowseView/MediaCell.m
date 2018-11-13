@@ -13,7 +13,7 @@
 #import "AssetModel.h"
 
 
-@interface MediaCell()<UIScrollViewDelegate>
+@interface MediaCell()<UIScrollViewDelegate,PlayerManagerDelegate>
 
 @end
 
@@ -24,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupSubViews];
+        self.playerManager.delegate = self;
     }
     return self;
 }
@@ -167,7 +168,15 @@
 #pragma mark - player
 
 - (void)playAction{
-    NSLog(@"playAction");
+    __weak typeof (self) weakSelf = self;
+    [[AssetPickerManager manager]getVideoWithAsset:self.item.asset completion:^(AVPlayerItem *playerItem, NSDictionary *info) {
+        if (playerItem) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.playerManager playWithItem:playerItem onLayer:weakSelf.imageView.layer];
+                weakSelf.playBtn.hidden = YES;
+            });
+        }
+    }];
 }
 
 - (void)showOrHidePlayerControls{
@@ -181,8 +190,17 @@
     if (self.item.asset.mediaType == PHAssetMediaTypeImage) {
         return;
     }
+    self.playBtn.hidden = NO;
+    [self.playerManager pauseAndResetPlayer];
     
 }
+
+#pragma mark - PlayerManagerDelegate
+
+- (void)playerDidFinishPlay:(PlayerManager *)manager{
+    self.playBtn.hidden = NO;
+}
+
 
 
 @end

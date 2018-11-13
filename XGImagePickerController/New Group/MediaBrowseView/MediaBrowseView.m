@@ -173,14 +173,6 @@
             cell.mediaContainerView.clipsToBounds = YES;
             self.isPresented = YES;
             self.collectionView.userInteractionEnabled = YES;
-            //如果打开的是视频，则创建播放器并播放
-//                if (item.mediaType == MediaItemTypeVideo) {
-//                    cell.player.frame = cell.imageView.bounds;
-//                    cell.player.delegate = self;
-//                    [cell.mediaContainerView addSubview:cell.player];
-//                    [cell.player layoutIfNeeded];
-//                    [cell.player play];
-//                }
             if (completion) completion();
         }];
     }];

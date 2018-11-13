@@ -73,9 +73,11 @@ static PlayerManager *manager = nil;
     if (self->player.currentItem) { //player和其currentItem是并存的
         if (self->playerLayer.superlayer != superlayer) {
             [self->playerLayer removeFromSuperlayer];
+            self->playerLayer.frame = superlayer.bounds;
             [superlayer insertSublayer:self->playerLayer atIndex:0];
         }
         [self->player replaceCurrentItemWithPlayerItem:self.playerItem];
+        [self->player play];
     }else{
         self->player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
         if(self.loopPlay){
@@ -90,9 +92,10 @@ static PlayerManager *manager = nil;
         }
         self->player.usesExternalPlaybackWhileExternalScreenIsActive=YES;
         self->playerLayer = [AVPlayerLayer playerLayerWithPlayer:self->player];
+        self->playerLayer.frame = superlayer.bounds;
         //To play the visual component of an asset, you need a view containing an AVPlayerLayer layer to which the output of an AVPlayer object can be directed.
         [superlayer insertSublayer:self->playerLayer atIndex:0];
-//        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        self->playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
         [self createTimer];
         [self->player play];
         
@@ -108,12 +111,12 @@ static PlayerManager *manager = nil;
      */
     if (_playerItem) {
         [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
-        [self performSelectorOnMainThread:@selector(removeKVO) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(removeKVO) withObject:nil waitUntilDone:YES];
         _playerItem = nil;
     }
     _playerItem = playerItem;
     if (_playerItem) {
-        [self performSelectorOnMainThread:@selector(addKVO) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(addKVO) withObject:nil waitUntilDone:YES];
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(playerItemDidReachEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
     }
 }
@@ -141,6 +144,13 @@ static PlayerManager *manager = nil;
 - (void)pause{
     if (self->player.currentItem) {
         [self->player pause];
+    }
+}
+
+- (void)pauseAndResetPlayer{
+    if (self->player.currentItem) {
+        [self->player pause];
+        [self->player seekToTime:kCMTimeZero];
     }
 }
 
