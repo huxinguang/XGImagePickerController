@@ -39,6 +39,11 @@
     return model;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    AssetModel *item = [self.class new];
+    return item;
+}
+
 
 @end
 

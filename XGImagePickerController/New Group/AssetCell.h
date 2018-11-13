@@ -10,7 +10,7 @@
 
 @class AssetModel;
 @interface AssetCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhotoButton;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (nonatomic, strong) AssetModel *model;

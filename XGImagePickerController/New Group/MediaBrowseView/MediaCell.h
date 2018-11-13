@@ -10,11 +10,13 @@
 #import "FLAnimatedImage.h"
 
 
-@class MediaItem;
+//@class MediaItem;
+@class AssetModel;
 
 @interface MediaCell : UICollectionViewCell
 
-@property (nonatomic, strong) MediaItem *item;
+//@property (nonatomic, strong) MediaItem *item;
+@property (nonatomic, strong) AssetModel *item;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *mediaContainerView;//用于动画
 @property (nonatomic, strong) FLAnimatedImageView *imageView;

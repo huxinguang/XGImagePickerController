@@ -95,7 +95,7 @@
             </constraints>
             <connections>
                 <outlet property="bottomView" destination="a4Q-ox-UyB" id="3k1-bw-ZPW"/>
-                <outlet property="imageView" destination="Yy8-bS-MRb" id="q1a-cl-0zn"/>
+                <outlet property="imageView" destination="Yy8-bS-MRb" id="WPL-py-0cZ"/>
                 <outlet property="numberLabel" destination="f1r-tb-RCx" id="fsZ-xz-l4m"/>
                 <outlet property="selectImageView" destination="ova-UI-tV1" id="xXa-XQ-rUc"/>
                 <outlet property="selectPhotoButton" destination="dNW-bU-KEf" id="vDo-uv-cp6"/>

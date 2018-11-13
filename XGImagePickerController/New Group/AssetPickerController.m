@@ -13,6 +13,8 @@
 #import "XGBarButton.h"
 #import "AlbumCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "MediaBrowseView.h"
+#import "FLAnimatedImage.h"
 
 @interface AssetPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,PHPhotoLibraryChangeObserver>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -401,7 +403,8 @@
             [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
         }
     }else{
-        AssetModel *model = self.assetArr[indexPath.row];
+        MediaBrowseView *v = [[MediaBrowseView alloc] initWithItems:self.assetArr];
+        [v presentCellImageAtIndexPath:indexPath FromCollectionView:collectionView toContainer:self.navigationController.view animated:YES completion:nil];
     }
 }
 

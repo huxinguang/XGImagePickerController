@@ -16,14 +16,16 @@
 @property (nonatomic, strong) UIView *blackBackground;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSInteger fromItemIndex;
+@property (nonatomic, strong) UICollectionView *fromCollectionView;
 @property (nonatomic, assign) BOOL isPresented;
 @property (nonatomic, assign) BOOL fromNavigationBarHidden;
+
 
 @end
 
 @implementation MediaBrowseView
 
-- (instancetype)initWithItems:(NSArray<MediaItem *> *)items{
+- (instancetype)initWithItems:(NSArray<AssetModel *> *)items{
     self = [super init];
     if (items.count == 0) return nil;
     self.backgroundColor = [UIColor clearColor];
@@ -96,7 +98,7 @@
 }
 
 - (void)onSingleTap{
-    if ([self currentCell].item.mediaType == MediaItemTypeVideo) {
+    if ([self currentCell].item.asset.mediaType == PHAssetMediaTypeVideo) {
         return;
     }
     [self dismissAnimated:YES completion:nil];
@@ -105,7 +107,7 @@
 - (void)onDoubleTap:(UITapGestureRecognizer *)gesture{
     if (!_isPresented) return;
     MediaCell *cell = [self currentCell];
-    if (cell.item.mediaType == MediaItemTypeVideo) {
+    if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
         return;
     }
     if (cell.scrollView.zoomScale > 1) {
@@ -119,31 +121,34 @@
     }
 }
 
-- (void)presentFromImageView:(UIView *)fromView
-                 toContainer:(UIView *)toContainer
-                    animated:(BOOL)animated
-                  completion:(void (^)(void))completion {
+- (void)presentCellImageAtIndexPath:(NSIndexPath *)indexpath
+                 FromCollectionView:(UICollectionView *)collectV
+                        toContainer:(UIView *)toContainer
+                           animated:(BOOL)animated
+                         completion:(void (^)(void))completion{
     if (!toContainer) return;
     
-    _fromView = fromView;
+    _fromCollectionView = collectV;
+    AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:indexpath];
+    _fromView = assetCell.imageView;
     _fromView.alpha = 0;
     _toContainerView = toContainer;
     
-    NSInteger page = -1;
-    for (NSUInteger i = 0; i < self.items.count; i++) {
-        if (fromView == ((MediaItem *)self.items[i]).thumbView) {
-            page = (int)i;
-            break;
-        }
-    }
-    if (page == -1) page = 0;
-    _fromItemIndex = page;
+//    NSInteger page = -1;
+//    for (NSUInteger i = 0; i < self.items.count; i++) {
+//        if (fromView == ((AssetModel *)self.items[i]).thumbView) {
+//            page = (int)i;
+//            break;
+//        }
+//    }
+//    if (page == -1) page = 0;
+    _fromItemIndex = indexpath.item;
     
     self.size = _toContainerView.size;
     self.blackBackground.alpha = 0;
     [_toContainerView addSubview:self];
 
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_fromItemIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
     [self.collectionView layoutIfNeeded];//关键，否则下面获取的cell是nil
     
     [UIView setAnimationsEnabled:YES];
@@ -151,67 +156,33 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     
     MediaCell *cell = [self currentCell];
-    MediaItem *item = self.items[self.currentPage];
+    AssetModel *item = self.items[self.currentPage];
     
-    if (!item.thumbClippedToTop) {
-        cell.item = item;
-    }
+    cell.item = item;
+
+    CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell.mediaContainerView];
     
-    if (item.thumbClippedToTop) {
-        CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell];
-        CGRect originFrame = cell.mediaContainerView.frame;
-        CGFloat scale = fromFrame.size.width / cell.mediaContainerView.width;
-        
-        cell.mediaContainerView.centerX = CGRectGetMidX(fromFrame);
-        cell.mediaContainerView.height = fromFrame.size.height / scale;
-        [cell.mediaContainerView.layer setValue:@(scale) forKeyPath:@"transform.scale"];
-        cell.mediaContainerView.centerY = CGRectGetMidY(fromFrame);
-        
-        float oneTime = animated ? 0.25 : 0;
+    cell.mediaContainerView.clipsToBounds = NO;
+    cell.imageView.frame = fromFrame;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    float oneTime = animated ? 0.18 : 0;
+    [UIView animateWithDuration:oneTime*2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.blackBackground.alpha = 1;
+    }completion:NULL];
+    
+    self.collectionView.userInteractionEnabled = NO;
+    [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
+        cell.imageView.frame = cell.mediaContainerView.bounds;
+        [cell.imageView.layer setValue:@1.01 forKeyPath:@"transform.scale"];
+    }completion:^(BOOL finished) {
         [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.blackBackground.alpha = 1;
-        }completion:NULL];
-        
-        [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [cell.mediaContainerView.layer setValue:@1 forKeyPath:@"transform.scale"];
-            cell.mediaContainerView.frame = originFrame;
+            [cell.imageView.layer setValue:@1.0 forKeyPath:@"transform.scale"];
         }completion:^(BOOL finished) {
+            cell.mediaContainerView.clipsToBounds = YES;
             self.isPresented = YES;
             self.collectionView.userInteractionEnabled = YES;
             //如果打开的是视频，则创建播放器并播放
-//            if (item.mediaType == MediaItemTypeVideo) {
-//                cell.player.frame = cell.imageView.bounds;
-//                cell.player.delegate = self;
-//                [cell.mediaContainerView addSubview:cell.player];
-//                [cell.player play];
-//            }
-            if (completion) completion();
-        }];
-        
-    } else {
-        CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell.mediaContainerView];
-        
-        cell.mediaContainerView.clipsToBounds = NO;
-        cell.imageView.frame = fromFrame;
-        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        
-        float oneTime = animated ? 0.18 : 0;
-        [UIView animateWithDuration:oneTime*2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.blackBackground.alpha = 1;
-        }completion:NULL];
-        
-        self.collectionView.userInteractionEnabled = NO;
-        [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-            cell.imageView.frame = cell.mediaContainerView.bounds;
-            [cell.imageView.layer setValue:@1.01 forKeyPath:@"transform.scale"];
-        }completion:^(BOOL finished) {
-            [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-                [cell.imageView.layer setValue:@1.0 forKeyPath:@"transform.scale"];
-            }completion:^(BOOL finished) {
-                cell.mediaContainerView.clipsToBounds = YES;
-                self.isPresented = YES;
-                self.collectionView.userInteractionEnabled = YES;
-                //如果打开的是视频，则创建播放器并播放
 //                if (item.mediaType == MediaItemTypeVideo) {
 //                    cell.player.frame = cell.imageView.bounds;
 //                    cell.player.delegate = self;
@@ -219,10 +190,10 @@
 //                    [cell.player layoutIfNeeded];
 //                    [cell.player play];
 //                }
-                if (completion) completion();
-            }];
+            if (completion) completion();
         }];
-    }
+    }];
+    
 }
 
 
@@ -232,13 +203,15 @@
     [[UIApplication sharedApplication] setStatusBarHidden:self.fromNavigationBarHidden withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     NSInteger currentPage = self.currentPage;
     MediaCell *cell = [self currentCell];
-    MediaItem *item = self.items[currentPage];
+//    AssetModel *item = self.items[currentPage];
     
     UIView *fromView = nil;
     if (self.fromItemIndex == currentPage) {
         fromView = self.fromView;
     } else {
-        fromView = item.thumbView;
+//        fromView = item.thumbView;
+        AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage inSection:0]];
+        fromView = assetCell.imageView;
         fromView.alpha = 0;
         self.fromView.alpha = 1.0;
     }

@@ -7,9 +7,11 @@
 //
 
 #import "MediaCell.h"
-#import "MediaItem.h"
 #import "PickerMacro.h"
 #import "UIView+XGAdd.h"
+#import "AssetPickerManager.h"
+#import "AssetModel.h"
+
 
 @interface MediaCell()<UIScrollViewDelegate>
 
@@ -67,14 +69,21 @@
 
 #pragma mark - Setter
 
-- (void)setItem:(MediaItem *)item{
+- (void)setItem:(AssetModel *)item{
     if (_item == item) return;
     _item = item;
     
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
-    
-
+    __weak typeof (self) weakSelf = self;
+    [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(UIImage *photo, NSDictionary *info) {
+        weakSelf.scrollView.maximumZoomScale = 3;
+        if (photo) {
+            weakSelf.imageView.image = photo;
+            [weakSelf resizeSubviewSize];
+        }
+    }];
+   
 //    @weakify(self)
 //    [self.imageView setImageWithURL:item.largeMediaURL placeholder:item.thumbImage options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
 //        @strongify(self)
