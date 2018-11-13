@@ -287,7 +287,15 @@
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray <NSIndexPath *> *indexPaths = [_fromCollectionView indexPathsForVisibleItems];
+    NSIndexPath *indexP = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:0];
+    if (![indexPaths containsObject:indexP]) {
+        [_fromCollectionView scrollToItemAtIndexPath:indexP atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
