@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FLAnimatedImage.h"
+#import "PlayerManager.h"
 
 @class AssetModel;
 
@@ -17,8 +18,12 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *mediaContainerView;//用于动画
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
+@property (nonatomic, strong) UIButton *playBtn;
+@property (nonatomic, strong) PlayerManager *playerManager;
 
 - (void)resizeSubviewSize;
+- (void)showOrHidePlayerControls;
+- (void)pauseAndResetPlayer;
 
 @end
 

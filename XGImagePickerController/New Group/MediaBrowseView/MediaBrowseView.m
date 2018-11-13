@@ -96,7 +96,9 @@
 }
 
 - (void)onSingleTap{
-    if ([self currentCell].item.asset.mediaType == PHAssetMediaTypeVideo) {
+    MediaCell *cell = [self currentCell];
+    if (cell.item.asset.mediaType == PHAssetMediaTypeVideo && cell.playBtn.hidden) {
+        [cell pauseAndResetPlayer];
         return;
     }
     [self dismissAnimated:YES completion:nil];

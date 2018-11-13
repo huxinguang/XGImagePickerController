@@ -32,6 +32,7 @@
     [self.contentView addSubview:self.scrollView];
     [self.scrollView addSubview:self.mediaContainerView];
     [self.mediaContainerView addSubview:self.imageView];
+    [self.mediaContainerView addSubview:self.playBtn];
 }
 
 #pragma mark - Getter
@@ -67,11 +68,29 @@
     return _imageView;
 }
 
+- (UIButton *)playBtn{
+    if (!_playBtn) {
+        _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playBtn setImage:[UIImage imageNamed:@"player_play"] forState:UIControlStateNormal];
+        [_playBtn addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _playBtn;
+}
+
+-(PlayerManager *)playerManager{
+    return [PlayerManager shareInstance];
+}
+
 #pragma mark - Setter
 
 - (void)setItem:(AssetModel *)item{
     if (_item == item) return;
     _item = item;
+    if (item.asset.mediaType == PHAssetMediaTypeVideo) {
+        self.playBtn.hidden = NO;
+    }else{
+        self.playBtn.hidden = YES;
+    }
     
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
@@ -116,7 +135,9 @@
     
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    _imageView.frame = _mediaContainerView.bounds;
+    self.imageView.frame = _mediaContainerView.bounds;
+    self.playBtn.size = CGSizeMake(42, 42);
+    self.playBtn.center = _mediaContainerView.center;
     [CATransaction commit];
 }
 
@@ -125,7 +146,6 @@
     [super layoutSubviews];
 
 }
-
 
 #pragma mark - UIScrollViewDelegate
 
@@ -144,6 +164,25 @@
                                  scrollView.contentSize.height * 0.5 + offsetY);
 }
 
+#pragma mark - player
+
+- (void)playAction{
+    NSLog(@"playAction");
+}
+
+- (void)showOrHidePlayerControls{
+    if (self.item.asset.mediaType == PHAssetMediaTypeImage) {
+        return;
+    }
+    
+}
+
+- (void)pauseAndResetPlayer{
+    if (self.item.asset.mediaType == PHAssetMediaTypeImage) {
+        return;
+    }
+    
+}
 
 
 @end
