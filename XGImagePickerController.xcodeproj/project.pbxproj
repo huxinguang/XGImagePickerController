@@ -192,7 +192,7 @@
 		C9D7695A2191357800C8A561 /* XGImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
-				C9D7698D219135D600C8A561 /* New Group */,
+				C9D7698D219135D600C8A561 /* Picker */,
 				C9D7695B2191357800C8A561 /* AppDelegate.h */,
 				C9D7695C2191357800C8A561 /* AppDelegate.m */,
 				C9D7695E2191357800C8A561 /* ViewController.h */,
@@ -224,7 +224,7 @@
 			path = XGImagePickerControllerUITests;
 			sourceTree = "<group>";
 		};
-		C9D7698D219135D600C8A561 /* New Group */ = {
+		C9D7698D219135D600C8A561 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
 				C9D769B1219285EA00C8A561 /* PickerImages */,
@@ -253,7 +253,7 @@
 				C9D769B021913B6500C8A561 /* PickerMacro.h */,
 				C9D769DA2193CAE000C8A561 /* MediaBrowseView */,
 			);
-			path = "New Group";
+			path = Picker;
 			sourceTree = "<group>";
 		};
 		C9D769B1219285EA00C8A561 /* PickerImages */ = {

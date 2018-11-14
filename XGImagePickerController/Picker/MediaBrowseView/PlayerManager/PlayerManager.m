@@ -151,6 +151,8 @@ static PlayerManager *manager = nil;
     if (self->player.currentItem) {
         [self->player pause];
         [self->player seekToTime:kCMTimeZero];
+        [self->playerLayer removeFromSuperlayer];
+        [self->player replaceCurrentItemWithPlayerItem:nil];
     }
 }
 
