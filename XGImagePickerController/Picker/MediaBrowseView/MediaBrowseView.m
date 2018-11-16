@@ -18,7 +18,6 @@
 @property (nonatomic, assign) NSInteger fromItemIndex;
 @property (nonatomic, strong) UICollectionView *fromCollectionView;
 @property (nonatomic, assign) BOOL isPresented;
-@property (nonatomic, assign) BOOL fromNavigationBarHidden;
 
 
 @end
@@ -143,8 +142,6 @@
     [self.collectionView layoutIfNeeded];//关键，否则下面获取的cell是nil
     
     [UIView setAnimationsEnabled:YES];
-    _fromNavigationBarHidden = [UIApplication sharedApplication].statusBarHidden;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     
     MediaCell *cell = [self currentCell];
     CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell.mediaContainerView];
@@ -177,9 +174,8 @@
 
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
+    [[NSNotificationCenter defaultCenter]postNotificationName:kShowStatusBarNotification object:nil];
     [UIView setAnimationsEnabled:YES];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:self.fromNavigationBarHidden withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     NSInteger currentPage = self.currentPage;
     MediaCell *cell = [self currentCell];
 
@@ -249,7 +245,6 @@
         } completion:^(BOOL finished) {
             cell.mediaContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
             [self removeFromSuperview];
-            
             if (completion) completion();
         }];
     }];

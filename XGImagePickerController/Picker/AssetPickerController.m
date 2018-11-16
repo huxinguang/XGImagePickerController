@@ -30,6 +30,7 @@
 @property (nonatomic, strong) AssetModel *placeholderModel; //相机占位model
 @property (nonatomic, strong) NSMutableArray<NSIndexPath *> *albumSelectedIndexpaths;
 @property (nonatomic, strong) NSLayoutConstraint *containerView_bottom;
+@property (nonatomic, assign) BOOL hideStatusBar;
 
 @end
 
@@ -91,6 +92,7 @@
 
 -(void)dealloc{
     [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<AssetPickerControllerDelegate>)delegate{
@@ -101,10 +103,19 @@
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden{
+    return self.hideStatusBar;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+    return UIStatusBarAnimationFade;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [[PHPhotoLibrary sharedPhotoLibrary] registerChangeObserver:self];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateStatusBar) name:kShowStatusBarNotification object:nil];
     [self configMask];
     [self getAlbums];
     
@@ -405,6 +416,7 @@
     }else{
         NSMutableArray *items = [self.assetArr mutableCopy];
         [items removeObjectAtIndex:0];
+        [self performSelector:@selector(updateStatusBar) withObject:nil afterDelay:0.2];
         MediaBrowseView *v = [[MediaBrowseView alloc] initWithItems:items];
         [v presentCellImageAtIndexPath:indexPath FromCollectionView:collectionView toContainer:self.navigationController.view animated:YES completion:nil];
     }
@@ -477,6 +489,11 @@
         self.bottomConfirmBtn.enabled = NO;
     }
     [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+}
+
+- (void)updateStatusBar{
+    self.hideStatusBar = !self.hideStatusBar;
+    [self performSelectorOnMainThread:@selector(setNeedsStatusBarAppearanceUpdate) withObject:nil waitUntilDone:YES];
 }
 
 - (void)showHudWithString:(NSString *)string{

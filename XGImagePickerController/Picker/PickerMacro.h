@@ -24,6 +24,8 @@
 #define kAppTabbarSafeBottomMargin ((IS_iPhoneX_Or_Xs || IS_iPhoneXr || IS_iPhoneXs_Max) ? 34.f : 0.f)// Tabbar 底部安全高度.
 #define kAppStatusBarAndNavigationBarHeight ((IS_iPhoneX_Or_Xs || IS_iPhoneXr || IS_iPhoneXs_Max) ? 88.f : 64.f)// 状态栏和导航栏总高度.
 
+#define kShowStatusBarNotification @"ShowStatusBarNotification"
+
 
 #ifndef weakify
 #if DEBUG
