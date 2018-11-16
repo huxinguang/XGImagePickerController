@@ -28,7 +28,8 @@ typedef NS_ENUM(NSInteger, PlayerStatus) {
 + (instancetype)shareInstance;
 - (void)playWithItem:(AVPlayerItem *)item onLayer:(CALayer *)superlayer;
 - (void)pauseAndResetPlayer;
-
+- (void)play;
+- (void)pause;
 
 @end
 

@@ -108,6 +108,7 @@
     if (!_isPresented) return;
     MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
+        [cell pausePlayer];
         return;
     }
     if (cell.scrollView.zoomScale > 1) {
@@ -131,7 +132,6 @@
     _fromCollectionView = collectV;
     AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:indexpath];
     _fromView = assetCell.imageView;
-    _fromView.alpha = 0;
     _toContainerView = toContainer;
     _fromItemIndex = indexpath.item;
     
@@ -147,21 +147,16 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:animated ? UIStatusBarAnimationFade : UIStatusBarAnimationNone];
     
     MediaCell *cell = [self currentCell];
-    AssetModel *item = self.items[self.currentPage];
-    
-    cell.item = item;
-
     CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell.mediaContainerView];
     
     cell.mediaContainerView.clipsToBounds = NO;
     cell.imageView.frame = fromFrame;
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     float oneTime = animated ? 0.18 : 0;
-    [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:oneTime*2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
         self.blackBackground.alpha = 1;
-    }completion:NULL];
-    
+    }completion:nil];
+
     self.collectionView.userInteractionEnabled = NO;
     [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
         cell.imageView.frame = cell.mediaContainerView.bounds;
@@ -171,6 +166,7 @@
             [cell.imageView.layer setValue:@1.0 forKeyPath:@"transform.scale"];
         }completion:^(BOOL finished) {
             cell.mediaContainerView.clipsToBounds = YES;
+            cell.imageView.clipsToBounds = YES;
             self.isPresented = YES;
             self.collectionView.userInteractionEnabled = YES;
             if (completion) completion();
@@ -193,8 +189,6 @@
     } else {
         AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage+1 inSection:0]];
         fromView = assetCell.imageView;
-        fromView.alpha = 0;
-        self.fromView.alpha = 1.0;
     }
     
     self.isPresented = NO;
@@ -252,7 +246,6 @@
     }completion:^(BOOL finished) {
         [UIView animateWithDuration:animated ? 0.15 : 0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.alpha = 0;
-            fromView.alpha = 1.0;
         } completion:^(BOOL finished) {
             cell.mediaContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
             [self removeFromSuperview];

@@ -52,7 +52,7 @@
 		C9D76A14219A9EF500C8A561 /* player_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A12219A9EF400C8A561 /* player_play@3x.png */; };
 		C9D76A15219A9EF500C8A561 /* player_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A13219A9EF400C8A561 /* player_play@2x.png */; };
 		C9D76A20219BC9E500C8A561 /* SelectedAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */; };
-		C9D76A27219D627D00C8A561 /* Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A26219D627D00C8A561 /* Add@2x.png */; };
+		C9D76A29219E4BA000C8A561 /* Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A28219E4B9F00C8A561 /* Add@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +146,7 @@
 		C9D76A13219A9EF400C8A561 /* player_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_play@2x.png"; sourceTree = "<group>"; };
 		C9D76A1E219BC9E500C8A561 /* SelectedAssetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedAssetCell.h; sourceTree = "<group>"; };
 		C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedAssetCell.m; sourceTree = "<group>"; };
-		C9D76A26219D627D00C8A561 /* Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add@2x.png"; sourceTree = "<group>"; };
+		C9D76A28219E4B9F00C8A561 /* Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +204,7 @@
 				C9D7695F2191357800C8A561 /* ViewController.m */,
 				C9D76A1E219BC9E500C8A561 /* SelectedAssetCell.h */,
 				C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */,
-				C9D76A26219D627D00C8A561 /* Add@2x.png */,
+				C9D76A28219E4B9F00C8A561 /* Add@2x.png */,
 				C9D769612191357800C8A561 /* Main.storyboard */,
 				C9D769642191357900C8A561 /* Assets.xcassets */,
 				C9D769662191357900C8A561 /* LaunchScreen.storyboard */,
@@ -439,7 +439,6 @@
 				C9D769652191357900C8A561 /* Assets.xcassets in Resources */,
 				C9D76A15219A9EF500C8A561 /* player_play@2x.png in Resources */,
 				C9D769C72192865300C8A561 /* picker_unselected@3x.png in Resources */,
-				C9D76A27219D627D00C8A561 /* Add@2x.png in Resources */,
 				C9D769632191357800C8A561 /* Main.storyboard in Resources */,
 				C9D76A032194053200C8A561 /* dot@2x.png in Resources */,
 				C9D769C82192865300C8A561 /* picker_selected@3x.png in Resources */,
@@ -451,6 +450,7 @@
 				C9D769A5219135F800C8A561 /* AssetCell.xib in Resources */,
 				C9D76A14219A9EF500C8A561 /* player_play@3x.png in Resources */,
 				C9D76A022194053200C8A561 /* dot@3x.png in Resources */,
+				C9D76A29219E4BA000C8A561 /* Add@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

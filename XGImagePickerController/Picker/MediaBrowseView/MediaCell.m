@@ -64,7 +64,7 @@
     if (!_imageView) {
         _imageView = [FLAnimatedImageView new];
         _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
-        _imageView.clipsToBounds = YES;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;
 }
@@ -97,11 +97,13 @@
     self.scrollView.maximumZoomScale = 1.0;
     __weak typeof (self) weakSelf = self;
     [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(UIImage *photo, NSDictionary *info) {
-        weakSelf.scrollView.maximumZoomScale = 3;
-        if (photo) {
-            weakSelf.imageView.image = photo;
-            [weakSelf resizeSubviewSize];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.scrollView.maximumZoomScale = 3;
+            if (photo) {
+                weakSelf.imageView.image = photo;
+                [weakSelf resizeSubviewSize];
+            }
+        });
     }];
    
     [self resizeSubviewSize];
@@ -133,7 +135,7 @@
     } else {
         self.scrollView.alwaysBounceVertical = YES;
     }
-    
+
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     self.imageView.frame = _mediaContainerView.bounds;
@@ -143,10 +145,7 @@
 }
 
 
--(void)layoutSubviews{
-    [super layoutSubviews];
 
-}
 
 #pragma mark - UIScrollViewDelegate
 
@@ -194,6 +193,11 @@
     [self.playerManager pauseAndResetPlayer];
     [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
     
+}
+
+- (void)pausePlayer{
+    self.playBtn.hidden = NO;
+    [self.playerManager pause];
 }
 
 #pragma mark - PlayerManagerDelegate

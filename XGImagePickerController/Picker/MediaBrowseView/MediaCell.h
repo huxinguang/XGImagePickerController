@@ -24,6 +24,7 @@
 - (void)resizeSubviewSize;
 - (void)showOrHidePlayerControls;
 - (void)pauseAndResetPlayer;
+- (void)pausePlayer;
 
 @end
 
