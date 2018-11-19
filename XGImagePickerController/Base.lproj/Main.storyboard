@@ -38,20 +38,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-uy-dUr">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-uy-dUr">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUy-3A-lbX">
+                                                    <rect key="frame" x="14" y="14" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="fwg-nV-SJW"/>
+                                                        <constraint firstAttribute="width" constant="32" id="l6c-bU-drA"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="selected_play"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="DBG-uy-dUr" secondAttribute="bottom" id="0bD-ji-8zh"/>
+                                            <constraint firstItem="wUy-3A-lbX" firstAttribute="centerY" secondItem="tIB-BY-i8t" secondAttribute="centerY" id="TLb-Ab-GPD"/>
                                             <constraint firstAttribute="trailing" secondItem="DBG-uy-dUr" secondAttribute="trailing" id="k9R-Gh-zum"/>
                                             <constraint firstItem="DBG-uy-dUr" firstAttribute="leading" secondItem="tIB-BY-i8t" secondAttribute="leading" id="r2Z-th-pjT"/>
                                             <constraint firstItem="DBG-uy-dUr" firstAttribute="top" secondItem="tIB-BY-i8t" secondAttribute="top" id="scE-8X-Ihl"/>
+                                            <constraint firstItem="wUy-3A-lbX" firstAttribute="centerX" secondItem="tIB-BY-i8t" secondAttribute="centerX" id="tNA-Y0-KMn"/>
                                         </constraints>
                                         <size key="customSize" width="60" height="60"/>
                                         <connections>
                                             <outlet property="imgView" destination="DBG-uy-dUr" id="s4i-iE-2WC"/>
+                                            <outlet property="playBtn" destination="wUy-3A-lbX" id="oQh-YE-pTE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -78,4 +89,7 @@
             <point key="canvasLocation" x="116" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="selected_play" width="16" height="16"/>
+    </resources>
 </document>

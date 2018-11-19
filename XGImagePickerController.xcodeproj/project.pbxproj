@@ -52,6 +52,8 @@
 		C9D76A20219BC9E500C8A561 /* SelectedAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */; };
 		C9D76A29219E4BA000C8A561 /* Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A28219E4B9F00C8A561 /* Add@2x.png */; };
 		C9D76A2F21A2904900C8A561 /* player_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A2E21A2904900C8A561 /* player_play@2x.png */; };
+		C9D76A3221A2ADE100C8A561 /* selected_play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A3021A2ADE000C8A561 /* selected_play@3x.png */; };
+		C9D76A3321A2ADE100C8A561 /* selected_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A3121A2ADE000C8A561 /* selected_play@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,8 @@
 		C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedAssetCell.m; sourceTree = "<group>"; };
 		C9D76A28219E4B9F00C8A561 /* Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add@2x.png"; sourceTree = "<group>"; };
 		C9D76A2E21A2904900C8A561 /* player_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_play@2x.png"; sourceTree = "<group>"; };
+		C9D76A3021A2ADE000C8A561 /* selected_play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_play@3x.png"; sourceTree = "<group>"; };
+		C9D76A3121A2ADE000C8A561 /* selected_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_play@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 				C9D76A1E219BC9E500C8A561 /* SelectedAssetCell.h */,
 				C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */,
 				C9D76A28219E4B9F00C8A561 /* Add@2x.png */,
+				C9D76A3121A2ADE000C8A561 /* selected_play@2x.png */,
+				C9D76A3021A2ADE000C8A561 /* selected_play@3x.png */,
 				C9D769612191357800C8A561 /* Main.storyboard */,
 				C9D769642191357900C8A561 /* Assets.xcassets */,
 				C9D769662191357900C8A561 /* LaunchScreen.storyboard */,
@@ -424,6 +430,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D76A3221A2ADE100C8A561 /* selected_play@3x.png in Resources */,
+				C9D76A3321A2ADE100C8A561 /* selected_play@2x.png in Resources */,
 				C9D769C52192865300C8A561 /* picker_album_placeholder@3x.png in Resources */,
 				C9D769C12192865300C8A561 /* picker_album_placeholder@2x.png in Resources */,
 				C9D769D62192948000C8A561 /* picker_video@2x.png in Resources */,

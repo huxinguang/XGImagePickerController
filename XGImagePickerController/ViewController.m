@@ -16,9 +16,10 @@
 #define kMinimumInteritemSpacing 4
 #define kMinimumLineSpacing 4
 
-@interface ViewController ()<AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ViewController ()<AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,AssetPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray<AssetModel *> *assets;
+@property (nonatomic, strong) AssetModel *placeholderModel;
 
 @end
 
@@ -38,11 +39,17 @@
 
 -(NSArray<AssetModel *> *)assets{
     if (!_assets) {
-        AssetModel *model = [[AssetModel alloc]init];
-        model.isPlaceholder = YES;
-        _assets = @[model];
+        _assets = @[self.placeholderModel];
     }
     return _assets;
+}
+
+-(AssetModel *)placeholderModel{
+    if (!_placeholderModel) {
+        _placeholderModel = [[AssetModel alloc]init];
+        _placeholderModel.isPlaceholder = YES;
+    }
+    return _placeholderModel;
 }
 
 
@@ -98,6 +105,21 @@
     if (model.isPlaceholder) {
         [self openAlbum];
     }
+}
+
+#pragma mark - AssetPickerControllerDelegate
+
+- (void)assetPickerController:(AssetPickerController *)picker didFinishPickingAssets:(NSArray<AssetModel *> *)assets{
+    NSMutableArray *newAssets = assets.mutableCopy;
+    if (newAssets.count < 9 ) {
+        [newAssets addObject:self.placeholderModel];
+    }
+    self.assets = newAssets;
+    [self.collectionView reloadData];
+}
+
+- (void)assetPickerControllerDidCancel:(AssetPickerController *)picker{
+    
 }
 
 
