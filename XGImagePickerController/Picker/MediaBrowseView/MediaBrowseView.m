@@ -266,6 +266,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MediaCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MediaCell class]) forIndexPath:indexPath];
     cell.item = self.items[indexPath.row];
+//    NSLog(@"%ld ==== %ld",indexPath.item, cell.item.asset.mediaType);
     return cell;
 }
 

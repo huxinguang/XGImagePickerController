@@ -85,8 +85,8 @@
 #pragma mark - Setter
 
 - (void)setItem:(AssetModel *)item{
-    if (_item == item) return;
     _item = item;
+    
     if (item.asset.mediaType == PHAssetMediaTypeVideo) {
         self.playBtn.hidden = NO;
     }else{
@@ -140,11 +140,13 @@
     [CATransaction setDisableActions:YES];
     self.imageView.frame = _mediaContainerView.bounds;
     self.playBtn.size = CGSizeMake(42, 42);
-    self.playBtn.center = _mediaContainerView.center;
+    self.playBtn.center = self.imageView.center;
     [CATransaction commit];
 }
 
-
+-(void)layoutSubviews{
+    [super layoutSubviews];
+}
 
 
 #pragma mark - UIScrollViewDelegate
