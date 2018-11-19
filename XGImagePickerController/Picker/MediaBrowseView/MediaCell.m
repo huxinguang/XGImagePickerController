@@ -86,7 +86,6 @@
 
 - (void)setItem:(AssetModel *)item{
     _item = item;
-    
     if (item.asset.mediaType == PHAssetMediaTypeVideo) {
         self.playBtn.hidden = NO;
     }else{
@@ -184,7 +183,6 @@
     if (self.item.asset.mediaType == PHAssetMediaTypeImage) {
         return;
     }
-    
 }
 
 - (void)pauseAndResetPlayer{
