@@ -49,10 +49,21 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="selected_play"/>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-Eo-6qX">
+                                                    <rect key="frame" x="25" y="5" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Ubh-wc-Zo5"/>
+                                                        <constraint firstAttribute="width" constant="30" id="kAn-hh-LSm"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                    <state key="normal" title="Button" image="delete"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="DBG-uy-dUr" secondAttribute="bottom" id="0bD-ji-8zh"/>
+                                            <constraint firstAttribute="trailing" secondItem="5hr-Eo-6qX" secondAttribute="trailing" constant="5" id="D7H-f0-yRk"/>
+                                            <constraint firstItem="5hr-Eo-6qX" firstAttribute="top" secondItem="tIB-BY-i8t" secondAttribute="top" constant="5" id="EeP-J8-WJF"/>
                                             <constraint firstItem="wUy-3A-lbX" firstAttribute="centerY" secondItem="tIB-BY-i8t" secondAttribute="centerY" id="TLb-Ab-GPD"/>
                                             <constraint firstAttribute="trailing" secondItem="DBG-uy-dUr" secondAttribute="trailing" id="k9R-Gh-zum"/>
                                             <constraint firstItem="DBG-uy-dUr" firstAttribute="leading" secondItem="tIB-BY-i8t" secondAttribute="leading" id="r2Z-th-pjT"/>
@@ -61,6 +72,7 @@
                                         </constraints>
                                         <size key="customSize" width="60" height="60"/>
                                         <connections>
+                                            <outlet property="deleteBtn" destination="5hr-Eo-6qX" id="4V7-Kq-C3h"/>
                                             <outlet property="imgView" destination="DBG-uy-dUr" id="s4i-iE-2WC"/>
                                             <outlet property="playBtn" destination="wUy-3A-lbX" id="oQh-YE-pTE"/>
                                         </connections>
@@ -90,6 +102,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="selected_play" width="16" height="16"/>
+        <image name="delete" width="22" height="22"/>
+        <image name="selected_play" width="32" height="32"/>
     </resources>
 </document>

@@ -18,7 +18,7 @@
 
 @interface ViewController ()<AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,AssetPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray<AssetModel *> *assets;
+@property (nonatomic, strong) NSMutableArray<AssetModel *> *assets;
 @property (nonatomic, strong) AssetModel *placeholderModel;
 
 @end
@@ -37,9 +37,9 @@
     self.collectionView.collectionViewLayout = layout;
 }
 
--(NSArray<AssetModel *> *)assets{
+-(NSMutableArray<AssetModel *> *)assets{
     if (!_assets) {
-        _assets = @[self.placeholderModel];
+        _assets = @[self.placeholderModel].mutableCopy;
     }
     return _assets;
 }
@@ -86,6 +86,15 @@
 }
 
 
+- (void)onDeleteClick:(UIButton *)sender{
+    NSInteger index = sender.tag;
+    [self.assets removeObjectAtIndex:index];
+    if (self.assets.count < 9 && ![self.assets containsObject:self.placeholderModel]) {
+        [self.assets addObject:self.placeholderModel];
+    }
+    [self.collectionView reloadData];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -95,6 +104,8 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SelectedAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SelectedAssetCell class]) forIndexPath:indexPath];
     cell.model = self.assets[indexPath.item];
+    cell.deleteBtn.tag = indexPath.item;
+    [cell.deleteBtn addTarget:self action:@selector(onDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -121,6 +132,8 @@
 - (void)assetPickerControllerDidCancel:(AssetPickerController *)picker{
     
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

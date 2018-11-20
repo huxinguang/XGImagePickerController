@@ -21,9 +21,11 @@
 - (void)setModel:(AssetModel *)model{
     _model = model;
     if (_model.isPlaceholder) {
-        self.imgView.image = [UIImage imageNamed:@"Add"];
+        self.imgView.image = [UIImage imageNamed:@"add"];
         self.playBtn.hidden = YES;
+        self.deleteBtn.hidden = YES;
     }else{
+        self.deleteBtn.hidden = NO;
         [[AssetPickerManager manager] getPhotoWithAsset:_model.asset photoWidth:self.frame.size.width completion:^(UIImage *photo, NSDictionary *info) {
             self.imgView.image = photo;
         }];
