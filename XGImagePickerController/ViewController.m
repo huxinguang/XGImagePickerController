@@ -87,12 +87,18 @@
 
 
 - (void)onDeleteClick:(UIButton *)sender{
-    NSInteger index = sender.tag;
-    [self.assets removeObjectAtIndex:index];
-    if (self.assets.count < 9 && ![self.assets containsObject:self.placeholderModel]) {
-        [self.assets addObject:self.placeholderModel];
-    }
-    [self.collectionView reloadData];
+    SelectedAssetCell *cell = (SelectedAssetCell *)sender.superview.superview;
+    NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView deleteItemsAtIndexPaths:@[indexpath]];
+        [self.assets removeObjectAtIndex:sender.tag];
+        if (self.assets.count == 8 && ![self.assets containsObject:self.placeholderModel]) {
+            [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:8 inSection:0]]];
+            [self.assets addObject:self.placeholderModel];
+        }
+    } completion:^(BOOL finished) {
+
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -104,7 +110,6 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SelectedAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SelectedAssetCell class]) forIndexPath:indexPath];
     cell.model = self.assets[indexPath.item];
-    cell.deleteBtn.tag = indexPath.item;
     [cell.deleteBtn addTarget:self action:@selector(onDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
@@ -132,9 +137,6 @@
 - (void)assetPickerControllerDidCancel:(AssetPickerController *)picker{
     
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
