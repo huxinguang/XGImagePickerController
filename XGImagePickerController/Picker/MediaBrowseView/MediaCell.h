@@ -11,7 +11,7 @@
 #import "PlayerManager.h"
 
 @class AssetModel;
-
+@class BottomBar;
 @interface MediaCell : UICollectionViewCell
 
 @property (nonatomic, strong) AssetModel *item;
@@ -20,6 +20,7 @@
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) PlayerManager *playerManager;
+@property (nonatomic, strong) BottomBar *bottomBar;
 
 - (void)resizeSubviewSize;
 - (void)showOrHidePlayerControls;
@@ -27,4 +28,11 @@
 - (void)pausePlayer;
 
 @end
+
+@interface BottomBar: UIView
+@property (nonatomic, strong) UISlider *slider;
+@property (nonatomic, strong) UILabel *leftTimeLabel;
+@property (nonatomic, strong) UILabel *rightTimeLabel;
+@end
+
 

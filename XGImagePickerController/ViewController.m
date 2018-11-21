@@ -87,11 +87,15 @@
 
 
 - (void)onDeleteClick:(UIButton *)sender{
+    /*
+     performBatchUpdates并不会调用代理方法collectionView: cellForItemAtIndexPath，
+     如果用删除按钮的tag来标识则tag不会更新,所以此处没有用tag
+     */
     SelectedAssetCell *cell = (SelectedAssetCell *)sender.superview.superview;
     NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];
     [self.collectionView performBatchUpdates:^{
         [self.collectionView deleteItemsAtIndexPaths:@[indexpath]];
-        [self.assets removeObjectAtIndex:sender.tag];
+        [self.assets removeObjectAtIndex:indexpath.item];
         if (self.assets.count == 8 && ![self.assets containsObject:self.placeholderModel]) {
             [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:8 inSection:0]]];
             [self.assets addObject:self.placeholderModel];

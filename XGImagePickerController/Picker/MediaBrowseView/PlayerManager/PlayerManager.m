@@ -35,7 +35,7 @@
  
  AVAsset provides a level of independence from the media’s location. You create an asset instance by initializing it with the media’s URL. This could be a local URL, such as one contained within your app bundle or elsewhere on the file system, or it could also be a resource such as an HLS stream hosted on a remote server.
  
- 
+
  */
 
 
