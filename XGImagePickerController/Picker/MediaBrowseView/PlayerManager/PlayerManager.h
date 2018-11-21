@@ -9,27 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-typedef NS_ENUM(NSInteger, PlayerStatus) {
-    PlayerStatusBuffering,     // 缓冲中
-    PlayerStatusPlaying,       // 播放中
-    PlayerStatusPaused,        // 暂停
-    PlayerStatusFinished,      // 完成
-    PlayerStatusFailed         // 失败
-};
-
 @protocol PlayerManagerDelegate;
 
 @interface PlayerManager : NSObject
 
 @property (nonatomic, assign) BOOL loopPlay;
 @property (nonatomic, weak) id<PlayerManagerDelegate> delegate;
-@property (nonatomic, assign, readonly) PlayerStatus playerStatus;
+@property (nonatomic, strong) AVPlayerItem *playerItem;
+@property (nonatomic, assign) BOOL isSeekInProgress;
 
 + (instancetype)shareInstance;
 - (void)playWithItem:(AVPlayerItem *)item onLayer:(CALayer *)superlayer;
 - (void)pauseAndResetPlayer;
 - (void)play;
 - (void)pause;
+- (void)seekToTime:(CMTime)time;
+- (void)seekSmoothlyToTime:(CMTime)newChaseTime;
 
 @end
 

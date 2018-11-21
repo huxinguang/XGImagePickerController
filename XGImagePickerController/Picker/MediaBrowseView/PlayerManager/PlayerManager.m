@@ -45,10 +45,9 @@ static void *PlayerStatusObservationContext = &PlayerStatusObservationContext;
     AVPlayer *player;
     AVPlayerLayer *playerLayer;
     id timeObserverToken;
-    BOOL isSeekInProgress;
     CMTime chaseTime;
 }
-@property (nonatomic, strong) AVPlayerItem *playerItem;
+
 
 @end
 
@@ -147,6 +146,12 @@ static PlayerManager *manager = nil;
     }
 }
 
+- (void)seekToTime:(CMTime)time{
+    if (self->player.currentItem) {
+        [self->player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    }
+}
+
 - (void)pauseAndResetPlayer{
     if (self->player.currentItem) {
         [self->player pause];
@@ -167,11 +172,11 @@ static PlayerManager *manager = nil;
     }];
 }
 
-- (void)stopPlayingAndSeekSmoothlyToTime:(CMTime)newChaseTime{
+- (void)seekSmoothlyToTime:(CMTime)newChaseTime{
     [self->player pause];
     if (CMTIME_COMPARE_INLINE(newChaseTime, >=, kCMTimeZero) && CMTIME_COMPARE_INLINE(newChaseTime, <=, self->player.currentItem.duration) && CMTIME_COMPARE_INLINE(newChaseTime, !=, self->chaseTime)){
         self->chaseTime = newChaseTime;
-        if (!self->isSeekInProgress){
+        if (!self.isSeekInProgress){
            [self trySeekToChaseTime];
         }
     }
@@ -186,7 +191,7 @@ static PlayerManager *manager = nil;
 }
 
 - (void)actuallySeekToTime{
-    self->isSeekInProgress = YES;
+    self.isSeekInProgress = YES;
     CMTime seekTimeInProgress = self->chaseTime;
     //Important: Calling the seekToTime:toleranceBefore:toleranceAfter: method with small or zero-valued tolerances may incur additional decoding delay, which can impact your app’s seeking behavior.
     [self->player seekToTime:seekTimeInProgress toleranceBefore:kCMTimeZero
@@ -194,7 +199,8 @@ static PlayerManager *manager = nil;
      ^(BOOL isFinished)
      {
          if (CMTIME_COMPARE_INLINE(seekTimeInProgress, ==, self->chaseTime)){
-             self->isSeekInProgress = NO;
+             self.isSeekInProgress = NO;
+             [self->player play];
          }else{
              [self trySeekToChaseTime];
          }
@@ -217,7 +223,7 @@ static PlayerManager *manager = nil;
         switch (status){
             case AVPlayerItemStatusUnknown:
             {
-                _playerStatus = PlayerStatusBuffering;
+                
             }
                 break;
             case AVPlayerItemStatusReadyToPlay:

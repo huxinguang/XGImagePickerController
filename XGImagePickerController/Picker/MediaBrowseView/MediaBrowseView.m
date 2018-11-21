@@ -288,7 +288,7 @@
     }
 }
 
-#pragma mark - resolve scrollView & slider confilict
+#pragma mark - resolve collectionView & slider conflict
 // 方案一
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {

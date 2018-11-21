@@ -13,7 +13,7 @@
 #import "AssetModel.h"
 
 
-@interface MediaCell()<UIScrollViewDelegate,PlayerManagerDelegate>
+@interface MediaCell()<UIScrollViewDelegate,PlayerManagerDelegate,BottomBarDelegate>
 
 @end
 
@@ -82,6 +82,7 @@
 -(BottomBar *)bottomBar{
     if (!_bottomBar) {
         _bottomBar = [[BottomBar alloc]initWithFrame:CGRectMake(0, kAppScreenHeight-30, kAppScreenWidth, 30)];
+        _bottomBar.delegate = self;
     }
     return _bottomBar;
 }
@@ -151,11 +152,6 @@
     [CATransaction commit];
 }
 
--(void)layoutSubviews{
-    [super layoutSubviews];
-}
-
-
 #pragma mark - UIScrollViewDelegate
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
@@ -200,6 +196,7 @@
     }
     self.playBtn.hidden = NO;
     self.bottomBar.hidden = YES;
+    self.bottomBar.slider.value = 0;
     [self.playerManager pauseAndResetPlayer];
     [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
     
@@ -211,12 +208,63 @@
     [self.playerManager pause];
 }
 
-
 #pragma mark - PlayerManagerDelegate
 
 - (void)playerDidFinishPlay:(PlayerManager *)manager{
     self.playBtn.hidden = NO;
     self.bottomBar.hidden = YES;
+    self.bottomBar.slider.value = 0.0;
+    self.bottomBar.leftTimeLabel.text = @"00:00";
+}
+
+- (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime{
+    if (!self.sliderIsSliding) {
+        self.bottomBar.leftTimeLabel.text = [self getNewTimeFromSecond:CMTimeGetSeconds(currentTime)];
+        self.bottomBar.rightTimeLabel.text = [self getNewTimeFromSecond:CMTimeGetSeconds(totalTime)];
+        self.bottomBar.slider.value = CMTimeGetSeconds(currentTime)/CMTimeGetSeconds(totalTime);
+    }
+}
+
+- (NSString *)getNewTimeFromSecond:(NSInteger)seconds {
+    NSString *newTime;
+    if (seconds < 10) {
+        newTime = [NSString stringWithFormat:@"00:0%zd",seconds];
+    } else if (seconds < 60) {
+        newTime = [NSString stringWithFormat:@"00:%zd",seconds];
+    } else {
+        NSInteger min = seconds / 60;
+        NSInteger sec = seconds - (min * 60);
+        if (sec < 10) {
+            if (min < 10) {
+                newTime = [NSString stringWithFormat:@"0%zd:0%zd",min,sec];
+            }else{
+                newTime = [NSString stringWithFormat:@"%zd:0%zd",min,sec];
+            }
+        } else {
+            if (min < 10) {
+                newTime = [NSString stringWithFormat:@"0%zd:%zd",min,sec];
+            }else{
+                newTime = [NSString stringWithFormat:@"%zd:%zd",min,sec];
+            }
+        }
+    }
+    return newTime;
+}
+
+#pragma mark - BottomBarDelegate
+
+- (void)sliderDidSlide{
+    self.sliderIsSliding = YES;
+}
+
+- (void)slideDidEndWithValue:(float)value{
+    CMTime duration = self.playerManager.playerItem.duration;
+    Float64 totalSeconds = CMTimeGetSeconds(duration);
+    Float64 currentSeconds = totalSeconds*value;
+    CMTimeScale timescale = self.playerManager.playerItem.currentTime.timescale;
+    CMTime current = CMTimeMake(currentSeconds*timescale, timescale);
+    [self.playerManager seekSmoothlyToTime:current];
+    self.sliderIsSliding = NO;
 }
 
 @end
@@ -263,7 +311,7 @@
         _leftTimeLabel.font = [UIFont systemFontOfSize:12];
         _leftTimeLabel.textColor = [UIColor whiteColor];
         _leftTimeLabel.textAlignment = NSTextAlignmentCenter;
-        _leftTimeLabel.text = @"00:12";
+        _leftTimeLabel.text = @"00:00";
     }
     return _leftTimeLabel;
 }
@@ -274,15 +322,13 @@
         _slider.value = 0.0;
         _slider.minimumValue = 0.0;
         _slider.maximumValue = 1.0;
-        _slider.minimumTrackTintColor = self.tintColor?self.tintColor:[UIColor blueColor];
+        _slider.minimumTrackTintColor = [UIColor colorWithRed:36/255.0 green:160/255.0 blue:252/255.0 alpha:1];
         _slider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
         _slider.backgroundColor = [UIColor clearColor];
         [_slider setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [_slider addTarget:self action:@selector(slideDidEnd:) forControlEvents:UIControlEventTouchUpInside];
         [_slider addTarget:self action:@selector(sliderDidSlide:)  forControlEvents:UIControlEventValueChanged];
-        [_slider addTarget:self action:@selector(onClickSlider:) forControlEvents:UIControlEventTouchUpInside];
-        UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapSlider:)];
-//        sliderTap.delegate = self;
-        [_slider addGestureRecognizer:sliderTap];
+        
     }
     return _slider;
 }
@@ -293,23 +339,22 @@
         _rightTimeLabel.font = [UIFont systemFontOfSize:12];
         _rightTimeLabel.textColor = [UIColor whiteColor];
         _rightTimeLabel.textAlignment = NSTextAlignmentCenter;
-        _rightTimeLabel.text = @"00:54";
+        _rightTimeLabel.text = @"00:00";
     }
     return _rightTimeLabel;
 }
 
+- (void)slideDidEnd:(UISlider *)slider{
+    if ([self.delegate respondsToSelector:@selector(slideDidEndWithValue:)]) {
+        [self.delegate slideDidEndWithValue:slider.value];
+    }
+}
+
 - (void)sliderDidSlide:(UISlider *)slider{
-    
+    if ([self.delegate respondsToSelector:@selector(sliderDidSlide)]) {
+        [self.delegate sliderDidSlide];
+    }
 }
-
-- (void)onClickSlider:(UISlider *)slider{
-    
-}
-
-- (void)onTapSlider:(UISlider *)slider{
-    
-}
-
 
 
 @end

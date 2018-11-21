@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) PlayerManager *playerManager;
 @property (nonatomic, strong) BottomBar *bottomBar;
+@property (nonatomic, assign) BOOL sliderIsSliding;
 
 - (void)resizeSubviewSize;
 - (void)showOrHidePlayerControls;
@@ -29,10 +30,20 @@
 
 @end
 
+@protocol BottomBarDelegate;
 @interface BottomBar: UIView
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UILabel *leftTimeLabel;
 @property (nonatomic, strong) UILabel *rightTimeLabel;
+@property (nonatomic, weak) id<BottomBarDelegate> delegate;
 @end
+
+@protocol BottomBarDelegate<NSObject>
+- (void)sliderDidSlide;
+- (void)slideDidEndWithValue:(float)value;
+@end
+
+
+
 
 
