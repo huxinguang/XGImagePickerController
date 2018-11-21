@@ -288,7 +288,26 @@
     }
 }
 
+#pragma mark - resolve scrollView & slider confilict
+// 方案一
+-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {
+        self.collectionView.scrollEnabled = NO;
+        return YES;
+    }
+    self.collectionView.scrollEnabled = YES;
+    return YES;
+}
 
+// 方案二
+//-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+//    if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {
+//        self.collectionView.scrollEnabled = NO;
+//        return [super hitTest:point withEvent:event];
+//    }
+//    self.collectionView.scrollEnabled = YES;
+//    return [super hitTest:point withEvent:event];
+//}
 
 
 /*
