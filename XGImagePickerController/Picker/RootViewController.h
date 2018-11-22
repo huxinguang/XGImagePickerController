@@ -11,10 +11,10 @@
 #import "XGTitleView.h"
 
 @interface RootViewController : UIViewController
-@property (nonatomic, strong)XGTitleView *titleView;
-@property (nonatomic, strong)XGBarButton *leftBarButton;
-@property (nonatomic, strong)XGBarButton *rightBarButton;
-@property (nonatomic, assign)BOOL isStatusBarHidden;
+@property (nonatomic, strong) XGTitleView *titleView;
+@property (nonatomic, strong) XGBarButton *leftBarButton;
+@property (nonatomic, strong) XGBarButton *rightBarButton;
+@property (nonatomic, assign) BOOL isStatusBarHidden;
 
 
 - (void)configTitleView;

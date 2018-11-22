@@ -81,7 +81,7 @@
 
 -(BottomBar *)bottomBar{
     if (!_bottomBar) {
-        _bottomBar = [[BottomBar alloc]initWithFrame:CGRectMake(0, kAppScreenHeight-30, kAppScreenWidth, 30)];
+        _bottomBar = [[BottomBar alloc]initWithFrame:CGRectMake(0, kAppScreenHeight-30-kAppTabbarSafeBottomMargin, kAppScreenWidth, 30)];
         _bottomBar.delegate = self;
     }
     return _bottomBar;
