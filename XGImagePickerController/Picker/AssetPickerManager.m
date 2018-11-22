@@ -131,8 +131,22 @@
 
 #pragma mark - Get Photo
 
-- (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(UIImage *, NSDictionary *))completion {
+- (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(id, NSDictionary *))completion {
+    if (@available(iOS 11.0, *)) {
+        if (asset.playbackStyle == PHAssetPlaybackStyleImageAnimated) {
+            [self getDataWithAsset:asset completion:completion];
+            return;
+        }
+    }
     [self getPhotoWithAsset:asset photoWidth:[UIScreen mainScreen].bounds.size.width completion:completion];
+}
+
+- (void)getDataWithAsset:(PHAsset *)asset completion:(void (^)(id, NSDictionary *))completion{
+    //动图
+    [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+        if (completion) completion(imageData,info);
+    }];
+    
 }
 
 - (void)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *, NSDictionary *))completion {
@@ -140,6 +154,7 @@
     CGFloat multiple = [UIScreen mainScreen].scale;
     CGFloat pixelWidth = photoWidth * multiple;
     CGFloat pixelHeight = pixelWidth / aspectRatio;
+
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(pixelWidth, pixelHeight) contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
         if (downloadFinined) {
@@ -149,7 +164,7 @@
 }
 
 - (void)getPostImageWithAlbumModel:(AlbumModel *)model completion:(void (^)(UIImage *))completion {
-    [[AssetPickerManager manager] getPhotoWithAsset:[model.result firstObject] photoWidth:60 completion:^(UIImage *photo, NSDictionary *info) {
+    [self getPhotoWithAsset:[model.result firstObject] photoWidth:60 completion:^(UIImage *photo, NSDictionary *info) {
         if (completion) completion(photo);
     }];
 }

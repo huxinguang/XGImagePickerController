@@ -76,26 +76,26 @@
     }
 }
 
-- (NSString *)getNewTimeFromSecond:(NSInteger)seconds {
+- (NSString *)getNewTimeFromSecond:(int)seconds {
     NSString *newTime;
     if (seconds < 10) {
-        newTime = [NSString stringWithFormat:@"00:0%zd",seconds];
+        newTime = [NSString stringWithFormat:@"00:0%d",seconds];
     } else if (seconds < 60) {
-        newTime = [NSString stringWithFormat:@"00:%zd",seconds];
+        newTime = [NSString stringWithFormat:@"00:%d",seconds];
     } else {
-        NSInteger min = seconds / 60;
-        NSInteger sec = seconds - (min * 60);
+        int min = seconds / 60;
+        int sec = seconds - (min * 60);
         if (sec < 10) {
             if (min < 10) {
-                newTime = [NSString stringWithFormat:@"0%zd:0%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"0%d:0%d",min,sec];
             }else{
-                newTime = [NSString stringWithFormat:@"%zd:0%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"%d:0%d",min,sec];
             }
         } else {
             if (min < 10) {
-                newTime = [NSString stringWithFormat:@"0%zd:%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"0%d:%d",min,sec];
             }else{
-                newTime = [NSString stringWithFormat:@"%zd:%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"%d:%d",min,sec];
             }
         }
     }

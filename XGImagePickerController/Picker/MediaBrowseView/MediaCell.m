@@ -61,7 +61,7 @@
     return _mediaContainerView;
 }
 
-- (UIImageView *)imageView {
+- (FLAnimatedImageView *)imageView {
     if (!_imageView) {
         _imageView = [FLAnimatedImageView new];
         _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
@@ -104,10 +104,18 @@
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
     __weak typeof (self) weakSelf = self;
-    [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(UIImage *photo, NSDictionary *info) {
+    [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(id photo, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.scrollView.maximumZoomScale = 3;
             if (photo) {
+                if (@available(iOS 11.0, *)) {
+                    if (item.asset.playbackStyle == PHAssetPlaybackStyleImageAnimated) {
+                        FLAnimatedImage *image = [FLAnimatedImage animatedImageWithGIFData:photo];
+                        weakSelf.imageView.animatedImage = image;
+                        [weakSelf resizeSubviewSize];
+                        return;
+                    }
+                }
                 weakSelf.imageView.image = photo;
                 [weakSelf resizeSubviewSize];
             }
@@ -227,26 +235,26 @@
     }
 }
 
-- (NSString *)getNewTimeFromSecond:(NSInteger)seconds {
+- (NSString *)getNewTimeFromSecond:(int)seconds {
     NSString *newTime;
     if (seconds < 10) {
-        newTime = [NSString stringWithFormat:@"00:0%zd",seconds];
+        newTime = [NSString stringWithFormat:@"00:0%d",seconds];
     } else if (seconds < 60) {
-        newTime = [NSString stringWithFormat:@"00:%zd",seconds];
+        newTime = [NSString stringWithFormat:@"00:%d",seconds];
     } else {
-        NSInteger min = seconds / 60;
-        NSInteger sec = seconds - (min * 60);
+        int min = seconds / 60;
+        int sec = seconds - (min * 60);
         if (sec < 10) {
             if (min < 10) {
-                newTime = [NSString stringWithFormat:@"0%zd:0%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"0%d:0%d",min,sec];
             }else{
-                newTime = [NSString stringWithFormat:@"%zd:0%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"%d:0%d",min,sec];
             }
         } else {
             if (min < 10) {
-                newTime = [NSString stringWithFormat:@"0%zd:%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"0%d:%d",min,sec];
             }else{
-                newTime = [NSString stringWithFormat:@"%zd:%zd",min,sec];
+                newTime = [NSString stringWithFormat:@"%d:%d",min,sec];
             }
         }
     }
