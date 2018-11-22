@@ -38,7 +38,10 @@
 
     return model;
 }
-
+/*
+ 如果自定义的类需要实现浅拷贝，则在实现copyWithZone:方法时返回自身，
+ 而需要深拷贝时，在copyWithZone:方法中创建一个新的实例对象返回即
+ */
 - (id)copyWithZone:(NSZone *)zone {
     AssetModel *item = [self.class new];
     return item;

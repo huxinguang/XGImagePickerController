@@ -146,12 +146,6 @@ static PlayerManager *manager = nil;
     }
 }
 
-- (void)seekToTime:(CMTime)time{
-    if (self->player.currentItem) {
-        [self->player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    }
-}
-
 - (void)pauseAndResetPlayer{
     if (self->player.currentItem) {
         [self->player pause];
@@ -165,7 +159,7 @@ static PlayerManager *manager = nil;
     __weak typeof(self) weakSelf = self;
     self->timeObserverToken = [self->player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, NSEC_PER_SEC)  queue:dispatch_get_main_queue() usingBlock:^(CMTime time)
     {
-        // “播放状态”下每秒走一次
+        // 只有在“播放状态”下才会调用
         if ([weakSelf.delegate respondsToSelector:@selector(playerDidPlayToTime:totalTime:)]) {
             [weakSelf.delegate playerDidPlayToTime:weakSelf.playerItem.currentTime totalTime:weakSelf.playerItem.duration];
         }
@@ -196,11 +190,13 @@ static PlayerManager *manager = nil;
     //Important: Calling the seekToTime:toleranceBefore:toleranceAfter: method with small or zero-valued tolerances may incur additional decoding delay, which can impact your app’s seeking behavior.
     [self->player seekToTime:seekTimeInProgress toleranceBefore:kCMTimeZero
               toleranceAfter:kCMTimeZero completionHandler:
-     ^(BOOL isFinished)
+     ^(BOOL finished)
      {
          if (CMTIME_COMPARE_INLINE(seekTimeInProgress, ==, self->chaseTime)){
-             self.isSeekInProgress = NO;
-             [self->player play];
+             if (finished) {
+                 self.isSeekInProgress = NO;
+                 [self->player play];
+             }
          }else{
              [self trySeekToChaseTime];
          }

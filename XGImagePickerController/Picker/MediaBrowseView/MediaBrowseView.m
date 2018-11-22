@@ -82,7 +82,7 @@
 #pragma mark - Gesture
 
 - (void)addGesture{
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     singleTap.delegate = self;
     [self addGestureRecognizer:singleTap];
     
@@ -94,7 +94,7 @@
     
 }
 
-- (void)onSingleTap{
+- (void)onSingleTap:(UITapGestureRecognizer *)gesture{
     MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo && cell.playBtn.hidden) {
         [cell pauseAndResetPlayer];
@@ -288,18 +288,29 @@
     }
 }
 
+#pragma mark - UIGestureRecognizerDelegate
 #pragma mark - resolve collectionView & slider conflict
 // 方案一
--(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
-    if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if (CGRectContainsPoint([self currentCell].bottomBar.frame, [touch locationInView:self])) {
         self.collectionView.scrollEnabled = NO;
-        return YES;
+        return NO;
     }
     self.collectionView.scrollEnabled = YES;
     return YES;
 }
 
 // 方案二
+//-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+//    if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {
+//        self.collectionView.scrollEnabled = NO;
+//        return YES;
+//    }
+//    self.collectionView.scrollEnabled = YES;
+//    return YES;
+//}
+
+// 方案三
 //-(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
 //    if (CGRectContainsPoint([self currentCell].bottomBar.frame, point)) {
 //        self.collectionView.scrollEnabled = NO;

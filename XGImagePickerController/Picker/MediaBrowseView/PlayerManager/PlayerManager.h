@@ -23,7 +23,6 @@
 - (void)pauseAndResetPlayer;
 - (void)play;
 - (void)pause;
-- (void)seekToTime:(CMTime)time;
 - (void)seekSmoothlyToTime:(CMTime)newChaseTime;
 
 @end
