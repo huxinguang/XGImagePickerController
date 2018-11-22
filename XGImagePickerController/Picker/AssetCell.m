@@ -55,7 +55,7 @@
                     _selectPhotoButton.hidden = YES;
                 }
                 _bottomView.hidden = NO;
-                _timeLength.text = [self getNewTimeFromDurationSecond:(NSInteger)model.asset.duration];
+                _timeLength.text = [self getNewTimeFromSecond:(NSInteger)model.asset.duration];
                 break;
             case PHAssetMediaTypeAudio:
                 _selectImageView.hidden = YES;
@@ -76,19 +76,27 @@
     }
 }
 
-- (NSString *)getNewTimeFromDurationSecond:(NSInteger)duration {
+- (NSString *)getNewTimeFromSecond:(NSInteger)seconds {
     NSString *newTime;
-    if (duration < 10) {
-        newTime = [NSString stringWithFormat:@"0:0%zd",duration];
-    } else if (duration < 60) {
-        newTime = [NSString stringWithFormat:@"0:%zd",duration];
+    if (seconds < 10) {
+        newTime = [NSString stringWithFormat:@"00:0%zd",seconds];
+    } else if (seconds < 60) {
+        newTime = [NSString stringWithFormat:@"00:%zd",seconds];
     } else {
-        NSInteger min = duration / 60;
-        NSInteger sec = duration - (min * 60);
+        NSInteger min = seconds / 60;
+        NSInteger sec = seconds - (min * 60);
         if (sec < 10) {
-            newTime = [NSString stringWithFormat:@"%zd:0%zd",min,sec];
+            if (min < 10) {
+                newTime = [NSString stringWithFormat:@"0%zd:0%zd",min,sec];
+            }else{
+                newTime = [NSString stringWithFormat:@"%zd:0%zd",min,sec];
+            }
         } else {
-            newTime = [NSString stringWithFormat:@"%zd:%zd",min,sec];
+            if (min < 10) {
+                newTime = [NSString stringWithFormat:@"0%zd:%zd",min,sec];
+            }else{
+                newTime = [NSString stringWithFormat:@"%zd:%zd",min,sec];
+            }
         }
     }
     return newTime;
