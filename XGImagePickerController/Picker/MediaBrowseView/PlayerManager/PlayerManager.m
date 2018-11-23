@@ -146,7 +146,7 @@ static PlayerManager *manager = nil;
     }
 }
 
-- (void)pauseAndResetPlayer{
+- (void)resetPlayer{
     if (self->player.currentItem) {
         [self->player pause];
         [self->player seekToTime:kCMTimeZero];

@@ -261,13 +261,11 @@
     if (![indexPaths containsObject:indexP]) {
         [_fromCollectionView scrollToItemAtIndexPath:indexP atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
     }
-    
 }
 
 #pragma mark - UIScrollViewDelegate
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
     MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
         [cell pauseAndResetPlayer];

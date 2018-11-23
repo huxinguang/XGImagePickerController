@@ -20,7 +20,7 @@
 
 + (instancetype)shareInstance;
 - (void)playWithItem:(AVPlayerItem *)item onLayer:(CALayer *)superlayer;
-- (void)pauseAndResetPlayer;
+- (void)resetPlayer;
 - (void)play;
 - (void)pause;
 - (void)seekSmoothlyToTime:(CMTime)newChaseTime;

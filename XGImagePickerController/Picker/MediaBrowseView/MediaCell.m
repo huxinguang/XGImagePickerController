@@ -207,7 +207,7 @@
     self.bottomBar.hidden = YES;
     self.bottomBar.slider.value = 0;
     self.sliderIsSliding = NO;
-    [self.playerManager pauseAndResetPlayer];
+    [self.playerManager resetPlayer];
     [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
     
 }
@@ -226,6 +226,8 @@
     self.bottomBar.slider.value = 0.0;
     self.bottomBar.leftTimeLabel.text = @"00:00";
     self.sliderIsSliding = NO;
+    [self.playerManager resetPlayer];
+    [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
 }
 
 - (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime{
