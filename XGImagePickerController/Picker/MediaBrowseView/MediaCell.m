@@ -44,7 +44,6 @@
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.frame = self.contentView.bounds;
         _scrollView.bouncesZoom = YES;
-        _scrollView.maximumZoomScale = 3;
         _scrollView.multipleTouchEnabled = YES;
         _scrollView.alwaysBounceVertical = NO;
         _scrollView.showsVerticalScrollIndicator = YES;
