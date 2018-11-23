@@ -106,7 +106,9 @@
     __weak typeof (self) weakSelf = self;
     [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(id photo, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.scrollView.maximumZoomScale = 3;
+            if (item.asset.mediaType == PHAssetMediaTypeImage) {
+                weakSelf.scrollView.maximumZoomScale = 3;
+            }
             if (photo) {
                 if (@available(iOS 11.0, *)) {
                     if (item.asset.playbackStyle == PHAssetPlaybackStyleImageAnimated) {
