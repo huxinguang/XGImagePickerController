@@ -103,32 +103,6 @@
     if (completion) completion(assetArr);
 }
 
-- (void)getPhotosBytesWithArray:(NSArray *)photos completion:(void (^)(NSString *totalBytes))completion {
-    __block NSInteger dataLength = 0;
-    for (NSInteger i = 0; i < photos.count; i++) {
-        AssetModel *model = photos[i];
-        [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-            if (model.asset.mediaType != PHAssetMediaTypeVideo) dataLength += imageData.length;
-            if (i >= photos.count - 1) {
-                NSString *bytes = [self getBytesFromDataLength:dataLength];
-                if (completion) completion(bytes);
-            }
-        }];
-    }
-}
-
-- (NSString *)getBytesFromDataLength:(NSInteger)dataLength {
-    NSString *bytes;
-    if (dataLength >= 0.1 * (1024 * 1024)) {
-        bytes = [NSString stringWithFormat:@"%0.1fM",dataLength/1024/1024.0];
-    } else if (dataLength >= 1024) {
-        bytes = [NSString stringWithFormat:@"%0.0fK",dataLength/1024.0];
-    } else {
-        bytes = [NSString stringWithFormat:@"%zdB",dataLength];
-    }
-    return bytes;
-}
-
 #pragma mark - Get Photo
 
 - (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(id, NSDictionary *))completion {

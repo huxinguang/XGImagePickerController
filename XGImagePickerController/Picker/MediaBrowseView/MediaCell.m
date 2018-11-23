@@ -64,7 +64,7 @@
 - (FLAnimatedImageView *)imageView {
     if (!_imageView) {
         _imageView = [FLAnimatedImageView new];
-        _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
+        _imageView.backgroundColor = [UIColor blackColor];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _imageView;

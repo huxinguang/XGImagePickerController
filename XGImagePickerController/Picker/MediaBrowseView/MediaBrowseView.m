@@ -135,7 +135,6 @@
     _fromItemIndex = indexpath.item;
     
     self.size = _toContainerView.size;
-    self.blackBackground.alpha = 0;
     [_toContainerView addSubview:self];
 
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_fromItemIndex-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
@@ -149,25 +148,16 @@
     cell.mediaContainerView.clipsToBounds = NO;
     cell.imageView.frame = fromFrame;
     
-    float oneTime = animated ? 0.18 : 0;
-    [UIView animateWithDuration:oneTime*2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.blackBackground.alpha = 1;
-    }completion:nil];
-
+    float oneTime = animated ? 0.3 : 0;
     self.collectionView.userInteractionEnabled = NO;
     [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
         cell.imageView.frame = cell.mediaContainerView.bounds;
-        [cell.imageView.layer setValue:@1.01 forKeyPath:@"transform.scale"];
     }completion:^(BOOL finished) {
-        [UIView animateWithDuration:oneTime delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseInOut animations:^{
-            [cell.imageView.layer setValue:@1.0 forKeyPath:@"transform.scale"];
-        }completion:^(BOOL finished) {
-            cell.mediaContainerView.clipsToBounds = YES;
-            cell.imageView.clipsToBounds = YES;
-            self.isPresented = YES;
-            self.collectionView.userInteractionEnabled = YES;
-            if (completion) completion();
-        }];
+        cell.mediaContainerView.clipsToBounds = YES;
+        cell.imageView.clipsToBounds = YES;
+        self.isPresented = YES;
+        self.collectionView.userInteractionEnabled = YES;
+        if (completion) completion();
     }];
     
 }
@@ -176,8 +166,10 @@
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
     [[NSNotificationCenter defaultCenter]postNotificationName:kShowStatusBarNotification object:nil];
     [UIView setAnimationsEnabled:YES];
+    self.blackBackground.alpha = 0;
     NSInteger currentPage = self.currentPage;
     MediaCell *cell = [self currentCell];
+    cell.imageView.clipsToBounds = YES;
 
     UIView *fromView = nil;
     if (self.fromItemIndex-1 == currentPage) {
@@ -204,7 +196,6 @@
             self.alpha = 0.0;
             [self.collectionView.layer setValue:@0.95 forKeyPath:@"transform.scale"];
             self.collectionView.alpha = 0;
-            self.blackBackground.alpha = 0;
         }completion:^(BOOL finished) {
             [self.collectionView.layer setValue:@1 forKeyPath:@"transform.scale"];
             [self removeFromSuperview];
@@ -219,11 +210,8 @@
         [cell.scrollView setContentOffset:off animated:NO];
     }
     
-    [UIView animateWithDuration:animated ? 0.2 : 0 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
-        self.blackBackground.alpha = 0.0;
-        
+    [UIView animateWithDuration:animated ? 0.3 : 0 delay:0 options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
         if (isFromImageClipped) {
-            
             CGRect fromFrame = [fromView convertRect:fromView.bounds toView:cell];
             CGFloat scale = fromFrame.size.width / cell.mediaContainerView.width * cell.scrollView.zoomScale;
             CGFloat height = fromFrame.size.height / fromFrame.size.width * cell.mediaContainerView.width;
@@ -240,16 +228,12 @@
             cell.imageView.frame = fromFrame;
         }
     }completion:^(BOOL finished) {
-        [UIView animateWithDuration:animated ? 0.15 : 0 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            self.alpha = 0;
-        } completion:^(BOOL finished) {
-            cell.mediaContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-            [self removeFromSuperview];
-            if (completion) completion();
-        }];
+        self.alpha = 0;
+        cell.mediaContainerView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self removeFromSuperview];
+        if (completion) completion();
     }];
-    
-    
+
 }
 
 
@@ -282,6 +266,7 @@
 #pragma mark - UIScrollViewDelegate
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
     MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
         [cell pauseAndResetPlayer];
