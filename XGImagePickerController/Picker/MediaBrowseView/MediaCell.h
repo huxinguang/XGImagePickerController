@@ -19,7 +19,6 @@
 @property (nonatomic, strong) UIView *mediaContainerView;//用于动画
 @property (nonatomic, strong) FLAnimatedImageView *imageView;
 @property (nonatomic, strong) UIButton *playBtn;
-@property (nonatomic, strong) PlayerManager *playerManager;
 @property (nonatomic, strong) BottomBar *bottomBar;
 @property (nonatomic, assign) BOOL sliderIsSliding;
 

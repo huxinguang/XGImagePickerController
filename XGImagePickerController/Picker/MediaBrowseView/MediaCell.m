@@ -24,7 +24,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupSubViews];
-        self.playerManager.delegate = self;
     }
     return self;
 }
@@ -84,10 +83,6 @@
         _bottomBar.delegate = self;
     }
     return _bottomBar;
-}
-
--(PlayerManager *)playerManager{
-    return [PlayerManager shareInstance];
 }
 
 #pragma mark - Setter
@@ -181,13 +176,17 @@
 #pragma mark - player
 
 - (void)playAction{
+    self.bottomBar.hidden = NO;
+    self.playBtn.hidden = YES;
+    /*
+     在这里设置代理，解决cell复用引起的部分视频播放时slider进度和播放时间不更新的问题
+     */
+    [PlayerManager shareInstance].delegate = self;
     __weak typeof (self) weakSelf = self;
     [[AssetPickerManager manager]getVideoWithAsset:self.item.asset completion:^(AVPlayerItem *playerItem, NSDictionary *info) {
         if (playerItem) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf.playerManager playWithItem:playerItem onLayer:weakSelf.imageView.layer];
-                weakSelf.playBtn.hidden = YES;
-                weakSelf.bottomBar.hidden = NO;
+                [[PlayerManager shareInstance] playWithItem:playerItem onLayer:weakSelf.imageView.layer];
             });
         }
     }];
@@ -200,22 +199,20 @@
 }
 
 - (void)pauseAndResetPlayer{
-    if (self.item.asset.mediaType == PHAssetMediaTypeImage) {
-        return;
-    }
     self.playBtn.hidden = NO;
+    self.bottomBar.leftTimeLabel.text = @"00:00";
     self.bottomBar.hidden = YES;
     self.bottomBar.slider.value = 0;
     self.sliderIsSliding = NO;
-    [self.playerManager resetPlayer];
-    [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
+    [PlayerManager shareInstance].delegate = nil;//一定要在这里置为nil
+    [[PlayerManager shareInstance] resetPlayer];
     
 }
 
 - (void)pausePlayer{
     self.playBtn.hidden = NO;
     self.bottomBar.hidden = YES;
-    [self.playerManager pause];
+    [[PlayerManager shareInstance] pause];
 }
 
 #pragma mark - PlayerManagerDelegate
@@ -226,8 +223,7 @@
     self.bottomBar.slider.value = 0.0;
     self.bottomBar.leftTimeLabel.text = @"00:00";
     self.sliderIsSliding = NO;
-    [self.playerManager resetPlayer];
-    [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
+    [manager resetPlayer];
 }
 
 - (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime{
@@ -271,12 +267,12 @@
 }
 
 - (void)slideDidEndWithValue:(float)value{
-    CMTime duration = self.playerManager.playerItem.duration;
+    CMTime duration = [PlayerManager shareInstance].playerItem.duration;
     Float64 totalSeconds = CMTimeGetSeconds(duration);
     Float64 currentSeconds = totalSeconds*value;
-    CMTimeScale timescale = self.playerManager.playerItem.currentTime.timescale;
+    CMTimeScale timescale = [PlayerManager shareInstance].playerItem.currentTime.timescale;
     CMTime current = CMTimeMake(currentSeconds*timescale, timescale);
-    [self.playerManager seekSmoothlyToTime:current];
+    [[PlayerManager shareInstance] seekSmoothlyToTime:current];
     self.sliderIsSliding = NO;
 }
 
@@ -367,6 +363,7 @@
         [self.delegate sliderDidSlide];
     }
 }
+
 
 
 @end

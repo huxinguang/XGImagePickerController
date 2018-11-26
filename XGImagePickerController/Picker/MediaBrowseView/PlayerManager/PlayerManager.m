@@ -41,13 +41,12 @@
 
 static void *PlayerStatusObservationContext = &PlayerStatusObservationContext;
 
-@interface PlayerManager(){
-    AVPlayer *player;
-    AVPlayerLayer *playerLayer;
-    id timeObserverToken;
-    CMTime chaseTime;
-}
+@interface PlayerManager()
 
+@property (nonatomic, strong) AVPlayer *player;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, assign) CMTime chaseTime;
+@property (nonatomic, strong) id timeObserverToken;
 
 @end
 
@@ -69,34 +68,34 @@ static PlayerManager *manager = nil;
         return;
     }
     self.playerItem = item;
-    if (self->player.currentItem) { //player和其currentItem是并存的
-        if (self->playerLayer.superlayer != superlayer) {
-            [self->playerLayer removeFromSuperlayer];
-            self->playerLayer.frame = superlayer.bounds;
-            [superlayer insertSublayer:self->playerLayer atIndex:0];
+    if (self.player) {
+        if (self.playerLayer.superlayer != superlayer) {
+            [self.playerLayer removeFromSuperlayer];
+            self.playerLayer.frame = superlayer.bounds;
+            [superlayer insertSublayer:self.playerLayer atIndex:0];
         }
-        [self->player replaceCurrentItemWithPlayerItem:self.playerItem];
-        [self->player play];
+        [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
+        [self.player play];
     }else{
-        self->player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
+        self.player = [[AVPlayer alloc]initWithPlayerItem:self.playerItem];
         if(self.loopPlay){
-            self->player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+            self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
         }else{
-            self->player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
+            self.player.actionAtItemEnd = AVPlayerActionAtItemEndPause;
         }
         if (@available(iOS 10.0, *)) {
-            self->player.automaticallyWaitsToMinimizeStalling = YES;
+            self.player.automaticallyWaitsToMinimizeStalling = YES;
         } else {
             // Fallback on earlier versions
         }
-        self->player.usesExternalPlaybackWhileExternalScreenIsActive=YES;
-        self->playerLayer = [AVPlayerLayer playerLayerWithPlayer:self->player];
-        self->playerLayer.frame = superlayer.bounds;
+        self.player.usesExternalPlaybackWhileExternalScreenIsActive=YES;
+        self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+        self.playerLayer.frame = superlayer.bounds;
         //To play the visual component of an asset, you need a view containing an AVPlayerLayer layer to which the output of an AVPlayer object can be directed.
-        [superlayer insertSublayer:self->playerLayer atIndex:0];
-//        self->playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        [superlayer insertSublayer:self.playerLayer atIndex:0];
+//        self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
         [self createTimer];
-        [self->player play];
+        [self.player play];
         
     }
 }
@@ -135,41 +134,45 @@ static PlayerManager *manager = nil;
 }
 
 - (void)play{
-    if (self->player.currentItem) {
-        [self->player play];
+    if (self.player.currentItem) {
+        [self.player play];
     }
 }
 
 - (void)pause{
-    if (self->player.currentItem) {
-        [self->player pause];
+    if (self.player.currentItem) {
+        [self.player pause];
     }
 }
 
 - (void)resetPlayer{
-    if (self->player.currentItem) {
-        [self->player pause];
-        [self->player seekToTime:kCMTimeZero];
-        [self->playerLayer removeFromSuperlayer];
-        [self->player replaceCurrentItemWithPlayerItem:nil];
+    if (self.player.currentItem) {
+        [self.player pause];
+        [self.player seekToTime:kCMTimeZero];
+        [self.playerLayer removeFromSuperlayer];
+        [self.player replaceCurrentItemWithPlayerItem:nil];
     }
 }
 
 - (void)createTimer{
     __weak typeof(self) weakSelf = self;
-    self->timeObserverToken = [self->player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, NSEC_PER_SEC)  queue:dispatch_get_main_queue() usingBlock:^(CMTime time)
-    {
-        // 只有在“播放状态”下才会调用
-        if ([weakSelf.delegate respondsToSelector:@selector(playerDidPlayToTime:totalTime:)]) {
-            [weakSelf.delegate playerDidPlayToTime:weakSelf.playerItem.currentTime totalTime:weakSelf.playerItem.duration];
-        }
-    }];
+    if(self.timeObserverToken == nil){
+        self.timeObserverToken = [self.player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, NSEC_PER_SEC)  queue:dispatch_get_main_queue() usingBlock:^(CMTime time)
+                                   {
+                                       // 只有在“播放状态”下才会调用
+                                       if ([weakSelf.delegate respondsToSelector:@selector(playerDidPlayToTime:totalTime:)]) {
+                                           [weakSelf.delegate playerDidPlayToTime:weakSelf.playerItem.currentTime totalTime:weakSelf.playerItem.duration];
+                                       }
+                                       
+                                       
+                                   }];
+    }
 }
 
 - (void)seekSmoothlyToTime:(CMTime)newChaseTime{
-    [self->player pause];
-    if (CMTIME_COMPARE_INLINE(newChaseTime, >=, kCMTimeZero) && CMTIME_COMPARE_INLINE(newChaseTime, <=, self->player.currentItem.duration) && CMTIME_COMPARE_INLINE(newChaseTime, !=, self->chaseTime)){
-        self->chaseTime = newChaseTime;
+    [self.player pause];
+    if (CMTIME_COMPARE_INLINE(newChaseTime, >=, kCMTimeZero) && CMTIME_COMPARE_INLINE(newChaseTime, <=, self.player.currentItem.duration) && CMTIME_COMPARE_INLINE(newChaseTime, !=, self.chaseTime)){
+        self.chaseTime = newChaseTime;
         if (!self.isSeekInProgress){
            [self trySeekToChaseTime];
         }
@@ -177,25 +180,25 @@ static PlayerManager *manager = nil;
 }
 
 - (void)trySeekToChaseTime{
-    if (self->player.status == AVPlayerItemStatusUnknown){
+    if (self.player.status == AVPlayerItemStatusUnknown){
         // wait until item becomes ready (KVO player.currentItem.status)
-    }else if (self->player.status == AVPlayerItemStatusReadyToPlay){
+    }else if (self.player.status == AVPlayerItemStatusReadyToPlay){
         [self actuallySeekToTime];
     }
 }
 
 - (void)actuallySeekToTime{
     self.isSeekInProgress = YES;
-    CMTime seekTimeInProgress = self->chaseTime;
+    CMTime seekTimeInProgress = self.chaseTime;
     //Important: Calling the seekToTime:toleranceBefore:toleranceAfter: method with small or zero-valued tolerances may incur additional decoding delay, which can impact your app’s seeking behavior.
-    [self->player seekToTime:seekTimeInProgress toleranceBefore:kCMTimeZero
+    [self.player seekToTime:seekTimeInProgress toleranceBefore:kCMTimeZero
               toleranceAfter:kCMTimeZero completionHandler:
      ^(BOOL finished)
      {
-         if (CMTIME_COMPARE_INLINE(seekTimeInProgress, ==, self->chaseTime)){
+         if (CMTIME_COMPARE_INLINE(seekTimeInProgress, ==, self.chaseTime)){
              if (finished) {
                  self.isSeekInProgress = NO;
-                 [self->player play];
+                 [self.player play];
              }
          }else{
              [self trySeekToChaseTime];
@@ -246,7 +249,7 @@ static PlayerManager *manager = nil;
                         [weakSelf.delegate playerDidFailToPlay:weakSelf];
                     });
                 }
-                NSError *error = [self->player.currentItem error];
+                NSError *error = [self.player.currentItem error];
                 if (error) {
                     NSLog(@"AVPlayerItemStatusFailed error = %@",[error localizedDescription]);
                 }
@@ -295,13 +298,13 @@ static PlayerManager *manager = nil;
     /*
      The item is played only once. After playback, the player’s head is set to the end of the item, and further invocations of the play method will have no effect. To position the playhead back at the beginning of the item, you can register to receive an AVPlayerItemDidPlayToEndTimeNotification from the item. In the notification’s callback method, invoke seekToTime: with the argument kCMTimeZero.
      */
-    [self->player seekToTime:kCMTimeZero];
+    [self.player seekToTime:kCMTimeZero];
 }
 
 -(void)dealloc{
-    [self->player removeTimeObserver:self->timeObserverToken];
-    self->timeObserverToken = nil;
-    [self->playerLayer removeFromSuperlayer];
+    [self.player removeTimeObserver:self.timeObserverToken];
+    self.timeObserverToken = nil;
+    [self.playerLayer removeFromSuperlayer];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.playerItem cancelPendingSeeks];
     [self.playerItem.asset cancelLoading];
