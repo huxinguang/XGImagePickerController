@@ -95,6 +95,7 @@
         self.playBtn.hidden = YES;
     }
     self.bottomBar.hidden = YES;
+    self.bottomBar.rightTimeLabel.text = [self getNewTimeFromSecond:item.asset.duration];
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
     __weak typeof (self) weakSelf = self;
@@ -229,7 +230,6 @@
 - (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime{
     if (!self.sliderIsSliding) {
         self.bottomBar.leftTimeLabel.text = [self getNewTimeFromSecond:CMTimeGetSeconds(currentTime)];
-        self.bottomBar.rightTimeLabel.text = [self getNewTimeFromSecond:CMTimeGetSeconds(totalTime)];
         self.bottomBar.slider.value = CMTimeGetSeconds(currentTime)/CMTimeGetSeconds(totalTime);
     }
 }
