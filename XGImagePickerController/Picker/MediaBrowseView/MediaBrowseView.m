@@ -271,7 +271,6 @@
         NSInteger currentPage = self.currentPage;
         if(targetContentOffset->x != scrollView.frame.size.width*currentPage){
             [cell pauseAndResetPlayer];
-            NSLog(@"++++++");
         }
     }
 }

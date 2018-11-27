@@ -86,7 +86,7 @@
 }
 
 
-- (void)onDeleteClick:(UIButton *)sender{
+- (void)onDeleteBtnClick:(UIButton *)sender{
     /*
      performBatchUpdates并不会调用代理方法collectionView: cellForItemAtIndexPath，
      如果用删除按钮的tag来标识则tag不会更新,所以此处没有用tag
@@ -114,7 +114,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     SelectedAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SelectedAssetCell class]) forIndexPath:indexPath];
     cell.model = self.assets[indexPath.item];
-    [cell.deleteBtn addTarget:self action:@selector(onDeleteClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.deleteBtn addTarget:self action:@selector(onDeleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 

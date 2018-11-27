@@ -38,5 +38,4 @@
 - (void)playerDidFinishPlay:(PlayerManager *)manager;
 - (void)playerDidFailToPlay:(PlayerManager *)manager;
 
-
 @end
