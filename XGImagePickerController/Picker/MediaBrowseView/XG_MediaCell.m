@@ -1,23 +1,23 @@
 //
-//  MediaCell.m
+//  XG_MediaCell.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/10/30.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "MediaCell.h"
-#import "PickerMacro.h"
+#import "XG_MediaCell.h"
+#import "XG_PickerMacro.h"
 #import "UIView+XGAdd.h"
-#import "AssetPickerManager.h"
-#import "AssetModel.h"
+#import "XG_AssetPickerManager.h"
+#import "XG_AssetModel.h"
 
 
-@interface MediaCell()<UIScrollViewDelegate,PlayerManagerDelegate,BottomBarDelegate>
+@interface XG_MediaCell()<UIScrollViewDelegate,XG_PlayerManagerDelegate,BottomBarDelegate>
 
 @end
 
-@implementation MediaCell
+@implementation XG_MediaCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -87,7 +87,7 @@
 
 #pragma mark - Setter
 
-- (void)setItem:(AssetModel *)item{
+- (void)setItem:(XG_AssetModel *)item{
     _item = item;
     if (item.asset.mediaType == PHAssetMediaTypeVideo) {
         self.playBtn.hidden = NO;
@@ -99,7 +99,7 @@
     [self.scrollView setZoomScale:1.0 animated:NO];
     self.scrollView.maximumZoomScale = 1.0;
     __weak typeof (self) weakSelf = self;
-    [[AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(id photo, NSDictionary *info) {
+    [[XG_AssetPickerManager manager]getPhotoWithAsset:item.asset completion:^(id photo, NSDictionary *info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (item.asset.mediaType == PHAssetMediaTypeImage) {
                 weakSelf.scrollView.maximumZoomScale = 3;
@@ -182,12 +182,12 @@
     /*
      在这里设置代理，解决cell复用引起的部分视频播放时slider进度和播放时间不更新的问题
      */
-    [PlayerManager shareInstance].delegate = self;
+    [XG_PlayerManager shareInstance].delegate = self;
     __weak typeof (self) weakSelf = self;
-    [[AssetPickerManager manager]getVideoWithAsset:self.item.asset completion:^(AVPlayerItem *playerItem, NSDictionary *info) {
+    [[XG_AssetPickerManager manager]getVideoWithAsset:self.item.asset completion:^(AVPlayerItem *playerItem, NSDictionary *info) {
         if (playerItem) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[PlayerManager shareInstance] playWithItem:playerItem onLayer:weakSelf.imageView.layer];
+                [[XG_PlayerManager shareInstance] playWithItem:playerItem onLayer:weakSelf.imageView.layer];
             });
         }
     }];
@@ -205,20 +205,20 @@
     self.bottomBar.hidden = YES;
     self.bottomBar.slider.value = 0;
     self.sliderIsSliding = NO;
-    [PlayerManager shareInstance].delegate = nil;//一定要在这里置为nil
-    [[PlayerManager shareInstance] resetPlayer];
+    [XG_PlayerManager shareInstance].delegate = nil;//一定要在这里置为nil
+    [[XG_PlayerManager shareInstance] resetPlayer];
     
 }
 
 - (void)pausePlayer{
     self.playBtn.hidden = NO;
     self.bottomBar.hidden = YES;
-    [[PlayerManager shareInstance] pause];
+    [[XG_PlayerManager shareInstance] pause];
 }
 
-#pragma mark - PlayerManagerDelegate
+#pragma mark - XG_PlayerManagerDelegate
 
-- (void)playerDidFinishPlay:(PlayerManager *)manager{
+- (void)playerDidFinishPlay:(XG_PlayerManager *)manager{
     self.playBtn.hidden = NO;
     self.bottomBar.hidden = YES;
     self.bottomBar.slider.value = 0.0;
@@ -267,12 +267,12 @@
 }
 
 - (void)slideDidEndWithValue:(float)value{
-    CMTime duration = [PlayerManager shareInstance].playerItem.duration;
+    CMTime duration = [XG_PlayerManager shareInstance].playerItem.duration;
     Float64 totalSeconds = CMTimeGetSeconds(duration);
     Float64 currentSeconds = totalSeconds*value;
-    CMTimeScale timescale = [PlayerManager shareInstance].playerItem.currentTime.timescale;
+    CMTimeScale timescale = [XG_PlayerManager shareInstance].playerItem.currentTime.timescale;
     CMTime current = CMTimeMake(currentSeconds*timescale, timescale);
-    [[PlayerManager shareInstance] seekSmoothlyToTime:current];
+    [[XG_PlayerManager shareInstance] seekSmoothlyToTime:current];
     self.sliderIsSliding = NO;
 }
 

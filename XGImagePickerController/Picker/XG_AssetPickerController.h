@@ -1,5 +1,5 @@
 //
-//  AssetPickerController.h
+//  XG_AssetPickerController.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
-#import "PickerMacro.h"
-#import "AssetPickerManager.h"
+#import "XG_RootViewController.h"
+#import "XG_PickerMacro.h"
+#import "XG_AssetPickerManager.h"
 
 #define kItemMargin 4                                                                                                 //item间距
 #define kItemsAtEachLine 3                                                                                            //每行显示多少个
@@ -22,34 +22,34 @@
 #define kTitleViewArrowSize CGSizeMake(7.0, 7.0)                                                                      //三角图片大小
 #define kTitleViewTitleFont [UIFont boldSystemFontOfSize:16]                                                          //标题字体大小
 
-@class AlbumModel;
+@class XG_AlbumModel;
 @class NavTitleView;
-@class AssetModel;
-@protocol AssetPickerControllerDelegate;
+@class XG_AssetModel;
+@protocol XG_AssetPickerControllerDelegate;
 @class AssetPickerOptions;
 
-@interface AssetPickerController : RootViewController
+@interface XG_AssetPickerController : XG_RootViewController
 
-@property (nonatomic, weak) id<AssetPickerControllerDelegate> delegate;
+@property (nonatomic, weak) id<XG_AssetPickerControllerDelegate> delegate;
 @property (nonatomic, strong) AssetPickerOptions *pickerOptions;
 
 
--(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<AssetPickerControllerDelegate>)delegate;
+-(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate;
 
 @end
 
-@protocol AssetPickerControllerDelegate <NSObject>
+@protocol XG_AssetPickerControllerDelegate <NSObject>
 @optional
 
-- (void)assetPickerController:(AssetPickerController *)picker didFinishPickingAssets:(NSArray<AssetModel *> *)assets;
-- (void)assetPickerControllerDidCancel:(AssetPickerController *)picker;
+- (void)XG_AssetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+- (void)XG_AssetPickerControllerDidCancel:(XG_AssetPickerController *)picker;
 
 @end
 
 @interface AssetPickerOptions: NSObject
 @property (nonatomic, assign) NSInteger maxAssetsCount;                              //最大可选数量
 @property (nonatomic, assign) BOOL videoPickable;                                    //是否可选视频
-@property (nonatomic, strong) NSMutableArray<AssetModel *> *pickedAssetModels;       //已选asset
+@property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *pickedXG_AssetModels;       //已选asset
 @end
 
 

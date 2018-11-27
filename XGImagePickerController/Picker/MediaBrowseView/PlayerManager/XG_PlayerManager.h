@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-@protocol PlayerManagerDelegate;
+@protocol XG_PlayerManagerDelegate;
 
-@interface PlayerManager : NSObject
+@interface XG_PlayerManager : NSObject
 
 @property (nonatomic, assign) BOOL loopPlay;
-@property (nonatomic, weak) id<PlayerManagerDelegate> delegate;
+@property (nonatomic, weak) id<XG_PlayerManagerDelegate> delegate;
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 @property (nonatomic, assign) BOOL isSeekInProgress;
 
@@ -28,14 +28,14 @@
 @end
 
 
-@protocol PlayerManagerDelegate<NSObject>
+@protocol XG_PlayerManagerDelegate<NSObject>
 @optional
-- (void)playerReadyToPlay:(PlayerManager *)manager;
+- (void)playerReadyToPlay:(XG_PlayerManager *)manager;
 - (void)playerDidLoadToProgress:(float)progress;
 - (void)playerDidPlayToTime:(CMTime)currentTime totalTime:(CMTime)totalTime;
 - (void)playerPlaybackBufferEmpty;
 - (void)playerPlaybackLikelyToKeepUp;
-- (void)playerDidFinishPlay:(PlayerManager *)manager;
-- (void)playerDidFailToPlay:(PlayerManager *)manager;
+- (void)playerDidFinishPlay:(XG_PlayerManager *)manager;
+- (void)playerDidFailToPlay:(XG_PlayerManager *)manager;
 
 @end

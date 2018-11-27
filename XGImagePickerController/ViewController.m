@@ -7,19 +7,19 @@
 //
 
 #import "ViewController.h"
-#import "AssetPickerController.h"
+#import "XG_AssetPickerController.h"
 #import "SelectedAssetCell.h"
-#import "AssetModel.h"
+#import "XG_AssetModel.h"
 
 #define kCollectionViewSectionInsetLeftRight 4
 #define kItemCountAtEachRow 3
 #define kMinimumInteritemSpacing 4
 #define kMinimumLineSpacing 4
 
-@interface ViewController ()<AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,AssetPickerControllerDelegate>
+@interface ViewController ()<XG_AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,XG_AssetPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray<AssetModel *> *assets;
-@property (nonatomic, strong) AssetModel *placeholderModel;
+@property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *assets;
+@property (nonatomic, strong) XG_AssetModel *placeholderModel;
 
 @end
 
@@ -37,16 +37,16 @@
     self.collectionView.collectionViewLayout = layout;
 }
 
--(NSMutableArray<AssetModel *> *)assets{
+-(NSMutableArray<XG_AssetModel *> *)assets{
     if (!_assets) {
         _assets = @[self.placeholderModel].mutableCopy;
     }
     return _assets;
 }
 
--(AssetModel *)placeholderModel{
+-(XG_AssetModel *)placeholderModel{
     if (!_placeholderModel) {
-        _placeholderModel = [[AssetModel alloc]init];
+        _placeholderModel = [[XG_AssetModel alloc]init];
         _placeholderModel.isPlaceholder = YES;
     }
     return _placeholderModel;
@@ -55,12 +55,12 @@
 
 - (void)openAlbum{
     __weak typeof (self) weakSelf = self;
-    [[AssetPickerManager manager] handleAuthorizationWithCompletion:^(AuthorizationStatus aStatus) {
+    [[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(AuthorizationStatus aStatus) {
         __strong typeof (weakSelf) strongSelf = weakSelf;
         if (!strongSelf) return;
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (aStatus == AuthorizationStatusAuthorized) {
-                [strongSelf showAssetPickerController];
+                [strongSelf showXG_AssetPickerController];
             }else{
                 [strongSelf showAlert];
             }
@@ -68,14 +68,14 @@
     }];
 }
 
-- (void)showAssetPickerController{
+- (void)showXG_AssetPickerController{
     AssetPickerOptions *options = [[AssetPickerOptions alloc]init];
     options.maxAssetsCount = 9;
     options.videoPickable = YES;
-    NSMutableArray<AssetModel *> *array = [self.assets mutableCopy];
+    NSMutableArray<XG_AssetModel *> *array = [self.assets mutableCopy];
     [array removeLastObject];//去除占位model
-    options.pickedAssetModels = array;
-    AssetPickerController *photoPickerVc = [[AssetPickerController alloc] initWithOptions:options delegate:self];
+    options.pickedXG_AssetModels = array;
+    XG_AssetPickerController *photoPickerVc = [[XG_AssetPickerController alloc] initWithOptions:options delegate:self];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -121,15 +121,15 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    AssetModel *model = self.assets[indexPath.item];
+    XG_AssetModel *model = self.assets[indexPath.item];
     if (model.isPlaceholder) {
         [self openAlbum];
     }
 }
 
-#pragma mark - AssetPickerControllerDelegate
+#pragma mark - XG_AssetPickerControllerDelegate
 
-- (void)assetPickerController:(AssetPickerController *)picker didFinishPickingAssets:(NSArray<AssetModel *> *)assets{
+- (void)XG_AssetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets{
     NSMutableArray *newAssets = assets.mutableCopy;
     if (newAssets.count < 9 ) {
         [newAssets addObject:self.placeholderModel];
@@ -138,7 +138,7 @@
     [self.collectionView reloadData];
 }
 
-- (void)assetPickerControllerDidCancel:(AssetPickerController *)picker{
+- (void)XG_AssetPickerControllerDidCancel:(XG_AssetPickerController *)picker{
     
 }
 

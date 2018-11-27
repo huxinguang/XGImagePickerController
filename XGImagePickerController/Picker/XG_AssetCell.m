@@ -1,31 +1,31 @@
 //
-//  AssetCell.m
+//  XG_AssetCell.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "AssetCell.h"
-#import "AssetModel.h"
-#import "UIView+ScaleAnimation.h"
-#import "AssetPickerManager.h"
+#import "XG_AssetCell.h"
+#import "XG_AssetModel.h"
+#import "UIView+XGScaleAnimation.h"
+#import "XG_AssetPickerManager.h"
 
-@interface AssetCell ()
+@interface XG_AssetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLength;
 
 @end
 
-@implementation AssetCell
+@implementation XG_AssetCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.timeLength.font = [UIFont boldSystemFontOfSize:11];
 }
 
-- (void)setModel:(AssetModel *)model {
+- (void)setModel:(XG_AssetModel *)model {
     _model = model;
     if (model.isPlaceholder) {
         _selectImageView.hidden = YES;
@@ -66,7 +66,7 @@
                 break;
         }
         
-        [[AssetPickerManager manager] getPhotoWithAsset:model.asset photoWidth:self.frame.size.width completion:^(UIImage *photo, NSDictionary *info) {
+        [[XG_AssetPickerManager manager] getPhotoWithAsset:model.asset photoWidth:self.frame.size.width completion:^(UIImage *photo, NSDictionary *info) {
             self.imageView.image = photo;
         }];
         self.selectPhotoButton.selected = model.picked;

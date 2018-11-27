@@ -1,19 +1,19 @@
 //
-//  RootViewController.m
+//  XG_RootViewController.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/11.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "RootViewController.h"
-#import "PickerMacro.h"
+#import "XG_RootViewController.h"
+#import "XG_PickerMacro.h"
 
-@interface RootViewController ()
+@interface XG_RootViewController ()
 
 @end
 
-@implementation RootViewController
+@implementation XG_RootViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -40,16 +40,16 @@
 }
 
 - (void)configTitleView{
-    self.titleView = [[XGTitleView alloc]initWithFrame:CGRectMake(0, 0, kAppNavigationTitleViewMaxWidth, kAppNavigationTitleViewHeight) style:XGTitleViewStyleNormal];
+    self.titleView = [[XG_TitleView alloc]initWithFrame:CGRectMake(0, 0, kAppNavigationTitleViewMaxWidth, kAppNavigationTitleViewHeight) style:XG_TitleViewStyleNormal];
     self.navigationItem.titleView = self.titleView;
 }
 
 //若不要返回按钮或者想替换成其他按钮可重写此方法
 - (void)configLeftBarButtonItem{
-    XGBarButtonConfiguration *config = [[XGBarButtonConfiguration alloc]init];
-    config.type = XGBarButtonTypeBack;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeBack;
     config.normalImageName = @"navi_back";
-    self.leftBarButton = [[XGBarButton alloc]initWithConfiguration:config];
+    self.leftBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     [self.leftBarButton addTarget:self action:@selector(onLeftBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftBarButton];
 }

@@ -1,36 +1,36 @@
 //
-//  XGBarButton.m
+//  XG_BarButton.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/11.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "XGBarButton.h"
-@implementation XGBarButtonConfiguration
+#import "XG_BarButton.h"
+@implementation XG_BarButtonConfiguration
 
 @end
 
-@implementation XGBarButton
+@implementation XG_BarButton
 
-- (instancetype)initWithConfiguration:(XGBarButtonConfiguration *)config{
+- (instancetype)initWithConfiguration:(XG_BarButtonConfiguration *)config{
     if (self = [super init]) {
         self.configuration = config;
     }
     return self;
 }
 
-- (void)setConfiguration:(XGBarButtonConfiguration *)configuration{
+- (void)setConfiguration:(XG_BarButtonConfiguration *)configuration{
     if (!configuration) {
         return;
     }
     switch (configuration.type) {
-        case XGBarButtonTypeBack:
+        case XG_BarButtonTypeBack:
             if (configuration.normalImageName) {
                 [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
             }
             break;
-        case XGBarButtonTypeImage:
+        case XG_BarButtonTypeImage:
             if (configuration.normalImageName) {
                 [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
             }
@@ -41,7 +41,7 @@
                 [self setImage:[UIImage imageNamed:configuration.highlightedImageName] forState:UIControlStateHighlighted];
             }
             break;
-        case XGBarButtonTypeText:
+        case XG_BarButtonTypeText:
             [self setTitle:configuration.titleString ? configuration.titleString: @""forState:UIControlStateNormal];
             self.titleLabel.font = configuration.titleFont;
             if (configuration.normalColor) {

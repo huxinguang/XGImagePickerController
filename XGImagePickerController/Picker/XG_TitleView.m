@@ -1,22 +1,22 @@
 //
-//  XGTitleView.m
+//  XG_TitleView.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/11.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "XGTitleView.h"
-#import "PickerMacro.h"
+#import "XG_TitleView.h"
+#import "XG_PickerMacro.h"
 
-@interface XGTitleView()
-@property (nonatomic, assign) XGTitleViewStyle style;
+@interface XG_TitleView()
+@property (nonatomic, assign) XG_TitleViewStyle style;
 @end
 
-@implementation XGTitleView
+@implementation XG_TitleView
 
 
-- (instancetype)initWithFrame:(CGRect)frame style:(XGTitleViewStyle)style{
+- (instancetype)initWithFrame:(CGRect)frame style:(XG_TitleViewStyle)style{
     if (self = [super initWithFrame:frame]) {
         self.style = style;
         [self buildSubViews];

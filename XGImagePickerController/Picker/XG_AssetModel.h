@@ -1,5 +1,5 @@
 //
-//  AssetModel.h
+//  XG_AssetModel.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
 
-@interface AssetModel : NSObject
+@interface XG_AssetModel : NSObject
 @property (nonatomic, strong) PHAsset *asset;            // PHAsset
 @property (nonatomic, getter=isPicked) BOOL picked;      // 选中状态 默认NO
 @property (nonatomic, assign) int number;                // 数字

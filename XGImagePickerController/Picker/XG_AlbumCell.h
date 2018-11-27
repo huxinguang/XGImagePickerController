@@ -1,5 +1,5 @@
 //
-//  AlbumCell.h
+//  XG_AlbumCell.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AlbumModel.h"
+#import "XG_AlbumModel.h"
 
-@interface AlbumCell : UITableViewCell
+@interface XG_AlbumCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *albumNameLabel;
 
-@property (nonatomic, strong) AlbumModel *model;
+@property (nonatomic, strong) XG_AlbumModel *model;
 @end

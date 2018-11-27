@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  XG_RootViewController.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/11.
@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XGBarButton.h"
-#import "XGTitleView.h"
+#import "XG_BarButton.h"
+#import "XG_TitleView.h"
 
-@interface RootViewController : UIViewController
-@property (nonatomic, strong) XGTitleView *titleView;
-@property (nonatomic, strong) XGBarButton *leftBarButton;
-@property (nonatomic, strong) XGBarButton *rightBarButton;
+@interface XG_RootViewController : UIViewController
+@property (nonatomic, strong) XG_TitleView *titleView;
+@property (nonatomic, strong) XG_BarButton *leftBarButton;
+@property (nonatomic, strong) XG_BarButton *rightBarButton;
 @property (nonatomic, assign) BOOL isStatusBarHidden;
 
 

@@ -1,5 +1,5 @@
 //
-//  MediaBrowseView.h
+//  XG_MediaBrowseView.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/10/30.
@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PickerMacro.h"
-#import "AssetModel.h"
-#import "AssetCell.h"
+#import "XG_PickerMacro.h"
+#import "XG_AssetModel.h"
+#import "XG_AssetCell.h"
 
-@interface MediaBrowseView : UIView
+@interface XG_MediaBrowseView : UIView
 
-@property (nonatomic, readonly) NSArray<AssetModel *> *items;
+@property (nonatomic, readonly) NSArray<XG_AssetModel *> *items;
 @property (nonatomic, readonly) NSInteger currentPage;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
-- (instancetype)initWithItems:(NSArray<AssetModel *> *)items;
+- (instancetype)initWithItems:(NSArray<XG_AssetModel *> *)items;
 
 - (void)presentCellImageAtIndexPath:(NSIndexPath *)indexpath
                  FromCollectionView:(UICollectionView *)collectV

@@ -1,5 +1,5 @@
 //
-//  XGBarButton.h
+//  XG_BarButton.h
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/11.
@@ -9,13 +9,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger,XGBarButtonType) {
-    XGBarButtonTypeBack,
-    XGBarButtonTypeImage,
-    XGBarButtonTypeText
+typedef NS_ENUM(NSInteger,XG_BarButtonType) {
+    XG_BarButtonTypeBack,
+    XG_BarButtonTypeImage,
+    XG_BarButtonTypeText
 };
 
-@interface XGBarButtonConfiguration : NSObject
+@interface XG_BarButtonConfiguration : NSObject
 
 @property (nonatomic, copy)NSString *normalImageName;
 @property (nonatomic, copy)NSString *selectedImageName;
@@ -26,15 +26,15 @@ typedef NS_ENUM(NSInteger,XGBarButtonType) {
 @property (nonatomic, strong)UIColor *selectedColor;
 @property (nonatomic, strong)UIColor *disabledColor;
 @property (nonatomic, strong)UIColor *highlightedColor;
-@property (nonatomic, assign)XGBarButtonType type;
+@property (nonatomic, assign)XG_BarButtonType type;
 
 @end
 
 
-@interface XGBarButton : UIButton
+@interface XG_BarButton : UIButton
 
-@property (nonatomic, strong)XGBarButtonConfiguration *configuration;
+@property (nonatomic, strong)XG_BarButtonConfiguration *configuration;
 
-- (instancetype)initWithConfiguration:(XGBarButtonConfiguration *)config;
+- (instancetype)initWithConfiguration:(XG_BarButtonConfiguration *)config;
 
 @end

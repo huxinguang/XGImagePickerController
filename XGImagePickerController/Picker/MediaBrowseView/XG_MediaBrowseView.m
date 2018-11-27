@@ -1,16 +1,16 @@
 //
-//  MediaBrowseView.m
+//  XG_MediaBrowseView.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/10/30.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "MediaBrowseView.h"
-#import "MediaCell.h"
+#import "XG_MediaBrowseView.h"
+#import "XG_MediaCell.h"
 #import "UIView+XGAdd.h"
 
-@interface MediaBrowseView()<UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
+@interface XG_MediaBrowseView()<UICollectionViewDelegate,UICollectionViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIView *fromView;
 @property (nonatomic, weak) UIView *toContainerView;
 @property (nonatomic, strong) UIView *blackBackground;
@@ -22,9 +22,9 @@
 
 @end
 
-@implementation MediaBrowseView
+@implementation XG_MediaBrowseView
 
-- (instancetype)initWithItems:(NSArray<AssetModel *> *)items{
+- (instancetype)initWithItems:(NSArray<XG_AssetModel *> *)items{
     self = [super init];
     if (items.count == 0) return nil;
     self.backgroundColor = [UIColor clearColor];
@@ -67,7 +67,7 @@
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        [_collectionView registerClass:[MediaCell class] forCellWithReuseIdentifier:NSStringFromClass([MediaCell class])];
+        [_collectionView registerClass:[XG_MediaCell class] forCellWithReuseIdentifier:NSStringFromClass([XG_MediaCell class])];
     }
     return _collectionView;
 }
@@ -95,7 +95,7 @@
 }
 
 - (void)onSingleTap:(UITapGestureRecognizer *)gesture{
-    MediaCell *cell = [self currentCell];
+    XG_MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo && cell.playBtn.hidden) {
         [cell pauseAndResetPlayer];
         return;
@@ -105,7 +105,7 @@
 
 - (void)onDoubleTap:(UITapGestureRecognizer *)gesture{
     if (!_isPresented) return;
-    MediaCell *cell = [self currentCell];
+    XG_MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
         [cell pausePlayer];
         return;
@@ -129,7 +129,7 @@
     if (!toContainer) return;
     
     _fromCollectionView = collectV;
-    AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:indexpath];
+    XG_AssetCell *assetCell = (XG_AssetCell *)[_fromCollectionView cellForItemAtIndexPath:indexpath];
     _fromView = assetCell.imageView;
     _toContainerView = toContainer;
     _fromItemIndex = indexpath.item;
@@ -142,7 +142,7 @@
     
     [UIView setAnimationsEnabled:YES];
     
-    MediaCell *cell = [self currentCell];
+    XG_MediaCell *cell = [self currentCell];
     CGRect fromFrame = [_fromView convertRect:_fromView.bounds toView:cell.mediaContainerView];
     
     cell.mediaContainerView.clipsToBounds = NO;
@@ -168,14 +168,14 @@
     [UIView setAnimationsEnabled:YES];
     self.blackBackground.alpha = 0;
     NSInteger currentPage = self.currentPage;
-    MediaCell *cell = [self currentCell];
+    XG_MediaCell *cell = [self currentCell];
     cell.imageView.clipsToBounds = YES;
 
     UIView *fromView = nil;
     if (self.fromItemIndex-1 == currentPage) {
         fromView = self.fromView;
     } else {
-        AssetCell *assetCell = (AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage+1 inSection:0]];
+        XG_AssetCell *assetCell = (XG_AssetCell *)[_fromCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:currentPage+1 inSection:0]];
         fromView = assetCell.imageView;
     }
     
@@ -237,8 +237,8 @@
 }
 
 
-- (MediaCell *)currentCell{
-    return (MediaCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentPage inSection:0]];
+- (XG_MediaCell *)currentCell{
+    return (XG_MediaCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentPage inSection:0]];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -248,7 +248,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    MediaCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([MediaCell class]) forIndexPath:indexPath];
+    XG_MediaCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XG_MediaCell class]) forIndexPath:indexPath];
     cell.item = self.items[indexPath.row];
     return cell;
 }
@@ -266,7 +266,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    MediaCell *cell = [self currentCell];
+    XG_MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
         NSInteger currentPage = self.currentPage;
         if(targetContentOffset->x != scrollView.frame.size.width*currentPage){

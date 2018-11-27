@@ -1,23 +1,23 @@
 //
-//  AssetPickerManager.m
+//  XG_AssetPickerManager.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "AssetPickerManager.h"
-#import "AssetModel.h"
-#import "AlbumModel.h"
+#import "XG_AssetPickerManager.h"
+#import "XG_AssetModel.h"
+#import "XG_AlbumModel.h"
 
-@interface AssetPickerManager ()
+@interface XG_AssetPickerManager ()
 
 @end
 
-@implementation AssetPickerManager
+@implementation XG_AssetPickerManager
 
 + (instancetype)manager {
-    static AssetPickerManager *manager;
+    static XG_AssetPickerManager *manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
@@ -60,9 +60,9 @@
     }];
 }
 
-#pragma mark - Get Album
+#pragma mark - Get Albums
 
-- (void)getAllAlbums:(BOOL)videoPickable completion:(void (^)(NSArray<AlbumModel *> *))completion{
+- (void)getAllAlbums:(BOOL)videoPickable completion:(void (^)(NSArray<XG_AlbumModel *> *))completion{
     NSMutableArray *albumArr = [NSMutableArray array];
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
     if (!videoPickable) option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
@@ -93,16 +93,6 @@
     if (completion) completion(albumArr);
 }
 
-#pragma mark - Get Asset
-
-- (void)getAssetsFromFetchResult:(id)result allowPickingVideo:(BOOL)allowPickingVideo completion:(void (^)(NSArray<AssetModel *> *))completion {
-    NSMutableArray *assetArr = [NSMutableArray array];
-    for (PHAsset *asset in result) {
-        [assetArr addObject:[AssetModel modelWithAsset:asset videoPickable:allowPickingVideo]];
-    }
-    if (completion) completion(assetArr);
-}
-
 #pragma mark - Get Photo
 
 - (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(id, NSDictionary *))completion {
@@ -116,7 +106,7 @@
 }
 
 - (void)getDataWithAsset:(PHAsset *)asset completion:(void (^)(id, NSDictionary *))completion{
-    //动图
+    //动图(Aninated)
     [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         if (completion) completion(imageData,info);
     }];
@@ -137,7 +127,7 @@
     }];
 }
 
-- (void)getPostImageWithAlbumModel:(AlbumModel *)model completion:(void (^)(UIImage *))completion {
+- (void)getPostImageWithXG_AlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *))completion {
     [self getPhotoWithAsset:[model.result firstObject] photoWidth:60 completion:^(UIImage *photo, NSDictionary *info) {
         if (completion) completion(photo);
     }];
@@ -153,14 +143,14 @@
 
 #pragma mark - Private Method
 
-- (AlbumModel *)modelWithResult:(PHFetchResult *)result name:(NSString *)name videoPickable:(BOOL)videoPickable{
-    AlbumModel *model = [[AlbumModel alloc] init];
+- (XG_AlbumModel *)modelWithResult:(PHFetchResult *)result name:(NSString *)name videoPickable:(BOOL)videoPickable{
+    XG_AlbumModel *model = [[XG_AlbumModel alloc] init];
     model.result = result;
     model.name = name;
     
     NSMutableArray *assetArr = [NSMutableArray array];
     for (PHAsset *asset in result) {
-        [assetArr addObject:[AssetModel modelWithAsset:asset videoPickable:videoPickable]];
+        [assetArr addObject:[XG_AssetModel modelWithAsset:asset videoPickable:videoPickable]];
     }
     model.assetArray = assetArr;
     return model;

@@ -12,7 +12,7 @@ typedef enum : NSUInteger {
     ScaleAnimationToSmaller,
 } ScaleAnimationType;
 
-@interface UIView (ScaleAnimation)
+@interface UIView (XGScaleAnimation)
 
 + (void)showScaleAnimationWithLayer:(CALayer *)layer type:(ScaleAnimationType)type;
 

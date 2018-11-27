@@ -6,7 +6,7 @@
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "PlayerManager.h"
+#import "XG_PlayerManager.h"
 
 /*
    ReadMe:
@@ -41,7 +41,7 @@
 
 static void *PlayerStatusObservationContext = &PlayerStatusObservationContext;
 
-@interface PlayerManager()
+@interface XG_PlayerManager()
 
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
@@ -50,14 +50,14 @@ static void *PlayerStatusObservationContext = &PlayerStatusObservationContext;
 
 @end
 
-@implementation PlayerManager
+@implementation XG_PlayerManager
 
-static PlayerManager *manager = nil;
+static XG_PlayerManager *manager = nil;
 
 + (instancetype)shareInstance{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[PlayerManager alloc]init];
+        manager = [[XG_PlayerManager alloc]init];
     });
     return manager;
 }

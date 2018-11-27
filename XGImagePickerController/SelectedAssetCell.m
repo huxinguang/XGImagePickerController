@@ -7,8 +7,8 @@
 //
 
 #import "SelectedAssetCell.h"
-#import "AssetModel.h"
-#import "AssetPickerManager.h"
+#import "XG_AssetModel.h"
+#import "XG_AssetPickerManager.h"
 #import "UIView+XGAdd.h"
 
 @implementation SelectedAssetCell
@@ -18,7 +18,7 @@
     
 }
 
-- (void)setModel:(AssetModel *)model{
+- (void)setModel:(XG_AssetModel *)model{
     _model = model;
     if (_model.isPlaceholder) {
         self.imgView.image = [UIImage imageNamed:@"add"];
@@ -26,7 +26,7 @@
         self.deleteBtn.hidden = YES;
     }else{
         self.deleteBtn.hidden = NO;
-        [[AssetPickerManager manager] getPhotoWithAsset:_model.asset photoWidth:self.frame.size.width completion:^(UIImage *photo, NSDictionary *info) {
+        [[XG_AssetPickerManager manager] getPhotoWithAsset:_model.asset photoWidth:self.frame.size.width completion:^(UIImage *photo, NSDictionary *info) {
             self.imgView.image = photo;
         }];
         if (_model.asset.mediaType == PHAssetMediaTypeVideo) {

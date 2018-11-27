@@ -1,26 +1,26 @@
 //
-//  AlbumCell.m
+//  XG_AlbumCell.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "AlbumCell.h"
-#import "AssetPickerManager.h"
+#import "XG_AlbumCell.h"
+#import "XG_AssetPickerManager.h"
 
-@implementation AlbumCell
+@implementation XG_AlbumCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
 
-- (void)setModel:(AlbumModel *)model{
+- (void)setModel:(XG_AlbumModel *)model{
     _model = model;
     self.albumNameLabel.text = [NSString stringWithFormat:@"%@(%ld)",model.name,model.result.count];
     if (model.result.count > 0) {
-        [[AssetPickerManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
+        [[XG_AssetPickerManager manager] getPostImageWithXG_AlbumModel:model completion:^(UIImage *postImage) {
             self.imgView.image = postImage;
         }];
     }else{

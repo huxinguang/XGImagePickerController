@@ -1,56 +1,56 @@
 //
-//  AssetPickerController.m
+//  XG_AssetPickerController.m
 //  MyApp
 //
 //  Created by huxinguang on 2018/9/26.
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "AssetPickerController.h"
-#import "AssetCell.h"
-#import "AssetModel.h"
-#import "XGTitleView.h"
-#import "XGBarButton.h"
-#import "AlbumCell.h"
+#import "XG_AssetPickerController.h"
+#import "XG_AssetCell.h"
+#import "XG_AssetModel.h"
+#import "XG_TitleView.h"
+#import "XG_BarButton.h"
+#import "XG_AlbumCell.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "MediaBrowseView.h"
+#import "XG_MediaBrowseView.h"
 #import "FLAnimatedImage.h"
 
-@interface AssetPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,PHPhotoLibraryChangeObserver>
+@interface XG_AssetPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate,PHPhotoLibraryChangeObserver>
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray<AssetModel *> *assetArr;
+@property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *assetArr;
 @property (nonatomic, strong) UIButton *bottomConfirmBtn;
 @property (nonatomic, strong) UITableView *albumTableView;
 @property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) NSMutableArray<AlbumModel *> *albumArr;
+@property (nonatomic, strong) NSMutableArray<XG_AlbumModel *> *albumArr;
 @property (nonatomic, strong) UIControl *mask;
 @property (nonatomic, strong) NavTitleView *ntView;
 @property (nonatomic, assign) CGFloat containerViewHeight;
 @property (nonatomic, strong) NSIndexPath *currentAlbumIndexpath;
-@property (nonatomic, strong) AssetModel *placeholderModel; //相机占位model
+@property (nonatomic, strong) XG_AssetModel *placeholderModel; //相机占位model
 @property (nonatomic, strong) NSMutableArray<NSIndexPath *> *albumSelectedIndexpaths;
 @property (nonatomic, strong) NSLayoutConstraint *containerView_bottom;
 @property (nonatomic, assign) BOOL hideStatusBar;
 
 @end
 
-@implementation AssetPickerController
+@implementation XG_AssetPickerController
 @synthesize assetArr = _assetArr;//同时重写setter/getter方法需要这样
 
--(AssetModel *)placeholderModel{
+-(XG_AssetModel *)placeholderModel{
     if (_placeholderModel == nil) {
-        _placeholderModel = [[AssetModel alloc]init];
+        _placeholderModel = [[XG_AssetModel alloc]init];
         _placeholderModel.isPlaceholder = YES;
     }
     return _placeholderModel;
 }
 
--(NSMutableArray<AlbumModel *> *)albumArr{
+-(NSMutableArray<XG_AlbumModel *> *)albumArr{
     if (_albumArr == nil) _albumArr = [NSMutableArray array];
     return _albumArr;
 }
 
--(NSMutableArray<AssetModel *> *)assetArr{
+-(NSMutableArray<XG_AssetModel *> *)assetArr{
     if (_assetArr == nil) _assetArr = [NSMutableArray array];
     return _assetArr;
 }
@@ -60,7 +60,7 @@
     return _albumSelectedIndexpaths;
 }
 
--(void)setAssetArr:(NSMutableArray<AssetModel *> *)assetArr{
+-(void)setAssetArr:(NSMutableArray<XG_AssetModel *> *)assetArr{
     _assetArr = assetArr;
     //插入相机占位
     if (![_assetArr containsObject:self.placeholderModel]) {
@@ -68,9 +68,9 @@
     }
 }
 
-- (AssetModel *)getAssetModelAtCurrentAlbumWithIdentifier:(NSString *)identifier{
-    AssetModel *model = nil;
-    for (AssetModel *am in self.albumArr[self.currentAlbumIndexpath.row].assetArray) {
+- (XG_AssetModel *)getXG_AssetModelAtCurrentAlbumWithIdentifier:(NSString *)identifier{
+    XG_AssetModel *model = nil;
+    for (XG_AssetModel *am in self.albumArr[self.currentAlbumIndexpath.row].assetArray) {
         if ([am.asset.localIdentifier isEqualToString:identifier]) {
             model = am;
         }
@@ -78,10 +78,10 @@
     return model;
 }
 
-- (AssetModel *)getAssetModelAtAllAlbumsWithIdentifier:(NSString *)identifier{
-    AssetModel *model = nil;
-    for (AlbumModel *albumItem in self.albumArr) {
-        for (AssetModel *assetItem in albumItem.assetArray) {
+- (XG_AssetModel *)getXG_AssetModelAtAllAlbumsWithIdentifier:(NSString *)identifier{
+    XG_AssetModel *model = nil;
+    for (XG_AlbumModel *albumItem in self.albumArr) {
+        for (XG_AssetModel *assetItem in albumItem.assetArray) {
             if ([assetItem.asset.localIdentifier isEqualToString:identifier]) {
                 model = assetItem;
             }
@@ -95,7 +95,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<AssetPickerControllerDelegate>)delegate{
+-(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate{
     if (self = [super init]) {
         self.pickerOptions = options;
         self.delegate = delegate;
@@ -123,7 +123,7 @@
 
 - (void)getAlbums{
     @weakify(self)
-    [[AssetPickerManager manager] getAllAlbums:self.pickerOptions.videoPickable completion:^(NSArray<AlbumModel *> *models) {
+    [[XG_AssetPickerManager manager] getAllAlbums:self.pickerOptions.videoPickable completion:^(NSArray<XG_AlbumModel *> *models) {
         @strongify(self)
         if (!self) return;
         self.albumArr = [NSMutableArray arrayWithArray:models];
@@ -145,7 +145,7 @@
 
 - (void)resetAlbums{
     @weakify(self)
-    [[AssetPickerManager manager] getAllAlbums:self.pickerOptions.videoPickable completion:^(NSArray<AlbumModel *> *models) {
+    [[XG_AssetPickerManager manager] getAllAlbums:self.pickerOptions.videoPickable completion:^(NSArray<XG_AlbumModel *> *models) {
         @strongify(self)
         if (!self) return;
         self.albumArr = [NSMutableArray arrayWithArray:models];
@@ -170,10 +170,10 @@
 }
 
 - (void)configLeftBarButtonItem{
-    XGBarButtonConfiguration *config = [[XGBarButtonConfiguration alloc]init];
-    config.type = XGBarButtonTypeImage;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeImage;
     config.normalImageName = @"picker_cancel";
-    XGBarButton *leftBarButton = [[XGBarButton alloc]initWithConfiguration:config];
+    XG_BarButton *leftBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     leftBarButton.frame = CGRectMake(0, 0, 21, 21);
     [leftBarButton addTarget:self action:@selector(onLeftBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
@@ -189,13 +189,13 @@
 }
 
 - (void)configRightBarButtonItem{
-    XGBarButtonConfiguration *config = [[XGBarButtonConfiguration alloc]init];
-    config.type = XGBarButtonTypeText;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeText;
     config.titleString = @"重选";
     config.normalColor = kAppThemeColor;
     config.disabledColor = [UIColor lightGrayColor];
     config.titleFont = [UIFont boldSystemFontOfSize:15];
-    XGBarButton *rightBarButton = [[XGBarButton alloc]initWithConfiguration:config];
+    XG_BarButton *rightBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     rightBarButton.frame = CGRectMake(0, 0, 40, 44);
     [rightBarButton addTarget:self action:@selector(onRightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBarButton];
@@ -204,19 +204,19 @@
 
 - (void)onLeftBarButtonClick{
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(assetPickerControllerDidCancel:)]) {
-            [self.delegate assetPickerControllerDidCancel:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(XG_AssetPickerControllerDidCancel:)]) {
+            [self.delegate XG_AssetPickerControllerDidCancel:self];
         }
     }];
 }
 
 - (void)onRightBarButtonClick{
-    [self.pickerOptions.pickedAssetModels removeAllObjects];
+    [self.pickerOptions.pickedXG_AssetModels removeAllObjects];
     NSArray *indexPaths = [self.albumSelectedIndexpaths copy];
     [self.albumSelectedIndexpaths removeAllObjects];
-    [self.pickerOptions.pickedAssetModels removeAllObjects];
-    for (AlbumModel *album in self.albumArr) {
-        for (AssetModel *asset in album.assetArray) {
+    [self.pickerOptions.pickedXG_AssetModels removeAllObjects];
+    for (XG_AlbumModel *album in self.albumArr) {
+        for (XG_AssetModel *asset in album.assetArray) {
             asset.picked = NO;
             asset.number = 0;
         }
@@ -240,7 +240,7 @@
         self.collectionView.delegate = self;
         self.collectionView.alwaysBounceVertical = YES;
         [self.view addSubview:self.collectionView];
-        [self.collectionView registerNib:[UINib nibWithNibName:@"AssetCell" bundle:nil] forCellWithReuseIdentifier:@"AssetCell"];
+        [self.collectionView registerNib:[UINib nibWithNibName:@"XG_AssetCell" bundle:nil] forCellWithReuseIdentifier:@"XG_AssetCell"];
     }
 }
 
@@ -267,10 +267,10 @@
         self.bottomConfirmBtn.backgroundColor = [UIColor whiteColor];
         self.bottomConfirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:kBottomConfirmBtnTitleFontSize];
         [self.bottomConfirmBtn addTarget:self action:@selector(onConfirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedXG_AssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:kAppThemeColor forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-        if (self.pickerOptions.pickedAssetModels.count > 0) {
+        if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
             self.bottomConfirmBtn.enabled = YES;
         }else{
             self.bottomConfirmBtn.enabled = NO;
@@ -314,8 +314,8 @@
 
 - (void)onConfirmBtnClick {
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(assetPickerController:didFinishPickingAssets:)]) {
-            [self.delegate assetPickerController:self didFinishPickingAssets:[self.pickerOptions.pickedAssetModels copy]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(XG_AssetPickerController:didFinishPickingAssets:)]) {
+            [self.delegate XG_AssetPickerController:self didFinishPickingAssets:[self.pickerOptions.pickedXG_AssetModels copy]];
         }
     }];
 }
@@ -360,8 +360,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    AssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AssetCell" forIndexPath:indexPath];
-    AssetModel *model = self.assetArr[indexPath.row];
+    XG_AssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"XG_AssetCell" forIndexPath:indexPath];
+    XG_AssetModel *model = self.assetArr[indexPath.row];
     cell.model = model;
     __weak typeof(cell) weakCell = cell;
     @weakify(self)
@@ -373,21 +373,21 @@
             weakCell.selectPhotoButton.selected = NO;
             model.picked = NO;
             model.number = 0;
-            for (AssetModel *am in [self.pickerOptions.pickedAssetModels copy]) {
+            for (XG_AssetModel *am in [self.pickerOptions.pickedXG_AssetModels copy]) {
                 if ([am.asset.localIdentifier isEqualToString:model.asset.localIdentifier]) {
                     am.number = 0;
                     am.picked = NO;
-                    [self.pickerOptions.pickedAssetModels removeObject:am];
+                    [self.pickerOptions.pickedXG_AssetModels removeObject:am];
                 }
             }
             weakCell.numberLabel.text = @"";
         } else {
             // 2. 选择照片,检查是否超过了最大个数的限制
-            if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
+            if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
                 weakCell.selectPhotoButton.selected = YES;
                 model.picked = YES;
-                [self.pickerOptions.pickedAssetModels addObject:model];
-                weakCell.numberLabel.text = [NSString stringWithFormat:@"%ld",self.pickerOptions.pickedAssetModels.count];
+                [self.pickerOptions.pickedXG_AssetModels addObject:model];
+                weakCell.numberLabel.text = [NSString stringWithFormat:@"%ld",self.pickerOptions.pickedXG_AssetModels.count];
             } else {
                 [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
             }
@@ -407,7 +407,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item == 0) {
         //打开相机
-        if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
+        if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
 #if TARGET_OS_SIMULATOR
             [self showHudWithString:@"模拟器不支持相机"];
 #else
@@ -420,7 +420,7 @@
         NSMutableArray *items = [self.assetArr mutableCopy];
         [items removeObjectAtIndex:0];
         [self performSelector:@selector(updateStatusBar) withObject:nil afterDelay:0.2];
-        MediaBrowseView *v = [[MediaBrowseView alloc] initWithItems:items];
+        XG_MediaBrowseView *v = [[XG_MediaBrowseView alloc] initWithItems:items];
         [v presentCellImageAtIndexPath:indexPath FromCollectionView:collectionView toContainer:self.navigationController.view animated:YES completion:nil];
     }
 }
@@ -433,16 +433,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"CellIdentifier";
-    AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    XG_AlbumCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"AlbumCell" owner:self options:nil] lastObject];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"XG_AlbumCell" owner:self options:nil] lastObject];
     }
     cell.model = self.albumArr[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    for (AlbumModel *album in self.albumArr) {
+    for (XG_AlbumModel *album in self.albumArr) {
         album.isSelected = NO;
     }
     self.albumArr[indexPath.row].isSelected = YES;
@@ -462,11 +462,11 @@
 - (void)refreshAlbumAssetsStatus{
     [self.albumSelectedIndexpaths removeAllObjects];
     for (int i=1; i<self.assetArr.count; i++) {//第1个为相机占位
-        AssetModel *am = self.assetArr[i];
+        XG_AssetModel *am = self.assetArr[i];
         am.picked = NO;
         am.number = 0;
-        for (int j=0; j<self.pickerOptions.pickedAssetModels.count; j++) {
-            AssetModel *pam = self.pickerOptions.pickedAssetModels[j];
+        for (int j=0; j<self.pickerOptions.pickedXG_AssetModels.count; j++) {
+            XG_AssetModel *pam = self.pickerOptions.pickedXG_AssetModels[j];
             if ([am.asset.localIdentifier isEqualToString:pam.asset.localIdentifier]) {
                 am.picked = YES;
                 am.number = j+1;
@@ -477,8 +477,8 @@
 }
 
 - (void)refreshNavRightBtn{
-    XGBarButton *btn = (XGBarButton *)self.navigationItem.rightBarButtonItem.customView;
-    if (self.pickerOptions.pickedAssetModels.count > 0) {
+    XG_BarButton *btn = (XG_BarButton *)self.navigationItem.rightBarButtonItem.customView;
+    if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
         btn.enabled = YES;
     }else{
         btn.enabled = NO;
@@ -486,12 +486,12 @@
 }
 
 - (void)refreshBottomConfirmBtn {
-    if (self.pickerOptions.pickedAssetModels.count > 0) {
+    if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
         self.bottomConfirmBtn.enabled = YES;
     }else{
         self.bottomConfirmBtn.enabled = NO;
     }
-    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedXG_AssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
 }
 
 - (void)updateStatusBar{
@@ -520,7 +520,7 @@
 }
 
 - (void)switchToCameraRoll{
-    for (AlbumModel *album in self.albumArr) {
+    for (XG_AlbumModel *album in self.albumArr) {
         album.isSelected = NO;
     }
     self.albumArr[0].isSelected = YES;
@@ -550,7 +550,7 @@
         @strongify(self)
         if (!self) return;
         //相册添加照片所产生的change(这里只对app内调用相机拍照后点击“use photo（使用照片）”按钮后所产生的change)
-        AlbumModel *currentAlbum = self.albumArr[0];
+        XG_AlbumModel *currentAlbum = self.albumArr[0];
         PHFetchResultChangeDetails *changes = [changeInstance changeDetailsForFetchResult:currentAlbum.result];
         if (changes) {
             currentAlbum.result = [changes fetchResultAfterChanges];
@@ -560,12 +560,12 @@
                     NSMutableArray *indexPaths = @[].mutableCopy;
                     if (insertItems && insertItems.count > 0) {
                         for (int i=0; i<insertItems.count; i++) {
-                            AssetModel *model = [[AssetModel alloc] init];
+                            XG_AssetModel *model = [[XG_AssetModel alloc] init];
                             model.asset = insertItems[i];
-                            if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
+                            if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
                                 model.picked = YES;
-                                model.number = (int)self.pickerOptions.pickedAssetModels.count + 1;
-                                [self.pickerOptions.pickedAssetModels addObject:model];
+                                model.number = (int)self.pickerOptions.pickedXG_AssetModels.count + 1;
+                                [self.pickerOptions.pickedXG_AssetModels addObject:model];
                             }else{
                                 model.picked = NO;
                                 model.number = 0;
@@ -679,9 +679,9 @@
 
 @implementation AssetPickerOptions
 
--(NSMutableArray<AssetModel *> *)pickedAssetModels{
-    if(_pickedAssetModels == nil)  _pickedAssetModels = [NSMutableArray array];
-    return _pickedAssetModels;
+-(NSMutableArray<XG_AssetModel *> *)pickedXG_AssetModels{
+    if(_pickedXG_AssetModels == nil)  _pickedXG_AssetModels = [NSMutableArray array];
+    return _pickedXG_AssetModels;
 }
 
 @end

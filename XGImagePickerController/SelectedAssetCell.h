@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AssetModel;
+@class XG_AssetModel;
 
 @interface SelectedAssetCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
-@property (nonatomic, strong) AssetModel *model;
+@property (nonatomic, strong) XG_AssetModel *model;
 @end

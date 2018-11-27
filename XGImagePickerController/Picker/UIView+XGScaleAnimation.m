@@ -5,9 +5,9 @@
 //  Copyright © 2018年 huxinguang. All rights reserved.
 //
 
-#import "UIView+ScaleAnimation.h"
+#import "UIView+XGScaleAnimation.h"
 
-@implementation UIView (ScaleAnimation)
+@implementation UIView (XGScaleAnimation)
 
 + (void)showScaleAnimationWithLayer:(CALayer *)layer type:(ScaleAnimationType)type{
     NSNumber *animationScale1 = type == ScaleAnimationToBigger ? @(1.15) : @(0.5);
