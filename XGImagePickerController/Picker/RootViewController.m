@@ -25,7 +25,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    [self configNavigationBarBackgroundColor:[UIColor whiteColor]];//加上这行可设置导航栏背景色，去掉黑线
+//    [self configNavigationBarBackgroundColor:[UIColor whiteColor]];//加上这行可设置导航栏背景色，去掉黑线
     [self configWindowLevel];
     [self configTitleView];
     [self configLeftBarButtonItem];
