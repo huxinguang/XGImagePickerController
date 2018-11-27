@@ -265,10 +265,14 @@
 
 #pragma mark - UIScrollViewDelegate
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
     MediaCell *cell = [self currentCell];
     if (cell.item.asset.mediaType == PHAssetMediaTypeVideo) {
-        [cell pauseAndResetPlayer];
+        NSInteger currentPage = self.currentPage;
+        if(targetContentOffset->x != scrollView.frame.size.width*currentPage){
+            [cell pauseAndResetPlayer];
+            NSLog(@"++++++");
+        }
     }
 }
 
