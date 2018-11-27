@@ -25,6 +25,7 @@
 #define kAppStatusBarAndNavigationBarHeight ((IS_iPhoneX_Or_Xs || IS_iPhoneXr || IS_iPhoneXs_Max) ? 88.f : 64.f)// 状态栏和导航栏总高度.
 
 #define kShowStatusBarNotification @"ShowStatusBarNotification"
+#define kNavigationBarImageViewTag 111
 
 
 #ifndef weakify

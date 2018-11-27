@@ -174,12 +174,14 @@
     config.type = XGBarButtonTypeImage;
     config.normalImageName = @"picker_cancel";
     XGBarButton *leftBarButton = [[XGBarButton alloc]initWithConfiguration:config];
+    leftBarButton.frame = CGRectMake(0, 0, 21, 21);
     [leftBarButton addTarget:self action:@selector(onLeftBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBarButton];
 }
 
 - (void)configTitleView{
     self.ntView = [[NavTitleView alloc]init];
+    self.ntView.frame = CGRectMake(0, 0, kAppScreenWidth - 2*50, kAppNavigationBarHeight);
     self.ntView.intrinsicContentSize = CGSizeMake(kAppScreenWidth - 2*50, kAppNavigationBarHeight);
     self.ntView.titleBtn.selected = NO;
     [self.ntView.titleBtn addTarget:self action:@selector(onTitleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -194,6 +196,7 @@
     config.disabledColor = [UIColor lightGrayColor];
     config.titleFont = [UIFont boldSystemFontOfSize:15];
     XGBarButton *rightBarButton = [[XGBarButton alloc]initWithConfiguration:config];
+    rightBarButton.frame = CGRectMake(0, 0, 30, 44);
     [rightBarButton addTarget:self action:@selector(onRightBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBarButton];
     [self refreshNavRightBtn];
@@ -405,9 +408,9 @@
     if (indexPath.item == 0) {
         //打开相机
         if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_SIMULATOR
             [self showHudWithString:@"模拟器不支持相机"];
-#elif TARGET_OS_IPHONE
+#else
             [self openCamera];
 #endif
         }else{
