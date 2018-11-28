@@ -8,7 +8,7 @@
 
 #import "XG_AssetCell.h"
 #import "XG_AssetModel.h"
-#import "UIView+XGScaleAnimation.h"
+#import "UIView+XGAdd.h"
 #import "XG_AssetPickerManager.h"
 
 @interface XG_AssetCell ()

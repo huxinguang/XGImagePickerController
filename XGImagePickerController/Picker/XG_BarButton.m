@@ -7,30 +7,30 @@
 //
 
 #import "XG_BarButton.h"
-@implementation XG_BarButtonConfiguration
+@implementation BarButtonConfiguration
 
 @end
 
 @implementation XG_BarButton
 
-- (instancetype)initWithConfiguration:(XG_BarButtonConfiguration *)config{
+- (instancetype)initWithConfiguration:(BarButtonConfiguration *)config{
     if (self = [super init]) {
         self.configuration = config;
     }
     return self;
 }
 
-- (void)setConfiguration:(XG_BarButtonConfiguration *)configuration{
+- (void)setConfiguration:(BarButtonConfiguration *)configuration{
     if (!configuration) {
         return;
     }
     switch (configuration.type) {
-        case XG_BarButtonTypeBack:
+        case BarButtonTypeBack:
             if (configuration.normalImageName) {
                 [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
             }
             break;
-        case XG_BarButtonTypeImage:
+        case BarButtonTypeImage:
             if (configuration.normalImageName) {
                 [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
             }
@@ -41,7 +41,7 @@
                 [self setImage:[UIImage imageNamed:configuration.highlightedImageName] forState:UIControlStateHighlighted];
             }
             break;
-        case XG_BarButtonTypeText:
+        case BarButtonTypeText:
             [self setTitle:configuration.titleString ? configuration.titleString: @""forState:UIControlStateNormal];
             self.titleLabel.font = configuration.titleFont;
             if (configuration.normalColor) {

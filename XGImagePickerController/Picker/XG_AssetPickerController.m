@@ -170,8 +170,8 @@
 }
 
 - (void)configLeftBarButtonItem{
-    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
-    config.type = XG_BarButtonTypeImage;
+    BarButtonConfiguration *config = [[BarButtonConfiguration alloc]init];
+    config.type = BarButtonTypeImage;
     config.normalImageName = @"picker_cancel";
     XG_BarButton *leftBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     leftBarButton.frame = CGRectMake(0, 0, 21, 21);
@@ -189,8 +189,8 @@
 }
 
 - (void)configRightBarButtonItem{
-    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
-    config.type = XG_BarButtonTypeText;
+    BarButtonConfiguration *config = [[BarButtonConfiguration alloc]init];
+    config.type = BarButtonTypeText;
     config.titleString = @"重选";
     config.normalColor = kAppThemeColor;
     config.disabledColor = [UIColor lightGrayColor];

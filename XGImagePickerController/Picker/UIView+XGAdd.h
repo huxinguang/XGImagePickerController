@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    ScaleAnimationToBigger,
+    ScaleAnimationToSmaller,
+} ScaleAnimationType;
+
 @interface UIView (XGAdd)
 
 @property (nonatomic) CGFloat left;
@@ -20,5 +25,7 @@
 @property (nonatomic) CGFloat centerY;
 @property (nonatomic) CGPoint origin;
 @property (nonatomic) CGSize  size;
+
++ (void)showScaleAnimationWithLayer:(CALayer *)layer type:(ScaleAnimationType)type;
 
 @end

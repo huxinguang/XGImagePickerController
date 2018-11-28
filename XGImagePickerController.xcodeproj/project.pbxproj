@@ -23,7 +23,6 @@
 		C9D769A3219135F800C8A561 /* XG_AssetPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76999219135F700C8A561 /* XG_AssetPickerManager.m */; };
 		C9D769A4219135F800C8A561 /* XG_AlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7699B219135F700C8A561 /* XG_AlbumCell.m */; };
 		C9D769A5219135F800C8A561 /* XG_AssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D7699C219135F700C8A561 /* XG_AssetCell.xib */; };
-		C9D769A6219135F800C8A561 /* UIView+XGScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7699D219135F800C8A561 /* UIView+XGScaleAnimation.m */; };
 		C9D769A921913A6600C8A561 /* XG_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769A821913A6600C8A561 /* XG_RootViewController.m */; };
 		C9D769AE21913AD000C8A561 /* XG_BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769AB21913ACF00C8A561 /* XG_BarButton.m */; };
 		C9D769AF21913AD000C8A561 /* XG_TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769AD21913AD000C8A561 /* XG_TitleView.m */; };
@@ -95,14 +94,12 @@
 		C9D76993219135F700C8A561 /* XG_AssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AssetCell.m; sourceTree = "<group>"; };
 		C9D76994219135F700C8A561 /* XG_AssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AssetModel.h; sourceTree = "<group>"; };
 		C9D76995219135F700C8A561 /* XG_AssetPickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AssetPickerManager.h; sourceTree = "<group>"; };
-		C9D76996219135F700C8A561 /* UIView+XGScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XGScaleAnimation.h"; sourceTree = "<group>"; };
 		C9D76997219135F700C8A561 /* XG_AlbumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AlbumModel.m; sourceTree = "<group>"; };
 		C9D76998219135F700C8A561 /* XG_AlbumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AlbumModel.h; sourceTree = "<group>"; };
 		C9D76999219135F700C8A561 /* XG_AssetPickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AssetPickerManager.m; sourceTree = "<group>"; };
 		C9D7699A219135F700C8A561 /* XG_AssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AssetCell.h; sourceTree = "<group>"; };
 		C9D7699B219135F700C8A561 /* XG_AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AlbumCell.m; sourceTree = "<group>"; };
 		C9D7699C219135F700C8A561 /* XG_AssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XG_AssetCell.xib; sourceTree = "<group>"; };
-		C9D7699D219135F800C8A561 /* UIView+XGScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XGScaleAnimation.m"; sourceTree = "<group>"; };
 		C9D769A721913A6600C8A561 /* XG_RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_RootViewController.h; sourceTree = "<group>"; };
 		C9D769A821913A6600C8A561 /* XG_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_RootViewController.m; sourceTree = "<group>"; };
 		C9D769AA21913ACF00C8A561 /* XG_BarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_BarButton.h; sourceTree = "<group>"; };
@@ -245,14 +242,14 @@
 				C9D76991219135F700C8A561 /* XG_AssetPickerController.m */,
 				C9D76995219135F700C8A561 /* XG_AssetPickerManager.h */,
 				C9D76999219135F700C8A561 /* XG_AssetPickerManager.m */,
-				C9D76996219135F700C8A561 /* UIView+XGScaleAnimation.h */,
-				C9D7699D219135F800C8A561 /* UIView+XGScaleAnimation.m */,
 				C9D769A721913A6600C8A561 /* XG_RootViewController.h */,
 				C9D769A821913A6600C8A561 /* XG_RootViewController.m */,
 				C9D769AA21913ACF00C8A561 /* XG_BarButton.h */,
 				C9D769AB21913ACF00C8A561 /* XG_BarButton.m */,
 				C9D769AC21913ACF00C8A561 /* XG_TitleView.h */,
 				C9D769AD21913AD000C8A561 /* XG_TitleView.m */,
+				C9D769F52193D16500C8A561 /* UIView+XGAdd.h */,
+				C9D769F62193D16500C8A561 /* UIView+XGAdd.m */,
 				C9D769B021913B6500C8A561 /* XG_PickerMacro.h */,
 				C9D769DA2193CAE000C8A561 /* MediaBrowseView */,
 			);
@@ -292,8 +289,6 @@
 				C9D769DD2193CAE000C8A561 /* XG_MediaBrowseView.m */,
 				C9D769DF2193CAE000C8A561 /* XG_MediaCell.h */,
 				C9D769DB2193CAE000C8A561 /* XG_MediaCell.m */,
-				C9D769F52193D16500C8A561 /* UIView+XGAdd.h */,
-				C9D769F62193D16500C8A561 /* UIView+XGAdd.m */,
 			);
 			path = MediaBrowseView;
 			sourceTree = "<group>";
@@ -484,7 +479,6 @@
 				C9D769A921913A6600C8A561 /* XG_RootViewController.m in Sources */,
 				C9D769FE2193E1E700C8A561 /* FLAnimatedImageView.m in Sources */,
 				C9D7695D2191357800C8A561 /* AppDelegate.m in Sources */,
-				C9D769A6219135F800C8A561 /* UIView+XGScaleAnimation.m in Sources */,
 				C9D769E12193CAE000C8A561 /* XG_MediaCell.m in Sources */,
 				C9D769A2219135F800C8A561 /* XG_AlbumModel.m in Sources */,
 			);

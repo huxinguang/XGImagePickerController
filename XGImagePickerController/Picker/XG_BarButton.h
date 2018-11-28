@@ -9,13 +9,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger,XG_BarButtonType) {
-    XG_BarButtonTypeBack,
-    XG_BarButtonTypeImage,
-    XG_BarButtonTypeText
+typedef NS_ENUM(NSInteger,BarButtonType) {
+    BarButtonTypeBack,
+    BarButtonTypeImage,
+    BarButtonTypeText
 };
 
-@interface XG_BarButtonConfiguration : NSObject
+@interface BarButtonConfiguration : NSObject
 
 @property (nonatomic, copy)NSString *normalImageName;
 @property (nonatomic, copy)NSString *selectedImageName;
@@ -26,15 +26,15 @@ typedef NS_ENUM(NSInteger,XG_BarButtonType) {
 @property (nonatomic, strong)UIColor *selectedColor;
 @property (nonatomic, strong)UIColor *disabledColor;
 @property (nonatomic, strong)UIColor *highlightedColor;
-@property (nonatomic, assign)XG_BarButtonType type;
+@property (nonatomic, assign)BarButtonType type;
 
 @end
 
 
 @interface XG_BarButton : UIButton
 
-@property (nonatomic, strong)XG_BarButtonConfiguration *configuration;
+@property (nonatomic, strong)BarButtonConfiguration *configuration;
 
-- (instancetype)initWithConfiguration:(XG_BarButtonConfiguration *)config;
+- (instancetype)initWithConfiguration:(BarButtonConfiguration *)config;
 
 @end
