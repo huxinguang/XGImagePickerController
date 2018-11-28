@@ -35,23 +35,23 @@
     return _userCollections;
 }
 
-- (void)handleAuthorizationWithCompletion:(void (^)(AuthorizationStatus aStatus))completion{
+- (void)handleAuthorizationWithCompletion:(void (^)(XG_AuthorizationStatus aStatus))completion{
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         switch (status) {
             case PHAuthorizationStatusNotDetermined:{
-                completion(AuthorizationStatusNotDetermined);
+                completion(XG_AuthorizationStatusNotDetermined);
             }
                 break;
             case PHAuthorizationStatusRestricted:{
-                completion(AuthorizationStatusRestricted);
+                completion(XG_AuthorizationStatusRestricted);
             }
                 break;
             case PHAuthorizationStatusDenied:{
-                completion(AuthorizationStatusDenied);
+                completion(XG_AuthorizationStatusDenied);
             }
                 break;
             case PHAuthorizationStatusAuthorized:{
-                completion(AuthorizationStatusAuthorized);
+                completion(XG_AuthorizationStatusAuthorized);
             }
                 break;
             default:

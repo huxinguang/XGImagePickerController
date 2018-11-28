@@ -11,11 +11,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
 
-typedef NS_ENUM(NSUInteger,AuthorizationStatus) {
-    AuthorizationStatusNotDetermined = 0,
-    AuthorizationStatusRestricted,
-    AuthorizationStatusDenied,
-    AuthorizationStatusAuthorized
+typedef NS_ENUM(NSUInteger,XG_AuthorizationStatus) {
+    XG_AuthorizationStatusNotDetermined = 0,
+    XG_AuthorizationStatusRestricted,
+    XG_AuthorizationStatusDenied,
+    XG_AuthorizationStatusAuthorized
 };
 
 @class XG_AlbumModel,XG_AssetModel;
@@ -25,16 +25,13 @@ typedef NS_ENUM(NSUInteger,AuthorizationStatus) {
 @property(nonatomic, strong) PHFetchResult<PHCollection *> *userCollections;    //其他app相册或用户创建的相册
 
 + (instancetype)manager;
-
-- (void)handleAuthorizationWithCompletion:(void (^)(AuthorizationStatus aStatus))completion;
-
+- (void)handleAuthorizationWithCompletion:(void (^)(XG_AuthorizationStatus aStatus))completion;
 // 获取相册数组(get albums)
 - (void)getAllAlbums:(BOOL)allowPickingVideo completion:(void (^)(NSArray<XG_AlbumModel *> *models))completion;
 // 获取Asset (get assets)
 - (void)getPostImageWithAlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *postImage))completion;
 - (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(id photo,NSDictionary *info))completion;
 - (void)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info))completion;
-
 // 获取视频(get video)
 - (void)getVideoWithAsset:(PHAsset *)asset completion:(void (^)(AVPlayerItem * playerItem, NSDictionary * info))completion;
 

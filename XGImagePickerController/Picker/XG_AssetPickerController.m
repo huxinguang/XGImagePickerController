@@ -73,7 +73,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate{
+-(instancetype)initWithOptions:(XG_AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate{
     if (self = [super init]) {
         self.pickerOptions = options;
         self.delegate = delegate;
@@ -655,7 +655,7 @@
 
 @end
 
-@implementation AssetPickerOptions
+@implementation XG_AssetPickerOptions
 
 -(NSMutableArray<XG_AssetModel *> *)pickedAssetModels{
     if(_pickedAssetModels == nil)  _pickedAssetModels = [NSMutableArray array];

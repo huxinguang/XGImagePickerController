@@ -26,15 +26,18 @@
 @class NavTitleView;
 @class XG_AssetModel;
 @protocol XG_AssetPickerControllerDelegate;
-@class AssetPickerOptions;
+@class XG_AssetPickerOptions;
 
 @interface XG_AssetPickerController : XG_RootViewController
 
 @property (nonatomic, weak) id<XG_AssetPickerControllerDelegate> delegate;
-@property (nonatomic, strong) AssetPickerOptions *pickerOptions;
+@property (nonatomic, strong) XG_AssetPickerOptions *pickerOptions;
 
-
--(instancetype)initWithOptions:(AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate;
++ (instancetype)new UNAVAILABLE_ATTRIBUTE;
+- (instancetype)init UNAVAILABLE_ATTRIBUTE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil UNAVAILABLE_ATTRIBUTE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder UNAVAILABLE_ATTRIBUTE;
+- (instancetype)initWithOptions:(XG_AssetPickerOptions *)options delegate:(id<XG_AssetPickerControllerDelegate>)delegate;
 
 @end
 
@@ -46,7 +49,7 @@
 
 @end
 
-@interface AssetPickerOptions: NSObject
+@interface XG_AssetPickerOptions: NSObject
 @property (nonatomic, assign) NSInteger maxAssetsCount;                              //最大可选数量
 @property (nonatomic, assign) BOOL videoPickable;                                    //是否可选视频
 @property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *pickedAssetModels;       //已选asset

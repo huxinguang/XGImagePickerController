@@ -55,11 +55,11 @@
 
 - (void)openAlbum{
     __weak typeof (self) weakSelf = self;
-    [[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(AuthorizationStatus aStatus) {
+    [[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
         __strong typeof (weakSelf) strongSelf = weakSelf;
         if (!strongSelf) return;
         dispatch_sync(dispatch_get_main_queue(), ^{
-            if (aStatus == AuthorizationStatusAuthorized) {
+            if (aStatus == XG_AuthorizationStatusAuthorized) {
                 [strongSelf showAssetPickerController];
             }else{
                 [strongSelf showAlert];
@@ -69,7 +69,7 @@
 }
 
 - (void)showAssetPickerController{
-    AssetPickerOptions *options = [[AssetPickerOptions alloc]init];
+    XG_AssetPickerOptions *options = [[XG_AssetPickerOptions alloc]init];
     options.maxAssetsCount = 9;
     options.videoPickable = YES;
     NSMutableArray<XG_AssetModel *> *array = [self.assets mutableCopy];
