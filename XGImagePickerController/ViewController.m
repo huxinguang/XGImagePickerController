@@ -16,7 +16,7 @@
 #define kMinimumInteritemSpacing 4
 #define kMinimumLineSpacing 4
 
-@interface ViewController ()<XG_AssetPickerControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,XG_AssetPickerControllerDelegate>
+@interface ViewController ()<XG_AssetPickerControllerDelegate,UIAlertViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,XG_AssetPickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *assets;
 @property (nonatomic, strong) XG_AssetModel *placeholderModel;
@@ -56,15 +56,11 @@
 - (void)openAlbum{
     __weak typeof (self) weakSelf = self;
     [[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
-        __strong typeof (weakSelf) strongSelf = weakSelf;
-        if (!strongSelf) return;
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (aStatus == XG_AuthorizationStatusAuthorized) {
-                [strongSelf showAssetPickerController];
-            }else{
-                [strongSelf showAlert];
-            }
-        });
+        if (aStatus == XG_AuthorizationStatusAuthorized) {
+            [weakSelf showAssetPickerController];
+        }else{
+            [weakSelf showAlert];
+        }
     }];
 }
 
@@ -103,6 +99,20 @@
     } completion:^(BOOL finished) {
 
     }];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        //取消
+    }else{
+        //去设置
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDataSource

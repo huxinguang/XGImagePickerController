@@ -37,26 +37,29 @@
 
 - (void)handleAuthorizationWithCompletion:(void (^)(XG_AuthorizationStatus aStatus))completion{
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        switch (status) {
-            case PHAuthorizationStatusNotDetermined:{
-                completion(XG_AuthorizationStatusNotDetermined);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            switch (status) {
+                case PHAuthorizationStatusNotDetermined:{
+                    completion(XG_AuthorizationStatusNotDetermined);
+                }
+                    break;
+                case PHAuthorizationStatusRestricted:{
+                    completion(XG_AuthorizationStatusRestricted);
+                }
+                    break;
+                case PHAuthorizationStatusDenied:{
+                    completion(XG_AuthorizationStatusDenied);
+                }
+                    break;
+                case PHAuthorizationStatusAuthorized:{
+                    completion(XG_AuthorizationStatusAuthorized);
+                }
+                    break;
+                default:
+                    break;
             }
-                break;
-            case PHAuthorizationStatusRestricted:{
-                completion(XG_AuthorizationStatusRestricted);
-            }
-                break;
-            case PHAuthorizationStatusDenied:{
-                completion(XG_AuthorizationStatusDenied);
-            }
-                break;
-            case PHAuthorizationStatusAuthorized:{
-                completion(XG_AuthorizationStatusAuthorized);
-            }
-                break;
-            default:
-                break;
-        }
+        });
+        
     }];
 }
 
