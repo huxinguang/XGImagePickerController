@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger,AuthorizationStatus) {
 // 获取相册数组(get albums)
 - (void)getAllAlbums:(BOOL)allowPickingVideo completion:(void (^)(NSArray<XG_AlbumModel *> *models))completion;
 // 获取Asset (get assets)
-- (void)getPostImageWithXG_AlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *postImage))completion;
+- (void)getPostImageWithAlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *postImage))completion;
 - (void)getPhotoWithAsset:(PHAsset *)asset completion:(void (^)(id photo,NSDictionary *info))completion;
 - (void)getPhotoWithAsset:(PHAsset *)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *photo,NSDictionary *info))completion;
 

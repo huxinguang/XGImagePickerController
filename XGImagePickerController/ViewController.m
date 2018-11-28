@@ -60,7 +60,7 @@
         if (!strongSelf) return;
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (aStatus == AuthorizationStatusAuthorized) {
-                [strongSelf showXG_AssetPickerController];
+                [strongSelf showAssetPickerController];
             }else{
                 [strongSelf showAlert];
             }
@@ -68,13 +68,13 @@
     }];
 }
 
-- (void)showXG_AssetPickerController{
+- (void)showAssetPickerController{
     AssetPickerOptions *options = [[AssetPickerOptions alloc]init];
     options.maxAssetsCount = 9;
     options.videoPickable = YES;
     NSMutableArray<XG_AssetModel *> *array = [self.assets mutableCopy];
     [array removeLastObject];//去除占位model
-    options.pickedXG_AssetModels = array;
+    options.pickedAssetModels = array;
     XG_AssetPickerController *photoPickerVc = [[XG_AssetPickerController alloc] initWithOptions:options delegate:self];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];
     [self presentViewController:nav animated:YES completion:nil];
@@ -129,7 +129,7 @@
 
 #pragma mark - XG_AssetPickerControllerDelegate
 
-- (void)XG_AssetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets{
+- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets{
     NSMutableArray *newAssets = assets.mutableCopy;
     if (newAssets.count < 9 ) {
         [newAssets addObject:self.placeholderModel];
@@ -138,7 +138,7 @@
     [self.collectionView reloadData];
 }
 
-- (void)XG_AssetPickerControllerDidCancel:(XG_AssetPickerController *)picker{
+- (void)assetPickerControllerDidCancel:(XG_AssetPickerController *)picker{
     
 }
 

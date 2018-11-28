@@ -127,7 +127,7 @@
     }];
 }
 
-- (void)getPostImageWithXG_AlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *))completion {
+- (void)getPostImageWithAlbumModel:(XG_AlbumModel *)model completion:(void (^)(UIImage *))completion {
     [self getPhotoWithAsset:[model.result firstObject] photoWidth:60 completion:^(UIImage *photo, NSDictionary *info) {
         if (completion) completion(photo);
     }];

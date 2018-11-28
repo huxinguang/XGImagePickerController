@@ -60,8 +60,6 @@
 #endif
 #endif
 
-
-
 //=========================================导航栏(自定义部分)=====================================
 #define kAppNavigationTitleViewTitleFontSize 16
 #define kAppNavigationTitleViewMaxWidth 220.f

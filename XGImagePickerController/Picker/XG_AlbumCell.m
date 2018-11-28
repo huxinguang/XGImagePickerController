@@ -20,7 +20,7 @@
     _model = model;
     self.albumNameLabel.text = [NSString stringWithFormat:@"%@(%ld)",model.name,model.result.count];
     if (model.result.count > 0) {
-        [[XG_AssetPickerManager manager] getPostImageWithXG_AlbumModel:model completion:^(UIImage *postImage) {
+        [[XG_AssetPickerManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
             self.imgView.image = postImage;
         }];
     }else{

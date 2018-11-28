@@ -41,15 +41,15 @@
 @protocol XG_AssetPickerControllerDelegate <NSObject>
 @optional
 
-- (void)XG_AssetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
-- (void)XG_AssetPickerControllerDidCancel:(XG_AssetPickerController *)picker;
+- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+- (void)assetPickerControllerDidCancel:(XG_AssetPickerController *)picker;
 
 @end
 
 @interface AssetPickerOptions: NSObject
 @property (nonatomic, assign) NSInteger maxAssetsCount;                              //最大可选数量
 @property (nonatomic, assign) BOOL videoPickable;                                    //是否可选视频
-@property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *pickedXG_AssetModels;       //已选asset
+@property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *pickedAssetModels;       //已选asset
 @end
 
 

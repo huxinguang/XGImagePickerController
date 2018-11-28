@@ -46,8 +46,8 @@
 
 //若不要返回按钮或者想替换成其他按钮可重写此方法
 - (void)configLeftBarButtonItem{
-    BarButtonConfiguration *config = [[BarButtonConfiguration alloc]init];
-    config.type = BarButtonTypeBack;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeBack;
     config.normalImageName = @"navi_back";
     self.leftBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     [self.leftBarButton addTarget:self action:@selector(onLeftBarButtonClick) forControlEvents:UIControlEventTouchUpInside];

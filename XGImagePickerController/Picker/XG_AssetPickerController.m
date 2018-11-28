@@ -68,28 +68,6 @@
     }
 }
 
-- (XG_AssetModel *)getXG_AssetModelAtCurrentAlbumWithIdentifier:(NSString *)identifier{
-    XG_AssetModel *model = nil;
-    for (XG_AssetModel *am in self.albumArr[self.currentAlbumIndexpath.row].assetArray) {
-        if ([am.asset.localIdentifier isEqualToString:identifier]) {
-            model = am;
-        }
-    }
-    return model;
-}
-
-- (XG_AssetModel *)getXG_AssetModelAtAllAlbumsWithIdentifier:(NSString *)identifier{
-    XG_AssetModel *model = nil;
-    for (XG_AlbumModel *albumItem in self.albumArr) {
-        for (XG_AssetModel *assetItem in albumItem.assetArray) {
-            if ([assetItem.asset.localIdentifier isEqualToString:identifier]) {
-                model = assetItem;
-            }
-        }
-    }
-    return model;
-}
-
 -(void)dealloc{
     [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -170,8 +148,8 @@
 }
 
 - (void)configLeftBarButtonItem{
-    BarButtonConfiguration *config = [[BarButtonConfiguration alloc]init];
-    config.type = BarButtonTypeImage;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeImage;
     config.normalImageName = @"picker_cancel";
     XG_BarButton *leftBarButton = [[XG_BarButton alloc]initWithConfiguration:config];
     leftBarButton.frame = CGRectMake(0, 0, 21, 21);
@@ -189,8 +167,8 @@
 }
 
 - (void)configRightBarButtonItem{
-    BarButtonConfiguration *config = [[BarButtonConfiguration alloc]init];
-    config.type = BarButtonTypeText;
+    XG_BarButtonConfiguration *config = [[XG_BarButtonConfiguration alloc]init];
+    config.type = XG_BarButtonTypeText;
     config.titleString = @"重选";
     config.normalColor = kAppThemeColor;
     config.disabledColor = [UIColor lightGrayColor];
@@ -204,17 +182,17 @@
 
 - (void)onLeftBarButtonClick{
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(XG_AssetPickerControllerDidCancel:)]) {
-            [self.delegate XG_AssetPickerControllerDidCancel:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(assetPickerControllerDidCancel:)]) {
+            [self.delegate assetPickerControllerDidCancel:self];
         }
     }];
 }
 
 - (void)onRightBarButtonClick{
-    [self.pickerOptions.pickedXG_AssetModels removeAllObjects];
+    [self.pickerOptions.pickedAssetModels removeAllObjects];
     NSArray *indexPaths = [self.albumSelectedIndexpaths copy];
     [self.albumSelectedIndexpaths removeAllObjects];
-    [self.pickerOptions.pickedXG_AssetModels removeAllObjects];
+    [self.pickerOptions.pickedAssetModels removeAllObjects];
     for (XG_AlbumModel *album in self.albumArr) {
         for (XG_AssetModel *asset in album.assetArray) {
             asset.picked = NO;
@@ -267,10 +245,10 @@
         self.bottomConfirmBtn.backgroundColor = [UIColor whiteColor];
         self.bottomConfirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:kBottomConfirmBtnTitleFontSize];
         [self.bottomConfirmBtn addTarget:self action:@selector(onConfirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedXG_AssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:kAppThemeColor forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-        if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
+        if (self.pickerOptions.pickedAssetModels.count > 0) {
             self.bottomConfirmBtn.enabled = YES;
         }else{
             self.bottomConfirmBtn.enabled = NO;
@@ -314,8 +292,8 @@
 
 - (void)onConfirmBtnClick {
     [self dismissViewControllerAnimated:YES completion:^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(XG_AssetPickerController:didFinishPickingAssets:)]) {
-            [self.delegate XG_AssetPickerController:self didFinishPickingAssets:[self.pickerOptions.pickedXG_AssetModels copy]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(assetPickerController:didFinishPickingAssets:)]) {
+            [self.delegate assetPickerController:self didFinishPickingAssets:[self.pickerOptions.pickedAssetModels copy]];
         }
     }];
 }
@@ -373,21 +351,21 @@
             weakCell.selectPhotoButton.selected = NO;
             model.picked = NO;
             model.number = 0;
-            for (XG_AssetModel *am in [self.pickerOptions.pickedXG_AssetModels copy]) {
+            for (XG_AssetModel *am in [self.pickerOptions.pickedAssetModels copy]) {
                 if ([am.asset.localIdentifier isEqualToString:model.asset.localIdentifier]) {
                     am.number = 0;
                     am.picked = NO;
-                    [self.pickerOptions.pickedXG_AssetModels removeObject:am];
+                    [self.pickerOptions.pickedAssetModels removeObject:am];
                 }
             }
             weakCell.numberLabel.text = @"";
         } else {
             // 2. 选择照片,检查是否超过了最大个数的限制
-            if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
+            if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
                 weakCell.selectPhotoButton.selected = YES;
                 model.picked = YES;
-                [self.pickerOptions.pickedXG_AssetModels addObject:model];
-                weakCell.numberLabel.text = [NSString stringWithFormat:@"%ld",self.pickerOptions.pickedXG_AssetModels.count];
+                [self.pickerOptions.pickedAssetModels addObject:model];
+                weakCell.numberLabel.text = [NSString stringWithFormat:@"%ld",self.pickerOptions.pickedAssetModels.count];
             } else {
                 [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
             }
@@ -407,7 +385,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item == 0) {
         //打开相机
-        if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
+        if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
 #if TARGET_OS_SIMULATOR
             [self showHudWithString:@"模拟器不支持相机"];
 #else
@@ -465,8 +443,8 @@
         XG_AssetModel *am = self.assetArr[i];
         am.picked = NO;
         am.number = 0;
-        for (int j=0; j<self.pickerOptions.pickedXG_AssetModels.count; j++) {
-            XG_AssetModel *pam = self.pickerOptions.pickedXG_AssetModels[j];
+        for (int j=0; j<self.pickerOptions.pickedAssetModels.count; j++) {
+            XG_AssetModel *pam = self.pickerOptions.pickedAssetModels[j];
             if ([am.asset.localIdentifier isEqualToString:pam.asset.localIdentifier]) {
                 am.picked = YES;
                 am.number = j+1;
@@ -478,7 +456,7 @@
 
 - (void)refreshNavRightBtn{
     XG_BarButton *btn = (XG_BarButton *)self.navigationItem.rightBarButtonItem.customView;
-    if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
+    if (self.pickerOptions.pickedAssetModels.count > 0) {
         btn.enabled = YES;
     }else{
         btn.enabled = NO;
@@ -486,12 +464,12 @@
 }
 
 - (void)refreshBottomConfirmBtn {
-    if (self.pickerOptions.pickedXG_AssetModels.count > 0) {
+    if (self.pickerOptions.pickedAssetModels.count > 0) {
         self.bottomConfirmBtn.enabled = YES;
     }else{
         self.bottomConfirmBtn.enabled = NO;
     }
-    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedXG_AssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
 }
 
 - (void)updateStatusBar{
@@ -562,10 +540,10 @@
                         for (int i=0; i<insertItems.count; i++) {
                             XG_AssetModel *model = [[XG_AssetModel alloc] init];
                             model.asset = insertItems[i];
-                            if (self.pickerOptions.pickedXG_AssetModels.count < self.pickerOptions.maxAssetsCount) {
+                            if (self.pickerOptions.pickedAssetModels.count < self.pickerOptions.maxAssetsCount) {
                                 model.picked = YES;
-                                model.number = (int)self.pickerOptions.pickedXG_AssetModels.count + 1;
-                                [self.pickerOptions.pickedXG_AssetModels addObject:model];
+                                model.number = (int)self.pickerOptions.pickedAssetModels.count + 1;
+                                [self.pickerOptions.pickedAssetModels addObject:model];
                             }else{
                                 model.picked = NO;
                                 model.number = 0;
@@ -679,9 +657,9 @@
 
 @implementation AssetPickerOptions
 
--(NSMutableArray<XG_AssetModel *> *)pickedXG_AssetModels{
-    if(_pickedXG_AssetModels == nil)  _pickedXG_AssetModels = [NSMutableArray array];
-    return _pickedXG_AssetModels;
+-(NSMutableArray<XG_AssetModel *> *)pickedAssetModels{
+    if(_pickedAssetModels == nil)  _pickedAssetModels = [NSMutableArray array];
+    return _pickedAssetModels;
 }
 
 @end
