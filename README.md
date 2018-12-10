@@ -22,8 +22,17 @@ XGImagePickerController是一款iOS相册选择器，支持图片、视频拍摄
 
 文档
 ==============
-遵循\<XG_AssetPickerControllerDelegate\>协议，并实现协议方法：
-\- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+1. `
+__weak typeof (self) weakSelf = self;
+[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
+if (aStatus == XG_AuthorizationStatusAuthorized) {
+[weakSelf showAssetPickerController];
+}else{
+[weakSelf showAlert];
+}
+}];`
+2. 遵循`\<XG_AssetPickerControllerDelegate\>`协议，并实现协议方法：
+`\- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;`
 
 具体使用方法可参见示例Demo
 
