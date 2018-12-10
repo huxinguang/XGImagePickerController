@@ -1,6 +1,6 @@
 //
 //  SelectedAssetCell.m
-//  XGImagePickerController
+//  XGAssetPickerController-Demo
 //
 //  Created by huxinguang on 2018/11/14.
 //  Copyright © 2018年 huxinguang. All rights reserved.

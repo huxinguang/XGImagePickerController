@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="XGImagePickerController_logo.png" title="XGImagePickerController logo" float=left>
+  <img src="XGAssetPickerController_logo.png" title="XGAssetPickerController logo" float=left>
 </p>
 
 功能描述
 ==============
-`XGImagePickerController`是一款iOS相册选择器，支持图片、视频拍摄，多图片、多视频混选及预览， 支持Gif浏览(`iOS11+`)，多个相册目录同一图片/视频可自动排重，并具有记录已选图片/视频的功能。
+`XGAssetPickerController`是一款iOS相册选择器，支持图片、视频拍摄，多图片、多视频混选及预览， 支持Gif浏览(`iOS11+`)，多个相册目录同一图片/视频可自动排重，并具有记录已选图片/视频的功能。
 
 
 系统要求
@@ -16,11 +16,11 @@
 
 ### CocoaPods
 
-1. 在 `Podfile` 中添加  `pod 'XGImagePickerController'`。
+1. 在 `Podfile` 中添加  `pod 'XGAssetPickerController'`。
 2. 执行 `pod install` 或 `pod update`。
 3. `#import "XG_AssetPickerController.h"`
 
-文档
+使用
 ==============
 1. 先使用来检查是否获取相册权限，然后根据`XG_AuthorizationStatus`做进一步处理 `[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
 }];`
@@ -47,18 +47,24 @@
 
 许可证
 ==============
-`XGImagePickerController` 使用 MIT 许可证，详情见 LICENSE 文件。
+`XGAssetPickerController` 使用 MIT 许可证，详情见 LICENSE 文件。
 
 
 <br/><br/>
 ---
+
+Requirements
+==============
+This library requires `iOS 8.0+` .
+
+
 
 Installation
 ==============
 
 ### CocoaPods
 
-1. Add `pod 'XGImagePickerController'` to your Podfile.
+1. Add `pod 'XGAssetPickerController'` to your Podfile.
 2. Run `pod install` or `pod update`.
 3. `#import "XG_AssetPickerController.h"`
 
@@ -68,22 +74,20 @@ Installation
 2. Add the source files to your Xcode project.
 3. Import `XG_AssetPickerController.h`.
 
-Documentation
+Usage
 ==============
-
-
-
-Requirements
-==============
-This library requires `iOS 8.0+` .
 
 Notice
 ==============
 If your app crashed with message like `This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription/NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.`, please check if the corresponding usage description is added in the app's Info.plist.
 
+
+
+
+
 License
 ==============
-`XGImagePickerController` is provided under the MIT license. See `LICENSE` file for details.
+`XGAssetPickerController` is provided under the MIT license. See `LICENSE` file for details.
 
 
 

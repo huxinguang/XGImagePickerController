@@ -13,8 +13,8 @@
 		C9D769652191357900C8A561 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D769642191357900C8A561 /* Assets.xcassets */; };
 		C9D769682191357900C8A561 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D769662191357900C8A561 /* LaunchScreen.storyboard */; };
 		C9D7696B2191357900C8A561 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7696A2191357900C8A561 /* main.m */; };
-		C9D769752191357900C8A561 /* XGImagePickerControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769742191357900C8A561 /* XGImagePickerControllerTests.m */; };
-		C9D769802191357900C8A561 /* XGImagePickerControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7697F2191357900C8A561 /* XGImagePickerControllerUITests.m */; };
+		C9D769752191357900C8A561 /* XGAssetPickerController-DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769742191357900C8A561 /* XGAssetPickerController-DemoTests.m */; };
+		C9D769802191357900C8A561 /* XGAssetPickerController-DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7697F2191357900C8A561 /* XGAssetPickerController-DemoUITests.m */; };
 		C9D7699E219135F800C8A561 /* XG_AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9D7698F219135F700C8A561 /* XG_AlbumCell.xib */; };
 		C9D7699F219135F800C8A561 /* XG_AssetPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76991219135F700C8A561 /* XG_AssetPickerController.m */; };
 		C9D769A0219135F800C8A561 /* XG_AssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76992219135F700C8A561 /* XG_AssetModel.m */; };
@@ -58,19 +58,19 @@
 			containerPortal = C9D769502191357800C8A561 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C9D769572191357800C8A561;
-			remoteInfo = XGImagePickerController;
+			remoteInfo = XGAssetPickerController-Demo;
 		};
 		C9D7697C2191357900C8A561 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9D769502191357800C8A561 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C9D769572191357800C8A561;
-			remoteInfo = XGImagePickerController;
+			remoteInfo = XGAssetPickerController-Demo;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C9D769582191357800C8A561 /* XGImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XGImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9D769582191357800C8A561 /* XGAssetPickerController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XGAssetPickerController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D7695B2191357800C8A561 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9D7695C2191357800C8A561 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9D7695E2191357800C8A561 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		C9D769672191357900C8A561 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9D769692191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D7696A2191357900C8A561 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9D769702191357900C8A561 /* XGImagePickerControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XGImagePickerControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9D769742191357900C8A561 /* XGImagePickerControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGImagePickerControllerTests.m; sourceTree = "<group>"; };
+		C9D769702191357900C8A561 /* XGAssetPickerController-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XGAssetPickerController-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9D769742191357900C8A561 /* XGAssetPickerController-DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGAssetPickerController-DemoTests.m; sourceTree = "<group>"; };
 		C9D769762191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9D7697B2191357900C8A561 /* XGImagePickerControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XGImagePickerControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9D7697F2191357900C8A561 /* XGImagePickerControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGImagePickerControllerUITests.m; sourceTree = "<group>"; };
+		C9D7697B2191357900C8A561 /* XGAssetPickerController-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XGAssetPickerController-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9D7697F2191357900C8A561 /* XGAssetPickerController-DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGAssetPickerController-DemoUITests.m; sourceTree = "<group>"; };
 		C9D769812191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D7698E219135F700C8A561 /* XG_AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AlbumCell.h; sourceTree = "<group>"; };
 		C9D7698F219135F700C8A561 /* XG_AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XG_AlbumCell.xib; sourceTree = "<group>"; };
@@ -170,9 +170,9 @@
 		C9D7694F2191357800C8A561 = {
 			isa = PBXGroup;
 			children = (
-				C9D7695A2191357800C8A561 /* XGImagePickerController */,
-				C9D769732191357900C8A561 /* XGImagePickerControllerTests */,
-				C9D7697E2191357900C8A561 /* XGImagePickerControllerUITests */,
+				C9D7695A2191357800C8A561 /* XGAssetPickerController-Demo */,
+				C9D769732191357900C8A561 /* XGAssetPickerController-DemoTests */,
+				C9D7697E2191357900C8A561 /* XGAssetPickerController-DemoUITests */,
 				C9D769592191357800C8A561 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,14 +180,14 @@
 		C9D769592191357800C8A561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9D769582191357800C8A561 /* XGImagePickerController.app */,
-				C9D769702191357900C8A561 /* XGImagePickerControllerTests.xctest */,
-				C9D7697B2191357900C8A561 /* XGImagePickerControllerUITests.xctest */,
+				C9D769582191357800C8A561 /* XGAssetPickerController-Demo.app */,
+				C9D769702191357900C8A561 /* XGAssetPickerController-DemoTests.xctest */,
+				C9D7697B2191357900C8A561 /* XGAssetPickerController-DemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9D7695A2191357800C8A561 /* XGImagePickerController */ = {
+		C9D7695A2191357800C8A561 /* XGAssetPickerController-Demo */ = {
 			isa = PBXGroup;
 			children = (
 				C9D7698D219135D600C8A561 /* Picker */,
@@ -203,25 +203,25 @@
 				C9D769692191357900C8A561 /* Info.plist */,
 				C9D7696A2191357900C8A561 /* main.m */,
 			);
-			path = XGImagePickerController;
+			path = "XGAssetPickerController-Demo";
 			sourceTree = "<group>";
 		};
-		C9D769732191357900C8A561 /* XGImagePickerControllerTests */ = {
+		C9D769732191357900C8A561 /* XGAssetPickerController-DemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9D769742191357900C8A561 /* XGImagePickerControllerTests.m */,
+				C9D769742191357900C8A561 /* XGAssetPickerController-DemoTests.m */,
 				C9D769762191357900C8A561 /* Info.plist */,
 			);
-			path = XGImagePickerControllerTests;
+			path = "XGAssetPickerController-DemoTests";
 			sourceTree = "<group>";
 		};
-		C9D7697E2191357900C8A561 /* XGImagePickerControllerUITests */ = {
+		C9D7697E2191357900C8A561 /* XGAssetPickerController-DemoUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C9D7697F2191357900C8A561 /* XGImagePickerControllerUITests.m */,
+				C9D7697F2191357900C8A561 /* XGAssetPickerController-DemoUITests.m */,
 				C9D769812191357900C8A561 /* Info.plist */,
 			);
-			path = XGImagePickerControllerUITests;
+			path = "XGAssetPickerController-DemoUITests";
 			sourceTree = "<group>";
 		};
 		C9D7698D219135D600C8A561 /* Picker */ = {
@@ -316,9 +316,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9D769572191357800C8A561 /* XGImagePickerController */ = {
+		C9D769572191357800C8A561 /* XGAssetPickerController-Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9D769842191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerController" */;
+			buildConfigurationList = C9D769842191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-Demo" */;
 			buildPhases = (
 				C9D769542191357800C8A561 /* Sources */,
 				C9D769552191357800C8A561 /* Frameworks */,
@@ -328,14 +328,14 @@
 			);
 			dependencies = (
 			);
-			name = XGImagePickerController;
-			productName = XGImagePickerController;
-			productReference = C9D769582191357800C8A561 /* XGImagePickerController.app */;
+			name = "XGAssetPickerController-Demo";
+			productName = XGAssetPickerController-Demo;
+			productReference = C9D769582191357800C8A561 /* XGAssetPickerController-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9D7696F2191357900C8A561 /* XGImagePickerControllerTests */ = {
+		C9D7696F2191357900C8A561 /* XGAssetPickerController-DemoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9D769872191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerControllerTests" */;
+			buildConfigurationList = C9D769872191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-DemoTests" */;
 			buildPhases = (
 				C9D7696C2191357900C8A561 /* Sources */,
 				C9D7696D2191357900C8A561 /* Frameworks */,
@@ -346,14 +346,14 @@
 			dependencies = (
 				C9D769722191357900C8A561 /* PBXTargetDependency */,
 			);
-			name = XGImagePickerControllerTests;
-			productName = XGImagePickerControllerTests;
-			productReference = C9D769702191357900C8A561 /* XGImagePickerControllerTests.xctest */;
+			name = "XGAssetPickerController-DemoTests";
+			productName = XGAssetPickerController-DemoTests;
+			productReference = C9D769702191357900C8A561 /* XGAssetPickerController-DemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C9D7697A2191357900C8A561 /* XGImagePickerControllerUITests */ = {
+		C9D7697A2191357900C8A561 /* XGAssetPickerController-DemoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9D7698A2191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerControllerUITests" */;
+			buildConfigurationList = C9D7698A2191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-DemoUITests" */;
 			buildPhases = (
 				C9D769772191357900C8A561 /* Sources */,
 				C9D769782191357900C8A561 /* Frameworks */,
@@ -364,9 +364,9 @@
 			dependencies = (
 				C9D7697D2191357900C8A561 /* PBXTargetDependency */,
 			);
-			name = XGImagePickerControllerUITests;
-			productName = XGImagePickerControllerUITests;
-			productReference = C9D7697B2191357900C8A561 /* XGImagePickerControllerUITests.xctest */;
+			name = "XGAssetPickerController-DemoUITests";
+			productName = XGAssetPickerController-DemoUITests;
+			productReference = C9D7697B2191357900C8A561 /* XGAssetPickerController-DemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -391,7 +391,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9D769532191357800C8A561 /* Build configuration list for PBXProject "XGImagePickerController" */;
+			buildConfigurationList = C9D769532191357800C8A561 /* Build configuration list for PBXProject "XGAssetPickerController-Demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -404,9 +404,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9D769572191357800C8A561 /* XGImagePickerController */,
-				C9D7696F2191357900C8A561 /* XGImagePickerControllerTests */,
-				C9D7697A2191357900C8A561 /* XGImagePickerControllerUITests */,
+				C9D769572191357800C8A561 /* XGAssetPickerController-Demo */,
+				C9D7696F2191357900C8A561 /* XGAssetPickerController-DemoTests */,
+				C9D7697A2191357900C8A561 /* XGAssetPickerController-DemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -488,7 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D769752191357900C8A561 /* XGImagePickerControllerTests.m in Sources */,
+				C9D769752191357900C8A561 /* XGAssetPickerController-DemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D769802191357900C8A561 /* XGImagePickerControllerUITests.m in Sources */,
+				C9D769802191357900C8A561 /* XGAssetPickerController-DemoUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,12 +505,12 @@
 /* Begin PBXTargetDependency section */
 		C9D769722191357900C8A561 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C9D769572191357800C8A561 /* XGImagePickerController */;
+			target = C9D769572191357800C8A561 /* XGAssetPickerController-Demo */;
 			targetProxy = C9D769712191357900C8A561 /* PBXContainerItemProxy */;
 		};
 		C9D7697D2191357900C8A561 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C9D769572191357800C8A561 /* XGImagePickerController */;
+			target = C9D769572191357800C8A561 /* XGAssetPickerController-Demo */;
 			targetProxy = C9D7697C2191357900C8A561 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -656,13 +656,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2383N7DP9;
-				INFOPLIST_FILE = XGImagePickerController/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGImagePickerController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGAssetPickerController-Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -676,13 +676,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2383N7DP9;
-				INFOPLIST_FILE = XGImagePickerController/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGImagePickerController;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGAssetPickerController-Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -695,16 +695,16 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGImagePickerControllerTests/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGImagePickerControllerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGImagePickerController.app/XGImagePickerController";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGAssetPickerController-Demo.app/XGAssetPickerController-Demo";
 			};
 			name = Debug;
 		};
@@ -714,16 +714,16 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGImagePickerControllerTests/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-DemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGImagePickerControllerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGImagePickerController.app/XGImagePickerController";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGAssetPickerController-Demo.app/XGAssetPickerController-Demo";
 			};
 			name = Release;
 		};
@@ -732,16 +732,16 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGImagePickerControllerUITests/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-DemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGImagePickerControllerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = XGImagePickerController;
+				TEST_TARGET_NAME = XGAssetPickerController-Demo;
 			};
 			name = Debug;
 		};
@@ -750,23 +750,23 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGImagePickerControllerUITests/Info.plist;
+				INFOPLIST_FILE = XGAssetPickerController-DemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGImagePickerControllerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = XGImagePickerController;
+				TEST_TARGET_NAME = XGAssetPickerController-Demo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9D769532191357800C8A561 /* Build configuration list for PBXProject "XGImagePickerController" */ = {
+		C9D769532191357800C8A561 /* Build configuration list for PBXProject "XGAssetPickerController-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9D769822191357900C8A561 /* Debug */,
@@ -775,7 +775,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9D769842191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerController" */ = {
+		C9D769842191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9D769852191357900C8A561 /* Debug */,
@@ -784,7 +784,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9D769872191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerControllerTests" */ = {
+		C9D769872191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-DemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9D769882191357900C8A561 /* Debug */,
@@ -793,7 +793,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9D7698A2191357900C8A561 /* Build configuration list for PBXNativeTarget "XGImagePickerControllerUITests" */ = {
+		C9D7698A2191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-DemoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9D7698B2191357900C8A561 /* Debug */,

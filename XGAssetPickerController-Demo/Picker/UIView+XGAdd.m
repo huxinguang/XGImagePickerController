@@ -1,6 +1,6 @@
 //
 //  UIView+XGAdd.m
-//  XGImagePickerController
+//  XGAssetPickerController
 //
 //  Created by huxinguang on 2018/11/8.
 //  Copyright © 2018年 huxinguang. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  XGImagePickerControllerUITests.m
-//  XGImagePickerControllerUITests
+//  XGAssetPickerControllerUITests.m
+//  XGAssetPickerControllerUITests
 //
 //  Created by huxinguang on 2018/11/6.
 //  Copyright © 2018年 huxinguang. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface XGImagePickerControllerUITests : XCTestCase
+@interface XGAssetPickerControllerUITests : XCTestCase
 
 @end
 
-@implementation XGImagePickerControllerUITests
+@implementation XGAssetPickerControllerUITests
 
 - (void)setUp {
     [super setUp];
