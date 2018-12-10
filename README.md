@@ -22,17 +22,15 @@ XGImagePickerController是一款iOS相册选择器，支持图片、视频拍摄
 
 文档
 ==============
-1. `
-__weak typeof (self) weakSelf = self;
-[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
-if (aStatus == XG_AuthorizationStatusAuthorized) {
-[weakSelf showAssetPickerController];
-}else{
-[weakSelf showAlert];
-}
+1. 先使用来检查是否获取相册权限，然后做进一步处理 `[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
 }];`
-2. 遵循`\<XG_AssetPickerControllerDelegate\>`协议，并实现协议方法：
-`\- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;`
+
+2. 初始化`XG_AssetPickerOptions`对象来配置选择器，`maxAssetsCount`表示最大可选择数量，`videoPickable`表示是否可选择视频，已选的图片或者视频会保存在`pickedAssetModels`数组中。
+3. 使用`XG_AssetPickerController *photoPickerVc = [[XG_AssetPickerController alloc] initWithOptions:options delegate:self];`初始化选择器，然后`UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];
+[self presentViewController:nav animated:YES completion:nil];`
+
+4. 遵循`<XG_AssetPickerControllerDelegate>`协议，并实现协议方法：
+`- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;`
 
 具体使用方法可参见示例Demo
 
