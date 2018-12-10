@@ -10,6 +10,7 @@
 #import "XG_AssetModel.h"
 #import "UIView+XGAdd.h"
 #import "XG_AssetPickerManager.h"
+#import "XG_PickerMacro.h"
 
 @interface XG_AssetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
@@ -32,7 +33,7 @@
         _selectPhotoButton.hidden = YES;
         _bottomView.hidden = YES;
         
-        self.imageView.image = [UIImage imageNamed:@"picker_camera"];
+        self.imageView.image = ImageWithFile(@"picker_camera");
         self.numberLabel.hidden = YES;
     }else{
         switch (model.asset.mediaType) {
@@ -70,7 +71,7 @@
             self.imageView.image = photo;
         }];
         self.selectPhotoButton.selected = model.picked;
-        self.selectImageView.image = model.picked ? [UIImage imageNamed:@"picker_selected"] : [UIImage imageNamed:@"picker_unselected"];
+        self.selectImageView.image = model.picked ? ImageWithFile(@"picker_selected") : ImageWithFile(@"picker_unselected");
         self.numberLabel.text = self.selectPhotoButton.selected ? [NSString stringWithFormat:@"%d",self.model.number] : @"";
         self.numberLabel.hidden = NO;
     }
@@ -106,7 +107,7 @@
     if (self.didSelectPhotoBlock) {
         self.didSelectPhotoBlock(sender.isSelected);
     }
-    self.selectImageView.image = sender.isSelected ? [UIImage imageNamed:@"picker_selected"] : [UIImage imageNamed:@"picker_unselected"];
+    self.selectImageView.image = sender.isSelected ? ImageWithFile(@"picker_selected") : ImageWithFile(@"picker_unselected");
     if (sender.isSelected) {
         [UIView showScaleAnimationWithLayer:_selectImageView.layer type:ScaleAnimationToBigger];
     }

@@ -8,6 +8,7 @@
 
 #import "XG_AlbumCell.h"
 #import "XG_AssetPickerManager.h"
+#import "XG_PickerMacro.h"
 
 @implementation XG_AlbumCell
 
@@ -24,7 +25,7 @@
             self.imgView.image = postImage;
         }];
     }else{
-        self.imgView.image = [UIImage imageNamed:@"picker_album_placeholder"];
+        self.imgView.image = ImageWithFile(@"picker_album_placeholder");
     }
     
     if (model.isSelected) {

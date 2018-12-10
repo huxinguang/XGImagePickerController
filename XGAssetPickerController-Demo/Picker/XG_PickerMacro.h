@@ -24,6 +24,9 @@
 #define kAppTabbarSafeBottomMargin ((IS_iPhoneX_Or_Xs || IS_iPhoneXr || IS_iPhoneXs_Max) ? 34.f : 0.f)// Tabbar 底部安全高度.
 #define kAppStatusBarAndNavigationBarHeight ((IS_iPhoneX_Or_Xs || IS_iPhoneXr || IS_iPhoneXs_Max) ? 88.f : 64.f)// 状态栏和导航栏总高度.
 
+#define ImageWithFile(_pointer) [UIImage imageWithContentsOfFile:[[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"AssetPicker" ofType:@"bundle"]] pathForResource:[NSString stringWithFormat:@"%@@%dx",_pointer,(int)[UIScreen mainScreen].nativeScale] ofType:@"png"]]
+
+
 #define kShowStatusBarNotification @"ShowStatusBarNotification"
 #define kNavigationBarImageViewTag 111
 

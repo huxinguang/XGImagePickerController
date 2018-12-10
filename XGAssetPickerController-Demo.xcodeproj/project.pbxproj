@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		966F478F21BE5C7D0050D045 /* AssetPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 966F478E21BE5C7C0050D045 /* AssetPicker.bundle */; };
 		C9D7695D2191357800C8A561 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7695C2191357800C8A561 /* AppDelegate.m */; };
 		C9D769602191357800C8A561 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7695F2191357800C8A561 /* ViewController.m */; };
 		C9D769632191357800C8A561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D769612191357800C8A561 /* Main.storyboard */; };
@@ -26,20 +27,6 @@
 		C9D769A921913A6600C8A561 /* XG_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769A821913A6600C8A561 /* XG_RootViewController.m */; };
 		C9D769AE21913AD000C8A561 /* XG_BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769AB21913ACF00C8A561 /* XG_BarButton.m */; };
 		C9D769AF21913AD000C8A561 /* XG_TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769AD21913AD000C8A561 /* XG_TitleView.m */; };
-		C9D769BE2192865300C8A561 /* picker_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B22192865300C8A561 /* picker_cancel@3x.png */; };
-		C9D769BF2192865300C8A561 /* picker_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B32192865300C8A561 /* picker_arrow@2x.png */; };
-		C9D769C02192865300C8A561 /* picker_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B42192865300C8A561 /* picker_selected@2x.png */; };
-		C9D769C12192865300C8A561 /* picker_album_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B52192865300C8A561 /* picker_album_placeholder@2x.png */; };
-		C9D769C22192865300C8A561 /* picker_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B62192865300C8A561 /* picker_unselected@2x.png */; };
-		C9D769C32192865300C8A561 /* picker_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B72192865300C8A561 /* picker_cancel@2x.png */; };
-		C9D769C42192865300C8A561 /* picker_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B82192865300C8A561 /* picker_camera@2x.png */; };
-		C9D769C52192865300C8A561 /* picker_album_placeholder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769B92192865300C8A561 /* picker_album_placeholder@3x.png */; };
-		C9D769C62192865300C8A561 /* picker_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769BA2192865300C8A561 /* picker_arrow@3x.png */; };
-		C9D769C72192865300C8A561 /* picker_unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769BB2192865300C8A561 /* picker_unselected@3x.png */; };
-		C9D769C82192865300C8A561 /* picker_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769BC2192865300C8A561 /* picker_selected@3x.png */; };
-		C9D769CB2192902700C8A561 /* picker_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769CA2192902700C8A561 /* picker_camera@3x.png */; };
-		C9D769D62192948000C8A561 /* picker_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769D42192947F00C8A561 /* picker_video@2x.png */; };
-		C9D769D72192948000C8A561 /* picker_video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D769D52192948000C8A561 /* picker_video@3x.png */; };
 		C9D769E12193CAE000C8A561 /* XG_MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769DB2193CAE000C8A561 /* XG_MediaCell.m */; };
 		C9D769E32193CAE000C8A561 /* XG_MediaBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769DD2193CAE000C8A561 /* XG_MediaBrowseView.m */; };
 		C9D769F72193D16500C8A561 /* UIView+XGAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769F62193D16500C8A561 /* UIView+XGAdd.m */; };
@@ -47,9 +34,6 @@
 		C9D769FF2193E1E700C8A561 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D769FC2193E1E700C8A561 /* FLAnimatedImage.m */; };
 		C9D76A0A219429CB00C8A561 /* XG_PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76A09219429CB00C8A561 /* XG_PlayerManager.m */; };
 		C9D76A20219BC9E500C8A561 /* SelectedAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */; };
-		C9D76A2F21A2904900C8A561 /* player_play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A2E21A2904900C8A561 /* player_play@2x.png */; };
-		C9D76A3C21A3F4E900C8A561 /* dot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A3A21A3F4E800C8A561 /* dot@3x.png */; };
-		C9D76A3D21A3F4E900C8A561 /* dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9D76A3B21A3F4E800C8A561 /* dot@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,18 +42,19 @@
 			containerPortal = C9D769502191357800C8A561 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C9D769572191357800C8A561;
-			remoteInfo = XGAssetPickerController-Demo;
+			remoteInfo = "XGAssetPickerController-Demo";
 		};
 		C9D7697C2191357900C8A561 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9D769502191357800C8A561 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C9D769572191357800C8A561;
-			remoteInfo = XGAssetPickerController-Demo;
+			remoteInfo = "XGAssetPickerController-Demo";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		966F478E21BE5C7C0050D045 /* AssetPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AssetPicker.bundle; sourceTree = "<group>"; };
 		C9D769582191357800C8A561 /* XGAssetPickerController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XGAssetPickerController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D7695B2191357800C8A561 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9D7695C2191357800C8A561 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,10 +66,10 @@
 		C9D769692191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D7696A2191357900C8A561 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9D769702191357900C8A561 /* XGAssetPickerController-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XGAssetPickerController-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9D769742191357900C8A561 /* XGAssetPickerController-DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGAssetPickerController-DemoTests.m; sourceTree = "<group>"; };
+		C9D769742191357900C8A561 /* XGAssetPickerController-DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XGAssetPickerController-DemoTests.m"; sourceTree = "<group>"; };
 		C9D769762191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D7697B2191357900C8A561 /* XGAssetPickerController-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "XGAssetPickerController-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9D7697F2191357900C8A561 /* XGAssetPickerController-DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGAssetPickerController-DemoUITests.m; sourceTree = "<group>"; };
+		C9D7697F2191357900C8A561 /* XGAssetPickerController-DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "XGAssetPickerController-DemoUITests.m"; sourceTree = "<group>"; };
 		C9D769812191357900C8A561 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D7698E219135F700C8A561 /* XG_AlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AlbumCell.h; sourceTree = "<group>"; };
 		C9D7698F219135F700C8A561 /* XG_AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XG_AlbumCell.xib; sourceTree = "<group>"; };
@@ -107,20 +92,6 @@
 		C9D769AC21913ACF00C8A561 /* XG_TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_TitleView.h; sourceTree = "<group>"; };
 		C9D769AD21913AD000C8A561 /* XG_TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_TitleView.m; sourceTree = "<group>"; };
 		C9D769B021913B6500C8A561 /* XG_PickerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_PickerMacro.h; sourceTree = "<group>"; };
-		C9D769B22192865300C8A561 /* picker_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_cancel@3x.png"; sourceTree = "<group>"; };
-		C9D769B32192865300C8A561 /* picker_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_arrow@2x.png"; sourceTree = "<group>"; };
-		C9D769B42192865300C8A561 /* picker_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_selected@2x.png"; sourceTree = "<group>"; };
-		C9D769B52192865300C8A561 /* picker_album_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_album_placeholder@2x.png"; sourceTree = "<group>"; };
-		C9D769B62192865300C8A561 /* picker_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_unselected@2x.png"; sourceTree = "<group>"; };
-		C9D769B72192865300C8A561 /* picker_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_cancel@2x.png"; sourceTree = "<group>"; };
-		C9D769B82192865300C8A561 /* picker_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_camera@2x.png"; sourceTree = "<group>"; };
-		C9D769B92192865300C8A561 /* picker_album_placeholder@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_album_placeholder@3x.png"; sourceTree = "<group>"; };
-		C9D769BA2192865300C8A561 /* picker_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_arrow@3x.png"; sourceTree = "<group>"; };
-		C9D769BB2192865300C8A561 /* picker_unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_unselected@3x.png"; sourceTree = "<group>"; };
-		C9D769BC2192865300C8A561 /* picker_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_selected@3x.png"; sourceTree = "<group>"; };
-		C9D769CA2192902700C8A561 /* picker_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_camera@3x.png"; sourceTree = "<group>"; };
-		C9D769D42192947F00C8A561 /* picker_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_video@2x.png"; sourceTree = "<group>"; };
-		C9D769D52192948000C8A561 /* picker_video@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picker_video@3x.png"; sourceTree = "<group>"; };
 		C9D769D82192DCE900C8A561 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		C9D769D92192DCEA00C8A561 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C9D769DB2193CAE000C8A561 /* XG_MediaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_MediaCell.m; sourceTree = "<group>"; };
@@ -137,9 +108,6 @@
 		C9D76A09219429CB00C8A561 /* XG_PlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XG_PlayerManager.m; sourceTree = "<group>"; };
 		C9D76A1E219BC9E500C8A561 /* SelectedAssetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedAssetCell.h; sourceTree = "<group>"; };
 		C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedAssetCell.m; sourceTree = "<group>"; };
-		C9D76A2E21A2904900C8A561 /* player_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player_play@2x.png"; sourceTree = "<group>"; };
-		C9D76A3A21A3F4E800C8A561 /* dot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot@3x.png"; sourceTree = "<group>"; };
-		C9D76A3B21A3F4E800C8A561 /* dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,7 +195,7 @@
 		C9D7698D219135D600C8A561 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				C9D769B1219285EA00C8A561 /* PickerImages */,
+				966F478E21BE5C7C0050D045 /* AssetPicker.bundle */,
 				C9D76990219135F700C8A561 /* XG_AssetPickerController.h */,
 				C9D76991219135F700C8A561 /* XG_AssetPickerController.m */,
 				C9D76995219135F700C8A561 /* XG_AssetPickerManager.h */,
@@ -254,30 +222,6 @@
 				C9D769DA2193CAE000C8A561 /* MediaBrowseView */,
 			);
 			path = Picker;
-			sourceTree = "<group>";
-		};
-		C9D769B1219285EA00C8A561 /* PickerImages */ = {
-			isa = PBXGroup;
-			children = (
-				C9D769B52192865300C8A561 /* picker_album_placeholder@2x.png */,
-				C9D769B92192865300C8A561 /* picker_album_placeholder@3x.png */,
-				C9D769B32192865300C8A561 /* picker_arrow@2x.png */,
-				C9D769BA2192865300C8A561 /* picker_arrow@3x.png */,
-				C9D769B82192865300C8A561 /* picker_camera@2x.png */,
-				C9D769CA2192902700C8A561 /* picker_camera@3x.png */,
-				C9D769B72192865300C8A561 /* picker_cancel@2x.png */,
-				C9D769B22192865300C8A561 /* picker_cancel@3x.png */,
-				C9D769B42192865300C8A561 /* picker_selected@2x.png */,
-				C9D769BC2192865300C8A561 /* picker_selected@3x.png */,
-				C9D769B62192865300C8A561 /* picker_unselected@2x.png */,
-				C9D769BB2192865300C8A561 /* picker_unselected@3x.png */,
-				C9D769D42192947F00C8A561 /* picker_video@2x.png */,
-				C9D769D52192948000C8A561 /* picker_video@3x.png */,
-				C9D76A2E21A2904900C8A561 /* player_play@2x.png */,
-				C9D76A3B21A3F4E800C8A561 /* dot@2x.png */,
-				C9D76A3A21A3F4E800C8A561 /* dot@3x.png */,
-			);
-			path = PickerImages;
 			sourceTree = "<group>";
 		};
 		C9D769DA2193CAE000C8A561 /* MediaBrowseView */ = {
@@ -329,7 +273,7 @@
 			dependencies = (
 			);
 			name = "XGAssetPickerController-Demo";
-			productName = XGAssetPickerController-Demo;
+			productName = "XGAssetPickerController-Demo";
 			productReference = C9D769582191357800C8A561 /* XGAssetPickerController-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -347,7 +291,7 @@
 				C9D769722191357900C8A561 /* PBXTargetDependency */,
 			);
 			name = "XGAssetPickerController-DemoTests";
-			productName = XGAssetPickerController-DemoTests;
+			productName = "XGAssetPickerController-DemoTests";
 			productReference = C9D769702191357900C8A561 /* XGAssetPickerController-DemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -365,7 +309,7 @@
 				C9D7697D2191357900C8A561 /* PBXTargetDependency */,
 			);
 			name = "XGAssetPickerController-DemoUITests";
-			productName = XGAssetPickerController-DemoUITests;
+			productName = "XGAssetPickerController-DemoUITests";
 			productReference = C9D7697B2191357900C8A561 /* XGAssetPickerController-DemoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -416,28 +360,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D769C52192865300C8A561 /* picker_album_placeholder@3x.png in Resources */,
-				C9D769C12192865300C8A561 /* picker_album_placeholder@2x.png in Resources */,
-				C9D769D62192948000C8A561 /* picker_video@2x.png in Resources */,
 				C9D769682191357900C8A561 /* LaunchScreen.storyboard in Resources */,
-				C9D76A3C21A3F4E900C8A561 /* dot@3x.png in Resources */,
-				C9D769C02192865300C8A561 /* picker_selected@2x.png in Resources */,
-				C9D76A3D21A3F4E900C8A561 /* dot@2x.png in Resources */,
-				C9D769D72192948000C8A561 /* picker_video@3x.png in Resources */,
-				C9D769C42192865300C8A561 /* picker_camera@2x.png in Resources */,
-				C9D769BE2192865300C8A561 /* picker_cancel@3x.png in Resources */,
-				C9D769BF2192865300C8A561 /* picker_arrow@2x.png in Resources */,
 				C9D769652191357900C8A561 /* Assets.xcassets in Resources */,
-				C9D769C72192865300C8A561 /* picker_unselected@3x.png in Resources */,
 				C9D769632191357800C8A561 /* Main.storyboard in Resources */,
-				C9D769C82192865300C8A561 /* picker_selected@3x.png in Resources */,
-				C9D769CB2192902700C8A561 /* picker_camera@3x.png in Resources */,
 				C9D7699E219135F800C8A561 /* XG_AlbumCell.xib in Resources */,
-				C9D769C32192865300C8A561 /* picker_cancel@2x.png in Resources */,
-				C9D769C62192865300C8A561 /* picker_arrow@3x.png in Resources */,
-				C9D769C22192865300C8A561 /* picker_unselected@2x.png in Resources */,
+				966F478F21BE5C7D0050D045 /* AssetPicker.bundle in Resources */,
 				C9D769A5219135F800C8A561 /* XG_AssetCell.xib in Resources */,
-				C9D76A2F21A2904900C8A561 /* player_play@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,13 +584,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2383N7DP9;
-				INFOPLIST_FILE = XGAssetPickerController-Demo/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGAssetPickerController-Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huxinguang.XGAssetPickerController-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -676,13 +604,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2383N7DP9;
-				INFOPLIST_FILE = XGAssetPickerController-Demo/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huxinguang.XGAssetPickerController-Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.huxinguang.XGAssetPickerController-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -695,13 +623,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGAssetPickerController-DemoTests/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skyocean.XGAssetPickerController-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGAssetPickerController-Demo.app/XGAssetPickerController-Demo";
@@ -714,13 +642,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGAssetPickerController-DemoTests/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-DemoTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skyocean.XGAssetPickerController-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XGAssetPickerController-Demo.app/XGAssetPickerController-Demo";
@@ -732,16 +660,16 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGAssetPickerController-DemoUITests/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-DemoUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skyocean.XGAssetPickerController-DemoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = XGAssetPickerController-Demo;
+				TEST_TARGET_NAME = "XGAssetPickerController-Demo";
 			};
 			name = Debug;
 		};
@@ -750,16 +678,16 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U7JKYT7J7K;
-				INFOPLIST_FILE = XGAssetPickerController-DemoUITests/Info.plist;
+				INFOPLIST_FILE = "XGAssetPickerController-DemoUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.skyocean.XGAssetPickerController-DemoUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.skyocean.XGAssetPickerController-DemoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = XGAssetPickerController-Demo;
+				TEST_TARGET_NAME = "XGAssetPickerController-Demo";
 			};
 			name = Release;
 		};

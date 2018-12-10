@@ -7,6 +7,7 @@
 //
 
 #import "XG_BarButton.h"
+#import "XG_PickerMacro.h"
 @implementation XG_BarButtonConfiguration
 
 @end
@@ -27,18 +28,18 @@
     switch (configuration.type) {
         case XG_BarButtonTypeBack:
             if (configuration.normalImageName) {
-                [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
+                [self setImage:ImageWithFile(configuration.normalImageName) forState:UIControlStateNormal];
             }
             break;
         case XG_BarButtonTypeImage:
             if (configuration.normalImageName) {
-                [self setImage:[UIImage imageNamed:configuration.normalImageName] forState:UIControlStateNormal];
+                [self setImage:ImageWithFile(configuration.normalImageName) forState:UIControlStateNormal];
             }
             if (configuration.selectedImageName) {
-                [self setImage:[UIImage imageNamed:configuration.selectedImageName] forState:UIControlStateSelected];
+                [self setImage:ImageWithFile(configuration.normalImageName) forState:UIControlStateSelected];
             }
             if (configuration.highlightedImageName) {
-                [self setImage:[UIImage imageNamed:configuration.highlightedImageName] forState:UIControlStateHighlighted];
+                [self setImage:ImageWithFile(configuration.highlightedImageName) forState:UIControlStateHighlighted];
             }
             break;
         case XG_BarButtonTypeText:

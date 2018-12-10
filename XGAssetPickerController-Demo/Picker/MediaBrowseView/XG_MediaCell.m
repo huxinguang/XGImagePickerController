@@ -71,7 +71,7 @@
 - (UIButton *)playBtn{
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playBtn setImage:[UIImage imageNamed:@"player_play"] forState:UIControlStateNormal];
+        [_playBtn setImage:ImageWithFile(@"player_play") forState:UIControlStateNormal];
         [_playBtn addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
@@ -334,7 +334,7 @@
         _slider.minimumTrackTintColor = [UIColor colorWithRed:36/255.0 green:160/255.0 blue:252/255.0 alpha:1];
         _slider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
         _slider.backgroundColor = [UIColor clearColor];
-        [_slider setThumbImage:[UIImage imageNamed:@"dot"] forState:UIControlStateNormal];
+        [_slider setThumbImage:ImageWithFile(@"dot") forState:UIControlStateNormal];
         [_slider addTarget:self action:@selector(slideDidEnd:) forControlEvents:UIControlEventTouchUpInside];
         [_slider addTarget:self action:@selector(sliderDidSlide:)  forControlEvents:UIControlEventValueChanged];
     }

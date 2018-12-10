@@ -619,7 +619,7 @@
         [self addSubview:self.titleBtn];
         
         self.arrowView = [UIImageView new];
-        self.arrowView.image = [UIImage imageNamed:@"picker_arrow"];
+        self.arrowView.image = ImageWithFile(@"picker_arrow");
         [self addSubview:self.arrowView];
         [self addConstraints];
         
