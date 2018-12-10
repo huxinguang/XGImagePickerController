@@ -23,7 +23,9 @@ XGImagePickerController是一款iOS相册选择器，支持图片、视频拍摄
 文档
 ==============
 遵循\<XG_AssetPickerControllerDelegate\>协议，并实现协议方法：
-- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+\- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+
+具体使用方法可参见示例Demo
 
 
 注意事项
@@ -42,7 +44,20 @@ XGImagePickerController 使用 MIT 许可证，详情见 LICENSE 文件。
 <br/><br/>
 ---
 
+Installation
+==============
 
+### CocoaPods
+
+1. Add `pod 'XGImagePickerController'` to your Podfile.
+2. Run `pod install` or `pod update`.
+3. #import "XG_AssetPickerController.h"
+
+### Manually
+
+1. Download all the files in the `Picker` subdirectory.
+2. Add the source files to your Xcode project.
+3. Import `XG_AssetPickerController.h`.
 
 Documentation
 ==============
@@ -55,7 +70,7 @@ This library requires `iOS 8.0+` .
 
 Notice
 ==============
-If you get crash with message like 'This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription/NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.',please check if the corresponding usage description is added in the app's Info.plist.
+If your app crashed with message like 'This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription/NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.',please check if the corresponding usage description is added in the app's Info.plist.
 
 License
 ==============
