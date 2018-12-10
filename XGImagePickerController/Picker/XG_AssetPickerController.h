@@ -43,9 +43,9 @@
 @end
 
 @protocol XG_AssetPickerControllerDelegate <NSObject>
-@optional
-
+@required
 - (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
+@optional
 - (void)assetPickerControllerDidCancel:(XG_AssetPickerController *)picker;
 
 @end

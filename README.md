@@ -18,7 +18,12 @@ XGImagePickerController是一款iOS相册选择器，支持图片、视频拍摄
 
 1. 在 Podfile 中添加  `pod 'XGImagePickerController'`。
 2. 执行 `pod install` 或 `pod update`。
-3. 
+3. #import "XG_AssetPickerController.h"
+
+文档
+==============
+遵循\<XG_AssetPickerControllerDelegate\>协议，并实现协议方法：
+- (void)assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:(NSArray<XG_AssetModel *> *)assets;
 
 
 注意事项

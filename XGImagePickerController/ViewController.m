@@ -15,7 +15,7 @@
 #define kMinimumInteritemSpacing 4
 #define kMinimumLineSpacing 4
 
-@interface ViewController ()<XG_AssetPickerControllerDelegate,UIAlertViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,XG_AssetPickerControllerDelegate>
+@interface ViewController ()<XG_AssetPickerControllerDelegate,UIAlertViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray<XG_AssetModel *> *assets;
 @property (nonatomic, strong) XG_AssetModel *placeholderModel;
@@ -147,9 +147,6 @@
     [self.collectionView reloadData];
 }
 
-- (void)assetPickerControllerDidCancel:(XG_AssetPickerController *)picker{
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
