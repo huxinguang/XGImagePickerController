@@ -10,6 +10,7 @@
 #import "XG_RootViewController.h"
 #import "XG_PickerMacro.h"
 #import "XG_AssetPickerManager.h"
+#import "XG_AssetModel.h"
 
 #define kItemMargin 4                                                                                                 //item间距
 #define kItemsAtEachLine 3                                                                                            //每行显示多少个

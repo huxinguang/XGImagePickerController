@@ -8,7 +8,6 @@
 
 #import "XG_AssetPickerController.h"
 #import "XG_AssetCell.h"
-#import "XG_AssetModel.h"
 #import "XG_TitleView.h"
 #import "XG_BarButton.h"
 #import "XG_AlbumCell.h"

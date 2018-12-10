@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "XG_AssetPickerController.h"
 #import "SelectedAssetCell.h"
-#import "XG_AssetModel.h"
 
 #define kCollectionViewSectionInsetLeftRight 4
 #define kItemCountAtEachRow 3

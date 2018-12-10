@@ -11,6 +11,15 @@ XGImagePickerController是一款iOS相册选择器，支持图片、视频拍摄
 ==============
 该项目最低支持 `iOS 8.0+`。
 
+安装
+==============
+
+### CocoaPods
+
+1. 在 Podfile 中添加  `pod 'XGImagePickerController'`。
+2. 执行 `pod install` 或 `pod update`。
+3. 
+
 
 注意事项
 ==============
