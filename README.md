@@ -22,12 +22,11 @@
 
 使用
 ==============
-1. 先使用来检查是否获取相册权限，然后根据`XG_AuthorizationStatus`做进一步处理 `[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
-}];`
+1. 先使用`[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
+}];`检查是否获取相册权限，然后根据`XG_AuthorizationStatus`做进一步处理 
 
 2. 初始化`XG_AssetPickerOptions`对象来配置选择器，`maxAssetsCount`表示最大可选择数量，`videoPickable`表示是否可选择视频，已选的图片或者视频会保存在`pickedAssetModels`数组中。
-3. 使用`XG_AssetPickerController *photoPickerVc = [[XG_AssetPickerController alloc] initWithOptions:options delegate:self];`初始化选择器，
-    然后
+3. 使用初始化选择器`XG_AssetPickerController`，然后
     `UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];`
     `[self presentViewController:nav animated:YES completion:nil];`
 
@@ -76,6 +75,12 @@ Installation
 
 Usage
 ==============
+1. Check if you get an access to the photo library using `[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
+}];`
+2. Initialize a `XG_AssetPickerOptions` object to config the `XG_AssetPickerController` 
+3. Initialize a `XG_AssetPickerController` using `initWithOptions: delegate:` method,and present it using `UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];`
+`[self presentViewController:nav animated:YES completion:nil];`
+4. Adopt the `XG_AssetPickerControllerDelegate` protocol and implement it's required method `assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:`
 
 Notice
 ==============
