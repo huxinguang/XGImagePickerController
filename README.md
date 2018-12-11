@@ -20,7 +20,7 @@
 2. 执行 `pod install` 或 `pod update`。
 3. `#import "XG_AssetPickerController.h"`
 
-使用
+使用方法
 ==============
 1. 先使用`[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
 }];`检查是否获取相册权限，然后根据`XG_AuthorizationStatus`做进一步处理 
@@ -48,9 +48,8 @@
 ==============
 `XGAssetPickerController` 使用 MIT 许可证，详情见 LICENSE 文件。
 
-
 <br/><br/>
----
+
 
 Requirements
 ==============
@@ -71,24 +70,21 @@ Installation
 
 1. Download all the files in the `Picker` subdirectory.
 2. Add the source files to your Xcode project.
-3. Import `XG_AssetPickerController.h`.
+3.  `#import "XG_AssetPickerController.h"`.
 
 Usage
 ==============
 1. Check if you get an access to the photo library using `[[XG_AssetPickerManager manager] handleAuthorizationWithCompletion:^(XG_AuthorizationStatus aStatus) {
 }];`
 2. Initialize a `XG_AssetPickerOptions` object to config the `XG_AssetPickerController` 
-3. Initialize a `XG_AssetPickerController` using `initWithOptions: delegate:` method,and present it using `UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];`
+3. Initialize a `XG_AssetPickerController` using `initWithOptions: delegate:` method,and present it using
+`UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:photoPickerVc];`
 `[self presentViewController:nav animated:YES completion:nil];`
-4. Adopt the `XG_AssetPickerControllerDelegate` protocol and implement it's required method `assetPickerController:(XG_AssetPickerController *)picker didFinishPickingAssets:`
+4. Adopt the `XG_AssetPickerControllerDelegate` protocol and implement it's required method `assetPickerController: didFinishPickingAssets:`
 
 Notice
 ==============
 If your app crashed with message like `This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSPhotoLibraryUsageDescription/NSCameraUsageDescription key with a string value explaining to the user how the app uses this data.`, please check if the corresponding usage description is added in the app's Info.plist.
-
-
-
-
 
 License
 ==============

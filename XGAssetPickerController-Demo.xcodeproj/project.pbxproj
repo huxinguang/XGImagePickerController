@@ -158,7 +158,7 @@
 		C9D7695A2191357800C8A561 /* XGAssetPickerController-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				C9D7698D219135D600C8A561 /* Picker */,
+				C9D7698D219135D600C8A561 /* XGAssetPickerController */,
 				C9D7695B2191357800C8A561 /* AppDelegate.h */,
 				C9D7695C2191357800C8A561 /* AppDelegate.m */,
 				C9D7695E2191357800C8A561 /* ViewController.h */,
@@ -192,7 +192,7 @@
 			path = "XGAssetPickerController-DemoUITests";
 			sourceTree = "<group>";
 		};
-		C9D7698D219135D600C8A561 /* Picker */ = {
+		C9D7698D219135D600C8A561 /* XGAssetPickerController */ = {
 			isa = PBXGroup;
 			children = (
 				966F478E21BE5C7C0050D045 /* AssetPicker.bundle */,
@@ -221,7 +221,7 @@
 				C9D769B021913B6500C8A561 /* XG_PickerMacro.h */,
 				C9D769DA2193CAE000C8A561 /* MediaBrowseView */,
 			);
-			path = Picker;
+			path = XGAssetPickerController;
 			sourceTree = "<group>";
 		};
 		C9D769DA2193CAE000C8A561 /* MediaBrowseView */ = {
