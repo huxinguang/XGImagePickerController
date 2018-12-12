@@ -87,10 +87,6 @@
 - (void)commonInit
 {
     self.runLoopMode = [[self class] defaultRunLoopMode];
-    
-    if (@available(iOS 11.0, *)) {
-        self.accessibilityIgnoresInvertColors = YES;
-    }
 }
 
 
@@ -213,7 +209,6 @@
     return intrinsicContentSize;
 }
 
-#pragma mark Smart Invert Colors
 
 #pragma mark - UIImageView Method Overrides
 #pragma mark Image Data

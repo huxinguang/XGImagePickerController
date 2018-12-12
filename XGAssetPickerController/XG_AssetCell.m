@@ -56,7 +56,7 @@
                     _selectPhotoButton.hidden = YES;
                 }
                 _bottomView.hidden = NO;
-                _timeLength.text = [self getNewTimeFromSecond:(NSInteger)model.asset.duration];
+                _timeLength.text = [self getNewTimeFromSecond:(int)model.asset.duration];
                 break;
             case PHAssetMediaTypeAudio:
                 _selectImageView.hidden = YES;

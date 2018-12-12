@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DE4083C1FC0D0E8C35CA3A31EE4B413 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B502F45D2479ABAFFDD6BEC5D8991 /* FLAnimatedImage.m */; };
+		369741713D32076AA268BD2AD6320D01 /* FLAnimatedImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C047450CE14F62B298276E79A2B5C /* FLAnimatedImage-dummy.m */; };
+		5D16DC6EC61EF1681926ADE707C852C9 /* Pods-XGAssetPickerController-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A51656ADD9F6646230A71BBFCD63E2C /* Pods-XGAssetPickerController-Demo-dummy.m */; };
+		6F57B85B843098002BA80A58E1EB7321 /* FLAnimatedImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7A5969B985582006E7F2008950E50AE /* FLAnimatedImageView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		711C5CB0BE75D40FAE77F5AC5E767AD1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D35982E6460B65C14F58CE6D5B51EE5 /* MobileCoreServices.framework */; };
+		97A13EB651212D6FC28B81784C63AA45 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5B3508C6FDB5C3DEBBAC8B855188F0 /* QuartzCore.framework */; };
+		A964B233BFF72237CC124B8A06703F97 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCA4F58BDCF4B7C50485DAA8FAFC0B1 /* ImageIO.framework */; };
+		D7CF78749936FA04A79797FBF1B554C4 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C044BAE2DCBCA1F57DEE0D3EAED947 /* FLAnimatedImageView.m */; };
+		DB4A1305E55FA9EB74EF834970C99BC9 /* FLAnimatedImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F6DA8AC4BCA1236C8EB35E3ACB7878 /* FLAnimatedImage.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FE10BA2FAA90290CC46ADF5ECE10308A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DECC248A4D2BA79ABAD1DE36AF2EE70 /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0BA619F937BE68F0609615C43B76DCD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CA3B437D7438649BE6C700067C8EDF8;
+			remoteInfo = FLAnimatedImage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0491C74B8B9238B38A87E10D5B6A5705 /* libFLAnimatedImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFLAnimatedImage.a; path = libFLAnimatedImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		05C044BAE2DCBCA1F57DEE0D3EAED947 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImageView.m; path = FLAnimatedImage/FLAnimatedImageView.m; sourceTree = "<group>"; };
+		0CCA4F58BDCF4B7C50485DAA8FAFC0B1 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		13EEA8572BAAC11CFF441783834406F4 /* FLAnimatedImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FLAnimatedImage-prefix.pch"; sourceTree = "<group>"; };
+		1D35982E6460B65C14F58CE6D5B51EE5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		26F6DA8AC4BCA1236C8EB35E3ACB7878 /* FLAnimatedImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImage.h; path = FLAnimatedImage/FLAnimatedImage.h; sourceTree = "<group>"; };
+		2C5B3508C6FDB5C3DEBBAC8B855188F0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		2DECC248A4D2BA79ABAD1DE36AF2EE70 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		3680D0C441D85CFA897BE11101245CC3 /* Pods-XGAssetPickerController-Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XGAssetPickerController-Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4B2C047450CE14F62B298276E79A2B5C /* FLAnimatedImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FLAnimatedImage-dummy.m"; sourceTree = "<group>"; };
+		520D0E1FAE54536CE3EE7F9F480540A9 /* FLAnimatedImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FLAnimatedImage.xcconfig; sourceTree = "<group>"; };
+		70B9D7E6583112AC5A444C95B36DF6E4 /* Pods-XGAssetPickerController-Demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XGAssetPickerController-Demo-frameworks.sh"; sourceTree = "<group>"; };
+		7A51656ADD9F6646230A71BBFCD63E2C /* Pods-XGAssetPickerController-Demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XGAssetPickerController-Demo-dummy.m"; sourceTree = "<group>"; };
+		8DE747E9E3BDDE8876705EDAADC76E0C /* Pods-XGAssetPickerController-Demo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XGAssetPickerController-Demo-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		98D2CFDD7B9733F9935610C32D4AE566 /* Pods-XGAssetPickerController-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XGAssetPickerController-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		9B6B502F45D2479ABAFFDD6BEC5D8991 /* FLAnimatedImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FLAnimatedImage.m; path = FLAnimatedImage/FLAnimatedImage.m; sourceTree = "<group>"; };
+		A7A5969B985582006E7F2008950E50AE /* FLAnimatedImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FLAnimatedImageView.h; path = FLAnimatedImage/FLAnimatedImageView.h; sourceTree = "<group>"; };
+		ABE0BFF2D3043634591208A4EA883E7B /* Pods-XGAssetPickerController-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XGAssetPickerController-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		D6038D9CB31B4691168F30ACCA3BD3FB /* Pods-XGAssetPickerController-Demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XGAssetPickerController-Demo-acknowledgements.plist"; sourceTree = "<group>"; };
+		FC46F9BC3001D1836085475DABE22EE4 /* libPods-XGAssetPickerController-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XGAssetPickerController-Demo.a"; path = "libPods-XGAssetPickerController-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A75C2C006537C66F8015868B9B7D304 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB21FA317C6B9802D4A42BCBDF61AB69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE10BA2FAA90290CC46ADF5ECE10308A /* CoreGraphics.framework in Frameworks */,
+				A964B233BFF72237CC124B8A06703F97 /* ImageIO.framework in Frameworks */,
+				711C5CB0BE75D40FAE77F5AC5E767AD1 /* MobileCoreServices.framework in Frameworks */,
+				97A13EB651212D6FC28B81784C63AA45 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11052534CD97283AFB519FD988AB0B7A /* Pods-XGAssetPickerController-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3680D0C441D85CFA897BE11101245CC3 /* Pods-XGAssetPickerController-Demo-acknowledgements.markdown */,
+				D6038D9CB31B4691168F30ACCA3BD3FB /* Pods-XGAssetPickerController-Demo-acknowledgements.plist */,
+				7A51656ADD9F6646230A71BBFCD63E2C /* Pods-XGAssetPickerController-Demo-dummy.m */,
+				70B9D7E6583112AC5A444C95B36DF6E4 /* Pods-XGAssetPickerController-Demo-frameworks.sh */,
+				8DE747E9E3BDDE8876705EDAADC76E0C /* Pods-XGAssetPickerController-Demo-resources.sh */,
+				ABE0BFF2D3043634591208A4EA883E7B /* Pods-XGAssetPickerController-Demo.debug.xcconfig */,
+				98D2CFDD7B9733F9935610C32D4AE566 /* Pods-XGAssetPickerController-Demo.release.xcconfig */,
+			);
+			name = "Pods-XGAssetPickerController-Demo";
+			path = "Target Support Files/Pods-XGAssetPickerController-Demo";
+			sourceTree = "<group>";
+		};
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26FA113DE3E374387129A06F0DAD2097 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E3B42E39782143741E2985CE151FC25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0491C74B8B9238B38A87E10D5B6A5705 /* libFLAnimatedImage.a */,
+				FC46F9BC3001D1836085475DABE22EE4 /* libPods-XGAssetPickerController-Demo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		26FA113DE3E374387129A06F0DAD2097 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2DECC248A4D2BA79ABAD1DE36AF2EE70 /* CoreGraphics.framework */,
+				0CCA4F58BDCF4B7C50485DAA8FAFC0B1 /* ImageIO.framework */,
+				1D35982E6460B65C14F58CE6D5B51EE5 /* MobileCoreServices.framework */,
+				2C5B3508C6FDB5C3DEBBAC8B855188F0 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		4D52DB1F940889B4826FA50EF184EDE0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				11052534CD97283AFB519FD988AB0B7A /* Pods-XGAssetPickerController-Demo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		56738C3A6535F8705497A3B4ACCE6BA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77C1BC0CC2A2F59E2BF5A9CD03608DF1 /* FLAnimatedImage */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5E47F9C239C76FA673C710967CC6187F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				520D0E1FAE54536CE3EE7F9F480540A9 /* FLAnimatedImage.xcconfig */,
+				4B2C047450CE14F62B298276E79A2B5C /* FLAnimatedImage-dummy.m */,
+				13EEA8572BAAC11CFF441783834406F4 /* FLAnimatedImage-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FLAnimatedImage";
+			sourceTree = "<group>";
+		};
+		77C1BC0CC2A2F59E2BF5A9CD03608DF1 /* FLAnimatedImage */ = {
+			isa = PBXGroup;
+			children = (
+				26F6DA8AC4BCA1236C8EB35E3ACB7878 /* FLAnimatedImage.h */,
+				9B6B502F45D2479ABAFFDD6BEC5D8991 /* FLAnimatedImage.m */,
+				A7A5969B985582006E7F2008950E50AE /* FLAnimatedImageView.h */,
+				05C044BAE2DCBCA1F57DEE0D3EAED947 /* FLAnimatedImageView.m */,
+				5E47F9C239C76FA673C710967CC6187F /* Support Files */,
+			);
+			name = FLAnimatedImage;
+			path = FLAnimatedImage;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				56738C3A6535F8705497A3B4ACCE6BA2 /* Pods */,
+				1E3B42E39782143741E2985CE151FC25 /* Products */,
+				4D52DB1F940889B4826FA50EF184EDE0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		16F6F0700B2B8E2CF1B762BB8929887F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E8506A6EBB59AF570F7D18553025122 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB4A1305E55FA9EB74EF834970C99BC9 /* FLAnimatedImage.h in Headers */,
+				6F57B85B843098002BA80A58E1EB7321 /* FLAnimatedImageView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7CA3B437D7438649BE6C700067C8EDF8 /* FLAnimatedImage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57B234E7D114A6F4B52F3926DAE7B469 /* Build configuration list for PBXNativeTarget "FLAnimatedImage" */;
+			buildPhases = (
+				8E8506A6EBB59AF570F7D18553025122 /* Headers */,
+				6409959DBFDA0B4CFF32E376AB181A77 /* Sources */,
+				EB21FA317C6B9802D4A42BCBDF61AB69 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FLAnimatedImage;
+			productName = FLAnimatedImage;
+			productReference = 0491C74B8B9238B38A87E10D5B6A5705 /* libFLAnimatedImage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B8CF2426B4D7A40E61C659BFF9FA189F /* Pods-XGAssetPickerController-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7EDDBD6E56C1AB6091B550DF498E4AB1 /* Build configuration list for PBXNativeTarget "Pods-XGAssetPickerController-Demo" */;
+			buildPhases = (
+				16F6F0700B2B8E2CF1B762BB8929887F /* Headers */,
+				B4B5A08EF0D9A043C654AB700389C8B0 /* Sources */,
+				4A75C2C006537C66F8015868B9B7D304 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4882B6525A3BD42898D94A02E6956CF9 /* PBXTargetDependency */,
+			);
+			name = "Pods-XGAssetPickerController-Demo";
+			productName = "Pods-XGAssetPickerController-Demo";
+			productReference = FC46F9BC3001D1836085475DABE22EE4 /* libPods-XGAssetPickerController-Demo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1E3B42E39782143741E2985CE151FC25 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CA3B437D7438649BE6C700067C8EDF8 /* FLAnimatedImage */,
+				B8CF2426B4D7A40E61C659BFF9FA189F /* Pods-XGAssetPickerController-Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6409959DBFDA0B4CFF32E376AB181A77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				369741713D32076AA268BD2AD6320D01 /* FLAnimatedImage-dummy.m in Sources */,
+				0DE4083C1FC0D0E8C35CA3A31EE4B413 /* FLAnimatedImage.m in Sources */,
+				D7CF78749936FA04A79797FBF1B554C4 /* FLAnimatedImageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4B5A08EF0D9A043C654AB700389C8B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D16DC6EC61EF1681926ADE707C852C9 /* Pods-XGAssetPickerController-Demo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4882B6525A3BD42898D94A02E6956CF9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FLAnimatedImage;
+			target = 7CA3B437D7438649BE6C700067C8EDF8 /* FLAnimatedImage */;
+			targetProxy = 0BA619F937BE68F0609615C43B76DCD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B7D70E4BFD7DDD9A379698DADEDE0B1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520D0E1FAE54536CE3EE7F9F480540A9 /* FLAnimatedImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FLAnimatedImage/FLAnimatedImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FLAnimatedImage;
+				PRODUCT_NAME = FLAnimatedImage;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C8E3C2D6708617255E1C212580202A13 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 520D0E1FAE54536CE3EE7F9F480540A9 /* FLAnimatedImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FLAnimatedImage/FLAnimatedImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FLAnimatedImage;
+				PRODUCT_NAME = FLAnimatedImage;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DDEC980A4659F714822B8F4A8685715A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98D2CFDD7B9733F9935610C32D4AE566 /* Pods-XGAssetPickerController-Demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA812727F838437C9B45564E4D8CC25D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABE0BFF2D3043634591208A4EA883E7B /* Pods-XGAssetPickerController-Demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73625DEBD810B78234FA1958C191C8C /* Debug */,
+				85B95B1234E227C814CCC2C7902D0916 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57B234E7D114A6F4B52F3926DAE7B469 /* Build configuration list for PBXNativeTarget "FLAnimatedImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8E3C2D6708617255E1C212580202A13 /* Debug */,
+				B7D70E4BFD7DDD9A379698DADEDE0B1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7EDDBD6E56C1AB6091B550DF498E4AB1 /* Build configuration list for PBXNativeTarget "Pods-XGAssetPickerController-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA812727F838437C9B45564E4D8CC25D /* Debug */,
+				DDEC980A4659F714822B8F4A8685715A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

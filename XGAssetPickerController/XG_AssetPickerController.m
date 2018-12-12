@@ -244,7 +244,7 @@
         self.bottomConfirmBtn.backgroundColor = [UIColor whiteColor];
         self.bottomConfirmBtn.titleLabel.font = [UIFont boldSystemFontOfSize:kBottomConfirmBtnTitleFontSize];
         [self.bottomConfirmBtn addTarget:self action:@selector(onConfirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+        [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%d/%d)",(int)self.pickerOptions.pickedAssetModels.count,(int)self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:kAppThemeColor forState:UIControlStateNormal];
         [self.bottomConfirmBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         if (self.pickerOptions.pickedAssetModels.count > 0) {
@@ -364,9 +364,9 @@
                 weakCell.selectPhotoButton.selected = YES;
                 model.picked = YES;
                 [self.pickerOptions.pickedAssetModels addObject:model];
-                weakCell.numberLabel.text = [NSString stringWithFormat:@"%ld",self.pickerOptions.pickedAssetModels.count];
+                weakCell.numberLabel.text = [NSString stringWithFormat:@"%d",(int)self.pickerOptions.pickedAssetModels.count];
             } else {
-                [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
+                [self showHudWithString:[NSString stringWithFormat:@"最多选择%d张照片",(int)self.pickerOptions.maxAssetsCount]];
             }
         }
         [self refreshAlbumAssetsStatus];
@@ -391,7 +391,7 @@
             [self openCamera];
 #endif
         }else{
-            [self showHudWithString:[NSString stringWithFormat:@"最多选择%ld张照片",self.pickerOptions.maxAssetsCount]];
+            [self showHudWithString:[NSString stringWithFormat:@"最多选择%d张照片",(int)self.pickerOptions.maxAssetsCount]];
         }
     }else{
         NSMutableArray *items = [self.assetArr mutableCopy];
@@ -468,7 +468,7 @@
     }else{
         self.bottomConfirmBtn.enabled = NO;
     }
-    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%ld/%ld)",self.pickerOptions.pickedAssetModels.count,self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
+    [self.bottomConfirmBtn setTitle:[NSString stringWithFormat:@"确定(%d/%d)",(int)self.pickerOptions.pickedAssetModels.count,(int)self.pickerOptions.maxAssetsCount] forState:UIControlStateNormal];
 }
 
 - (void)updateStatusBar{

@@ -51,11 +51,14 @@
 <br/><br/>
 
 
+
+Introduction
+==============
+`XGAssetPickerController` is an iOS album picker that supports mixed multi-image,multi-video selection and preview. Gif browsing is supproted on `iOS 11.0+`.   Same images or videos in different album can be automatically detected, and selected images or videos can be recorded.
+
 Requirements
 ==============
 This library requires `iOS 8.0+` .
-
-
 
 Installation
 ==============

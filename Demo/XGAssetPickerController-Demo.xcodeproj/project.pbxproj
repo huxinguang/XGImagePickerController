@@ -11,8 +11,6 @@
 		966F482A21C088230050D045 /* XG_RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F480621C088220050D045 /* XG_RootViewController.m */; };
 		966F482B21C088230050D045 /* XG_BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F480821C088220050D045 /* XG_BarButton.m */; };
 		966F482C21C088230050D045 /* XG_AssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F480921C088220050D045 /* XG_AssetModel.m */; };
-		966F482D21C088230050D045 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F480D21C088220050D045 /* FLAnimatedImage.m */; };
-		966F482E21C088230050D045 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F480E21C088220050D045 /* FLAnimatedImageView.m */; };
 		966F482F21C088230050D045 /* XG_PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F481421C088220050D045 /* XG_PlayerManager.m */; };
 		966F483021C088230050D045 /* XG_MediaBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F481521C088220050D045 /* XG_MediaBrowseView.m */; };
 		966F483121C088230050D045 /* XG_MediaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F481621C088220050D045 /* XG_MediaCell.m */; };
@@ -25,6 +23,7 @@
 		966F483821C088230050D045 /* XG_AssetPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F482521C088220050D045 /* XG_AssetPickerController.m */; };
 		966F483921C088230050D045 /* XG_AlbumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F482621C088220050D045 /* XG_AlbumModel.m */; };
 		966F483A21C088230050D045 /* XG_TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 966F482821C088220050D045 /* XG_TitleView.m */; };
+		9FBA348AA3741EC5B31EF4D7 /* libPods-XGAssetPickerController-Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE6A0B39E2BBBA51E9DA963 /* libPods-XGAssetPickerController-Demo.a */; };
 		C9D7695D2191357800C8A561 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7695C2191357800C8A561 /* AppDelegate.m */; };
 		C9D769602191357800C8A561 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D7695F2191357800C8A561 /* ViewController.m */; };
 		C9D769632191357800C8A561 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9D769612191357800C8A561 /* Main.storyboard */; };
@@ -54,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1790A082571B371901FBB96E /* Pods-XGAssetPickerController-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XGAssetPickerController-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XGAssetPickerController-Demo/Pods-XGAssetPickerController-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		1EE6A0B39E2BBBA51E9DA963 /* libPods-XGAssetPickerController-Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XGAssetPickerController-Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		966F480421C088220050D045 /* XG_AssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_AssetCell.h; sourceTree = "<group>"; };
 		966F480521C088220050D045 /* XG_AlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AlbumCell.m; sourceTree = "<group>"; };
 		966F480621C088220050D045 /* XG_RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_RootViewController.m; sourceTree = "<group>"; };
@@ -61,10 +62,6 @@
 		966F480821C088220050D045 /* XG_BarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_BarButton.m; sourceTree = "<group>"; };
 		966F480921C088220050D045 /* XG_AssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_AssetModel.m; sourceTree = "<group>"; };
 		966F480B21C088220050D045 /* XG_MediaBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_MediaBrowseView.h; sourceTree = "<group>"; };
-		966F480D21C088220050D045 /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
-		966F480E21C088220050D045 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
-		966F480F21C088220050D045 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
-		966F481021C088220050D045 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
 		966F481121C088220050D045 /* XG_MediaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_MediaCell.h; sourceTree = "<group>"; };
 		966F481321C088220050D045 /* XG_PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XG_PlayerManager.h; sourceTree = "<group>"; };
 		966F481421C088220050D045 /* XG_PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XG_PlayerManager.m; sourceTree = "<group>"; };
@@ -108,6 +105,7 @@
 		C9D769D92192DCEA00C8A561 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C9D76A1E219BC9E500C8A561 /* SelectedAssetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectedAssetCell.h; sourceTree = "<group>"; };
 		C9D76A1F219BC9E500C8A561 /* SelectedAssetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectedAssetCell.m; sourceTree = "<group>"; };
+		E4EFB46C7C282CFF34295813 /* Pods-XGAssetPickerController-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XGAssetPickerController-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-XGAssetPickerController-Demo/Pods-XGAssetPickerController-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FBA348AA3741EC5B31EF4D7 /* libPods-XGAssetPickerController-Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,21 +174,9 @@
 				966F481521C088220050D045 /* XG_MediaBrowseView.m */,
 				966F481121C088220050D045 /* XG_MediaCell.h */,
 				966F481621C088220050D045 /* XG_MediaCell.m */,
-				966F480C21C088220050D045 /* FLAnimatedImage */,
 				966F481221C088220050D045 /* PlayerManager */,
 			);
 			path = MediaBrowseView;
-			sourceTree = "<group>";
-		};
-		966F480C21C088220050D045 /* FLAnimatedImage */ = {
-			isa = PBXGroup;
-			children = (
-				966F480D21C088220050D045 /* FLAnimatedImage.m */,
-				966F480E21C088220050D045 /* FLAnimatedImageView.m */,
-				966F480F21C088220050D045 /* FLAnimatedImage.h */,
-				966F481021C088220050D045 /* FLAnimatedImageView.h */,
-			);
-			path = FLAnimatedImage;
 			sourceTree = "<group>";
 		};
 		966F481221C088220050D045 /* PlayerManager */ = {
@@ -201,6 +188,14 @@
 			path = PlayerManager;
 			sourceTree = "<group>";
 		};
+		B91E3B3FF8B24FAAFC7EAE6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EE6A0B39E2BBBA51E9DA963 /* libPods-XGAssetPickerController-Demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C9D7694F2191357800C8A561 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +204,8 @@
 				C9D769732191357900C8A561 /* XGAssetPickerController-DemoTests */,
 				C9D7697E2191357900C8A561 /* XGAssetPickerController-DemoUITests */,
 				C9D769592191357800C8A561 /* Products */,
+				DE6942A65F7F7E7995724D8D /* Pods */,
+				B91E3B3FF8B24FAAFC7EAE6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,6 +255,15 @@
 			path = "XGAssetPickerController-DemoUITests";
 			sourceTree = "<group>";
 		};
+		DE6942A65F7F7E7995724D8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1790A082571B371901FBB96E /* Pods-XGAssetPickerController-Demo.debug.xcconfig */,
+				E4EFB46C7C282CFF34295813 /* Pods-XGAssetPickerController-Demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -265,6 +271,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9D769842191357900C8A561 /* Build configuration list for PBXNativeTarget "XGAssetPickerController-Demo" */;
 			buildPhases = (
+				A845E99977C32EF652003F22 /* [CP] Check Pods Manifest.lock */,
 				C9D769542191357800C8A561 /* Sources */,
 				C9D769552191357800C8A561 /* Frameworks */,
 				C9D769562191357800C8A561 /* Resources */,
@@ -387,6 +394,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A845E99977C32EF652003F22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XGAssetPickerController-Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C9D769542191357800C8A561 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -405,11 +437,9 @@
 				966F483921C088230050D045 /* XG_AlbumModel.m in Sources */,
 				C9D7696B2191357900C8A561 /* main.m in Sources */,
 				966F483221C088230050D045 /* UIView+XGAdd.m in Sources */,
-				966F482E21C088230050D045 /* FLAnimatedImageView.m in Sources */,
 				C9D7695D2191357800C8A561 /* AppDelegate.m in Sources */,
 				966F483021C088230050D045 /* XG_MediaBrowseView.m in Sources */,
 				966F483A21C088230050D045 /* XG_TitleView.m in Sources */,
-				966F482D21C088230050D045 /* FLAnimatedImage.m in Sources */,
 				966F483821C088230050D045 /* XG_AssetPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +611,7 @@
 		};
 		C9D769852191357900C8A561 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1790A082571B371901FBB96E /* Pods-XGAssetPickerController-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -601,6 +632,7 @@
 		};
 		C9D769862191357900C8A561 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EFB46C7C282CFF34295813 /* Pods-XGAssetPickerController-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
