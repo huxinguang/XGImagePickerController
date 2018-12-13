@@ -11,6 +11,11 @@
 ==============
 该项目最低支持 `iOS 8.0+`。
 
+演示项目
+==============
+1. 命令行进入`Demo`文件夹路径下，并执行`pod install`
+2. 打开`XGAssetPickerController-Demo.xcworkspace`
+
 安装
 ==============
 
@@ -19,6 +24,13 @@
 1. 在 `Podfile` 中添加  `pod 'XGAssetPickerController'`。
 2. 执行 `pod install` 或 `pod update`。
 3. `#import "XG_AssetPickerController.h"`
+
+### 手动安装
+1. 下载 XGAssetPickerController 文件夹内的所有内容。
+2. 将 XGAssetPickerController 内的源文件添加(拖放)到你的工程。
+3. 由于用到了`FLAnimatedImage`，所以需要下载`FLAnimatedImage`（`https://github.com/Flipboard/FLAnimatedImage`），并添加(拖放)到你的工程。
+4.  `#import "XG_AssetPickerController.h"`.
+
 
 使用方法
 ==============
@@ -60,6 +72,11 @@ Requirements
 ==============
 This library requires `iOS 8.0+` .
 
+Demo Project
+==============
+1. Use the terminal to enter the path of `Demo`,then excute  `pod install`
+2. Click `XGAssetPickerController-Demo.xcworkspace`
+
 Installation
 ==============
 
@@ -71,9 +88,10 @@ Installation
 
 ### Manually
 
-1. Download all the files in the `Picker` subdirectory.
+1. Download all the files in the XGAssetPickerController subdirectory.
 2. Add the source files to your Xcode project.
-3.  `#import "XG_AssetPickerController.h"`.
+3. This library references `FLAnimatedImage`, so you need to download `FLAnimatedImage` (`https://github.com/Flipboard/FLAnimatedImage`) and add its source files to your Xcode project too.
+4.  `#import "XG_AssetPickerController.h"`.
 
 Usage
 ==============
