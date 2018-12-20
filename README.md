@@ -16,6 +16,15 @@
 1. 命令行进入`Demo`文件夹路径下，并执行`pod install`
 2. 打开`XGAssetPickerController-Demo.xcworkspace`
 
+<p align="left">
+<img src="demo_sample1.png" title="Demo image1" float=left>
+<img src="demo_sample2.png" title="Demo image2" float=left>
+<img src="demo_sample3.png" title="Demo image3" float=left>
+<img src="demo_sample4.png" title="Demo image4" float=left>
+<img src="demo_sample5.png" title="Demo image5" float=left>
+<img src="demo_sample6.png" title="Demo image6" float=left>
+</p>
+
 安装
 ==============
 
