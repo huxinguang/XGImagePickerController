@@ -18,14 +18,14 @@
 
 <div style="width:960px;overflow-x:scroll">
 <div style="width:2001px">
-<img src="demo_sample1.jpg" width="375" height="667"/>
-<img src="demo_sample2.jpg" width="375" height="667" />
-<img src="demo_sample3.jpg" width="375" height="667"/>
+<img src="demo_sample1.png" width="187.5" height="333.5"/>
+<img src="demo_sample2.png" width="187.5" height="333.5" />
+<img src="demo_sample3.png" width="187.5" height="333.5"/>
 </div>
 <div style="width:2001px">
-<img src="demo_sample4.jpg" width="375" height="667"/>
-<img src="demo_sample5.jpg" width="375" height="667" />
-<img src="demo_sample6.jpg" width="375" height="667"/>
+<img src="demo_sample4.png" width="187.5" height="333.5"/>
+<img src="demo_sample5.png" width="187.5" height="333.5" />
+<img src="demo_sample6.png" width="187.5" height="333.5"/>
 </div>
 </div>
 
