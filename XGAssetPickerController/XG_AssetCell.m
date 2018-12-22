@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLength;
+@property (weak, nonatomic) IBOutlet UIImageView *videoIcon;
 
 @end
 
@@ -24,6 +25,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.timeLength.font = [UIFont boldSystemFontOfSize:11];
+    self.videoIcon.image = ImageWithFile(@"picker_video");
 }
 
 - (void)setModel:(XG_AssetModel *)model {
